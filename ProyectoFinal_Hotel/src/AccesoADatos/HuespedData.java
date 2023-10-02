@@ -1,0 +1,103 @@
+package AccesoADatos;
+
+import Entidades.Huesped;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+public class HuespedData {
+
+    private Connection con = null;
+
+    public HuespedData() {
+        con = Conexion.getConexion();
+    }
+
+    public void guardarHuesped(Huesped huesped) {
+
+        String sql = "INSERT INTO huesped(dni,nombre,domicilio,correo,celular) VALUES ( ?, ?, ?, ?, ?)";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setInt(1, huesped.getDni());
+            ps.setString(2, huesped.getNombre());
+            ps.setString(3, huesped.getDomicilio());
+            ps.setString(4, huesped.getCorreo());
+            ps.setInt(5, huesped.getCelular());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                huesped.setIdHuesped(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Huesped añadido con exito.");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped" + ex.getMessage());
+        }
+    }
+
+    public Huesped buscarHuespedPorDni(int dni) {
+        Huesped huesped = null;
+        String sql = "SELECT * FROM huesped WHERE dni=?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                huesped = new Huesped();
+                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setDni(rs.getInt("dni"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setCelular(rs.getInt("celular"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el huesped");
+
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped " + ex.getMessage());
+        }
+
+        return huesped;
+    }
+
+    public List<Huesped> listarHuesped() {
+
+        List<Huesped> listaHuesped = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM huesped";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Huesped huesped = new Huesped();
+
+                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setDni(rs.getInt("dni"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setCelular(rs.getInt("celular"));
+
+                listaHuesped.add(huesped);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Huesped " + ex.getMessage());
+        }
+        return listaHuesped;
+    }
+
+}
