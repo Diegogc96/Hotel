@@ -6,29 +6,35 @@ public class Huesped {
     
     private int idHuesped;
     private String nombre;
+    private String apellido;
     private int dni;
     private String domicilio;
     private String correo;
     private int celular;
-
+    private boolean estado;
+    
     public Huesped() {
     }
 
-    public Huesped(String nombre, int dni, String domicilio, String correo, int celular) {
-        this.nombre = nombre;
-        this.dni = dni;
-        this.domicilio = domicilio;
-        this.correo = correo;
-        this.celular = celular;
-    }
-
-    public Huesped(int idHuesped, String nombre, int dni, String domicilio, String correo, int celular) {
+    public Huesped(int idHuesped, String nombre, String apellido, int dni, String domicilio, String correo, int celular, boolean estado) {
         this.idHuesped = idHuesped;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.dni = dni;
         this.domicilio = domicilio;
         this.correo = correo;
         this.celular = celular;
+        this.estado = estado;
+    }
+
+    public Huesped(String nombre, String apellido, int dni, String domicilio, String correo, int celular, boolean estado) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.domicilio = domicilio;
+        this.correo = correo;
+        this.celular = celular;
+        this.estado = estado;
     }
 
     public int getIdHuesped() {
@@ -45,6 +51,14 @@ public class Huesped {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public int getDni() {
@@ -79,11 +93,18 @@ public class Huesped {
         this.celular = celular;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "idHuesped=" + idHuesped + ", nombre=" + nombre + ", dni=" + dni + ", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular;
+        return "idHuesped=" + idHuesped + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular + ", estado=" + estado;
     }
-    
     
     
 }

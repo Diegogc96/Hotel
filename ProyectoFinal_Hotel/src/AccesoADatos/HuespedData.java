@@ -20,16 +20,18 @@ public class HuespedData {
 
     public void guardarHuesped(Huesped huesped) {
 
-        String sql = "INSERT INTO huesped(dni,nombre,domicilio,correo,celular) VALUES ( ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO huesped(dni,nombre,apellido,domicilio,correo,celular,estado) VALUES ( ?, ?, ?, ?, ?, ?,?)";
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, huesped.getDni());
             ps.setString(2, huesped.getNombre());
-            ps.setString(3, huesped.getDomicilio());
-            ps.setString(4, huesped.getCorreo());
-            ps.setInt(5, huesped.getCelular());
+            ps.setString(3, huesped.getApellido());
+            ps.setString(4, huesped.getDomicilio());
+            ps.setString(5, huesped.getCorreo());
+            ps.setInt(6, huesped.getCelular());
+            ps.setBoolean(7, huesped.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -56,10 +58,11 @@ public class HuespedData {
                 huesped.setIdHuesped(rs.getInt("idHuesped"));
                 huesped.setDni(rs.getInt("dni"));
                 huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
                 huesped.setDomicilio(rs.getString("domicilio"));
                 huesped.setCorreo(rs.getString("correo"));
                 huesped.setCelular(rs.getInt("celular"));
-
+                huesped.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el huesped");
 
@@ -77,7 +80,7 @@ public class HuespedData {
         List<Huesped> listaHuesped = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM huesped";
+            String sql = "SELECT * FROM huesped WHERE estado=1";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -86,10 +89,11 @@ public class HuespedData {
                 huesped.setIdHuesped(rs.getInt("idHuesped"));
                 huesped.setDni(rs.getInt("dni"));
                 huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
                 huesped.setDomicilio(rs.getString("domicilio"));
                 huesped.setCorreo(rs.getString("correo"));
                 huesped.setCelular(rs.getInt("celular"));
-
+                huesped.setEstado(rs.getBoolean("estado"));
                 listaHuesped.add(huesped);
             }
             ps.close();
@@ -98,6 +102,50 @@ public class HuespedData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Huesped " + ex.getMessage());
         }
         return listaHuesped;
+    }
+
+    public void modificarHuesped(Huesped huesped) {
+        String sql = "UPDATE huesped SET apellido = ?, nombre = ?, correo = ?, celular = ?, domicilio = ?  WHERE dni = ?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, huesped.getApellido());
+            ps.setString(2, huesped.getNombre());
+            ps.setString(3, huesped.getCorreo());
+            ps.setInt(4, huesped.getCelular());
+            ps.setString(5, huesped.getDomicilio());
+            ps.setInt(6, huesped.getDni());
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El huesped no existe");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla huesped " + ex.getMessage());
+        }
+    }
+
+    public void eliminarHuesped(int id) {
+
+        try {
+            String sql = "UPDATE huesped SET estado = 0 WHERE idHuesped = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila = ps.executeUpdate();
+
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, " Se eliminó el huesped.");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla huesped");
+        }
     }
 
 }

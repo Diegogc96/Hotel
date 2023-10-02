@@ -18,8 +18,8 @@ public class ProyectoFinal_Hotel {
         
         con=Conexion.getConexion();
         HuespedData data=new HuespedData();
-        Huesped huesped1=new Huesped("A", 1, "AAAA", "AAAA@AAA", 11111111);
-        Huesped huesped2=new Huesped("B", 2, "BBBB", "BBBB@BBB", 22222222);
+        Huesped huesped1=new Huesped("A","AAAA",2,"AAAAAAA", "AAAA@AAA", 11111111,true);
+        Huesped huesped2=new Huesped("B","BBBB",1,"BBBBBBB", "BBBB@BBB", 22222222,true);
         List<Huesped> listah=new ArrayList<>();
         
         listah=data.listarHuesped();
