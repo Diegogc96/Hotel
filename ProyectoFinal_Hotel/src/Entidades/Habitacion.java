@@ -66,6 +66,10 @@ public class Habitacion {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }   
+
+    void cambiarPrecio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
