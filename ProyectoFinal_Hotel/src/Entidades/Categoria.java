@@ -1,29 +1,32 @@
 package Entidades;
 
-public final class tipoHabitacion extends Habitacion {
+public final class Categoria extends Habitacion {
 
     private int idCodigo;
     private int cantPersonas;
     private int cantCamas;
+    private String tipoHabitacion;
     private String tipoCama;
     private double precioNoche;
 
-    public tipoHabitacion() {
+    public Categoria() {
     }
 
-    public tipoHabitacion(int cantPersonas, int cantCamas, String tipoCama, double precioNoche, tipoHabitacion categoria, int piso, int nmroHabitacion, boolean estado) {
-        super(categoria, piso, nmroHabitacion, estado);
+    public Categoria(int cantPersonas, int cantCamas, String tipoHabitacion, String tipoCama, double precioNoche, int piso, int nroHabitacion, boolean estado) {
+        super(piso, nroHabitacion, estado);
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
+        this.tipoHabitacion = tipoHabitacion;
         this.tipoCama = tipoCama;
         this.precioNoche = precioNoche;
     }
 
-    public tipoHabitacion(int idCodigo, int cantPersonas, int cantCamas, String tipoCama, double precioNoche, int idHabitacion, tipoHabitacion categoria, int piso, int nmroHabitacion, boolean estado) {
-        super(idHabitacion, categoria, piso, nmroHabitacion, estado);
+    public Categoria(int idCodigo, int cantPersonas, int cantCamas, String tipoHabitacion, String tipoCama, double precioNoche, int idHabitacion, int piso, int nroHabitacion, boolean estado) {
+        super(idHabitacion, piso, nroHabitacion, estado);
         this.idCodigo = idCodigo;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
+        this.tipoHabitacion = tipoHabitacion;
         this.tipoCama = tipoCama;
         this.precioNoche = precioNoche;
     }
@@ -52,6 +55,14 @@ public final class tipoHabitacion extends Habitacion {
         this.cantCamas = cantCamas;
     }
 
+    public String getTipoHabitacion() {
+        return tipoHabitacion;
+    }
+
+    public void setTipoHabitacion(String tipoHabitacion) {
+        this.tipoHabitacion = tipoHabitacion;
+    }
+
     public String getTipoCama() {
         return tipoCama;
     }
@@ -67,6 +78,13 @@ public final class tipoHabitacion extends Habitacion {
     public void setPrecioNoche(double precioNoche) {
         this.precioNoche = precioNoche;
     }
+
+    @Override
+    public String toString() {
+        return "idCodigo=" + idCodigo + ", cantPersonas=" + cantPersonas + ", cantCamas=" + cantCamas + ", tipoHabitacion=" + tipoHabitacion + ", tipoCama=" + tipoCama + ", precioNoche=" + precioNoche;
+    }
+
+    
 
     @Override
     public void cambiarPrecio() {

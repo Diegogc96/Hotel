@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AccesoADatos;
 
 import Entidades.Habitacion;
-import Entidades.Huesped;
+import Entidades.Categoria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,10 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Windows 10
- */
 public class HabitacionData {
 
     private Connection con = null;
@@ -36,7 +27,7 @@ public class HabitacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, habitacion.getPiso());
-            ps.setInt(2, habitacion.getNmroHabitacion());
+            ps.setInt(2, habitacion.getNroHabitacion());
             ps.setBoolean(3, habitacion.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -46,8 +37,33 @@ public class HabitacionData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Huesped" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion" + ex.getMessage());
         }
+    }
+
+    public List<Categoria> listarHabitacionesCategoria() {
+
+        List<Categoria> listaHabitacionCategoria = new ArrayList<>();
+
+        try {
+            String sql = "SELECT c.tipoHabitacion ,piso, nroHabitacion, h.estado FROM habitacion h JOIN categoria c ON (h.idCategoria=c.idCategoria);";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Categoria tipohabitacion = new Categoria();
+
+                tipohabitacion.setPiso(rs.getInt("piso"));
+                tipohabitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                tipohabitacion.setEstado(rs.getBoolean("estado"));
+                tipohabitacion.setTipoHabitacion(rs.getString("tipoHabitacion"));
+                listaHabitacionCategoria.add(tipohabitacion);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion " + ex.getMessage());
+        }
+        return listaHabitacionCategoria;
     }
 
     public List<Habitacion> listarHabitaciones() {
@@ -59,21 +75,61 @@ public class HabitacionData {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Habitacion habitacion = new Habitacion();
+                Categoria tipohabitacion = new Categoria();
 
-                habitacion.setPiso(rs.getInt("piso"));
-                habitacion.setNmroHabitacion(rs.getInt("nroHabitacion"));
-                habitacion.setEstado(rs.getBoolean("estado"));
-                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
-               // habitacion.setCategoria(rs.getObject("idCategoria"));
-                listaHabitacion.add(habitacion);
+                tipohabitacion.setPiso(rs.getInt("piso"));
+                tipohabitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                tipohabitacion.setEstado(rs.getBoolean("estado"));
+                listaHabitacion.add(tipohabitacion);
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Huesped " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion " + ex.getMessage());
         }
         return listaHabitacion;
+    }
+
+    public void modificarHabitacion(Habitacion habitacion) {
+
+        String sql = "UPDATE habitacion SET piso = ?, nroHabitacion = ? , estado = ?  WHERE idHabitacion = ?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(1, habitacion.getPiso());
+            ps.setInt(2, habitacion.getNroHabitacion());
+            ps.setBoolean(3, habitacion.isEstado());
+            ps.setInt(4, habitacion.getIdHabitacion());
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "La habitacion no existe");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion" + ex.getMessage());
+        }
+    }
+
+    public void eliminarHabitacion(int idHabitacion) {
+
+        try {
+            String sql = "UPDATE habitacion SET estado = 0 WHERE idHabitacion = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idHabitacion);
+            int fila = ps.executeUpdate();
+
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, " Se eliminó la habitacion.");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion");
+        }
     }
 
 }

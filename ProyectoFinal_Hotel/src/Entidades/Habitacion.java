@@ -5,26 +5,23 @@ package Entidades;
 public class Habitacion {
     
     protected int idHabitacion;
-    protected tipoHabitacion categoria;
     protected int piso;
-    protected int nmroHabitacion;
+    protected int nroHabitacion;
     protected boolean estado;
 
     public Habitacion() {
     }
 
-    public Habitacion(tipoHabitacion categoria, int piso, int nmroHabitacion, boolean estado) {
-        this.categoria = categoria;
+    public Habitacion(int piso, int nroHabitacion, boolean estado) {
         this.piso = piso;
-        this.nmroHabitacion = nmroHabitacion;
+        this.nroHabitacion = nroHabitacion;
         this.estado = estado;
     }
 
-    public Habitacion(int idHabitacion, tipoHabitacion categoria, int piso, int nmroHabitacion, boolean estado) {
+    public Habitacion(int idHabitacion, int piso, int nroHabitacion, boolean estado) {
         this.idHabitacion = idHabitacion;
-        this.categoria = categoria;
         this.piso = piso;
-        this.nmroHabitacion = nmroHabitacion;
+        this.nroHabitacion = nroHabitacion;
         this.estado = estado;
     }
 
@@ -36,14 +33,6 @@ public class Habitacion {
         this.idHabitacion = idHabitacion;
     }
 
-    public tipoHabitacion getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(tipoHabitacion categoria) {
-        this.categoria = categoria;
-    }
-
     public int getPiso() {
         return piso;
     }
@@ -52,12 +41,12 @@ public class Habitacion {
         this.piso = piso;
     }
 
-    public int getNmroHabitacion() {
-        return nmroHabitacion;
+    public int getNroHabitacion() {
+        return nroHabitacion;
     }
 
-    public void setNmroHabitacion(int nmroHabitacion) {
-        this.nmroHabitacion = nmroHabitacion;
+    public void setNroHabitacion(int nroHabitacion) {
+        this.nroHabitacion = nroHabitacion;
     }
 
     public boolean isEstado() {
@@ -66,7 +55,14 @@ public class Habitacion {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-    }   
+    }
+
+    @Override
+    public String toString() {
+        return "idHabitacion=" + idHabitacion + ", piso=" + piso + ", nroHabitacion=" + nroHabitacion + ", estado=" + estado;
+    }
+
+    
 
     void cambiarPrecio() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
