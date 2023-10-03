@@ -1,25 +1,26 @@
 package Entidades;
 
 
-public class tipoHabitacion extends Habitacion{
+public final class tipoHabitacion extends Habitacion{
     
-   private int codigo;
-   private int cantPersonas;
-   private int cantCamas;
-   private String tipoCama;
-   private double precioNoche;
+   private final int idCodigo;
+   private final int cantPersonas;
+   private final int cantCamas;
+   private final String tipoCama;
+   private final double precioNoche;
 
-    public tipoHabitacion(int codigo, int cantPersonas, int cantCamas, String tipoCama, double precioNoche) {
-        this.codigo = codigo;
+    public tipoHabitacion(int idCodigo, int cantPersonas, int cantCamas, String tipoCama, double precioNoche, tipoHabitacion categoria, int piso, boolean estado) {
+        super(categoria, piso, estado);
+        this.idCodigo = idCodigo;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;
         this.precioNoche = precioNoche;
     }
 
-    public tipoHabitacion(int codigo, int cantPersonas, int cantCamas, String tipoCama, double precioNoche, int idHabitacion, tipoHabitacion categoria, int piso, boolean estado) {
+    public tipoHabitacion(int idCodigo, int cantPersonas, int cantCamas, String tipoCama, double precioNoche, int idHabitacion, tipoHabitacion categoria, int piso, boolean estado) {
         super(idHabitacion, categoria, piso, estado);
-        this.codigo = codigo;
+        this.idCodigo = idCodigo;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCama = tipoCama;

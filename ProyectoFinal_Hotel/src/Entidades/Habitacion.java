@@ -7,21 +7,24 @@ public class Habitacion {
     protected int idHabitacion;
     protected tipoHabitacion categoria;
     protected int piso;
+    protected int nmroHabitacion;
     protected boolean estado;
 
     public Habitacion() {
     }
 
-    public Habitacion(tipoHabitacion categoria, int piso, boolean estado) {
+    public Habitacion(tipoHabitacion categoria, int piso, int nmroHabitacion, boolean estado) {
         this.categoria = categoria;
         this.piso = piso;
+        this.nmroHabitacion = nmroHabitacion;
         this.estado = estado;
     }
 
-    public Habitacion(int idHabitacion, tipoHabitacion categoria, int piso, boolean estado) {
+    public Habitacion(int idHabitacion, tipoHabitacion categoria, int piso, int nmroHabitacion, boolean estado) {
         this.idHabitacion = idHabitacion;
         this.categoria = categoria;
         this.piso = piso;
+        this.nmroHabitacion = nmroHabitacion;
         this.estado = estado;
     }
 
@@ -49,6 +52,14 @@ public class Habitacion {
         this.piso = piso;
     }
 
+    public int getNmroHabitacion() {
+        return nmroHabitacion;
+    }
+
+    public void setNmroHabitacion(int nmroHabitacion) {
+        this.nmroHabitacion = nmroHabitacion;
+    }
+
     public boolean isEstado() {
         return estado;
     }
@@ -56,12 +67,6 @@ public class Habitacion {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
-    @Override
-    public String toString() {
-        return "idHabitacion=" + idHabitacion + ", categoria=" + categoria + ", piso=" + piso + ", estado=" + estado;
-    }
-    
     
     
 }
