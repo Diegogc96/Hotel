@@ -44,13 +44,13 @@ public class HuespedData {
         }
     }
 
-    public Huesped buscarHuespedPorDni(int dni) {
+    public Huesped buscarHuesped(int id) {
         Huesped huesped = null;
-        String sql = "SELECT * FROM huesped WHERE dni=?";
+        String sql = "SELECT * FROM huesped WHERE idHuesped=?";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, dni);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {

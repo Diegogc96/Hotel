@@ -131,5 +131,34 @@ public class HabitacionData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion");
         }
     }
+    
+    public Habitacion buscarHabitacion(int idHabitacion) {
+
+        String sql = "SELECT piso, nroHabitacion, estado FROM habitacion WHERE idHabitacion=?";
+        Habitacion habitacion = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idHabitacion);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                habitacion = new Habitacion();
+                habitacion.setPiso(rs.getInt("piso"));
+                habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                habitacion.setIdHabitacion(idHabitacion);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Esa Habitacion no existe");
+            }
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla habitacion");
+        }
+
+        return habitacion;
+    }
+   
 
 }

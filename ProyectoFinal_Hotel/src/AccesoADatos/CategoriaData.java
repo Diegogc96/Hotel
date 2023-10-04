@@ -1,4 +1,3 @@
-
 package AccesoADatos;
 
 import Entidades.Categoria;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class CategoriaData {
 
     private Connection con = null;
@@ -19,7 +17,7 @@ public class CategoriaData {
     public CategoriaData() {
         con = Conexion.getConexion();
     }
-    
+
     public void guardarCategoria(Categoria categoria) {
 
         String sql = "INSERT INTO categoria(tipoHabitacion, tipoCama, cantCamas, precio, cantPersonas, estado) VALUES ( ?, ?, ?, ?, ?, ?)";
@@ -44,8 +42,8 @@ public class CategoriaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla categoria" + ex.getMessage());
         }
     }
-    
-        public void modificarCategoria(Categoria categoria) {
+
+    public void modificarCategoria(Categoria categoria) {
 
         String sql = "UPDATE categoria SET tipoHabitacion = ?, tipoCama = ?, cantCamas = ?, precio = ?, cantPersonas = ?, estado = ?  WHERE idCategoria = ?";
         PreparedStatement ps = null;
@@ -89,8 +87,8 @@ public class CategoriaData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla categoria");
         }
     }
-    
-     public List<Categoria> listarCategoria() {
+
+    public List<Categoria> listarCategoria() {
 
         List<Categoria> listaHabitacion = new ArrayList<>();
 
@@ -114,5 +112,36 @@ public class CategoriaData {
         }
         return listaHabitacion;
     }
-    
+
+    public Categoria buscarCategoria(int idCategoria) {
+
+        String sql = "SELECT tipoHabitacion, tipoCama, cantCamas, precio, cantPersonas, estado  FROM categoria WHERE idCategoria=?";
+        Categoria categoria = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCategoria);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                categoria = new Categoria();
+                categoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
+                categoria.setTipoCama(rs.getString("tipoCama"));
+                categoria.setCantCamas(rs.getInt("cantCamas"));
+                categoria.setPrecioNoche(rs.getDouble("precio"));
+                categoria.setCantPersonas(rs.getInt("cantPersonas"));
+                categoria.setEstado(rs.getBoolean("estado"));
+                categoria.setIdCodigo(idCategoria);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Esa Categoria no existe");
+            }
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla categoria");
+        }
+
+        return categoria;
+    }
+
 }
