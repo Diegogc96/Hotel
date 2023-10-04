@@ -93,15 +93,16 @@ public class ReservaData {
                 reserva.setDias(rs.getInt("dias"));
                 reserva.setEstado(rs.getBoolean("estado"));
                 reserva.setHuesped(huespedData.buscarHuesped(idHuesped));
-                reserva.setHabitacion(habitacionData.(rs.getInt("idMateria")));
-                inscrip.add(inscripcion);
+              //  reserva.setHabitacion(habitacionData.(rs.getInt("idMateria")));
+               // inscrip.add(inscripcion);
                 cont++;
             }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return inscrip;
+       // return inscrip;
+        return null;
 
         
         
