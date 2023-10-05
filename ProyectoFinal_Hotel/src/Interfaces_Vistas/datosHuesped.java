@@ -1,6 +1,9 @@
 package Interfaces_Vistas;
 
+import AccesoADatos.HabitacionData;
 import AccesoADatos.HuespedData;
+import Entidades.Categoria;
+import Entidades.Habitacion;
 import Entidades.Huesped;
 import FondoImagenes.InternalFrameImagen;
 import java.awt.HeadlessException;
@@ -41,9 +44,9 @@ public class datosHuesped extends InternalFrameImagen {
         jBnuevo = new javax.swing.JButton();
         jBguardar = new javax.swing.JButton();
         jBeliminar = new javax.swing.JButton();
-        jBsalir = new javax.swing.JButton();
+        jBactualizar = new javax.swing.JButton();
         jRestado = new javax.swing.JRadioButton();
-        jButton2 = new javax.swing.JButton();
+        jBsalir = new javax.swing.JButton();
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -99,14 +102,14 @@ public class datosHuesped extends InternalFrameImagen {
             }
         });
 
+        jBactualizar.setText("Actualizar");
+
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBsalirActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Modificar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,9 +125,9 @@ public class datosHuesped extends InternalFrameImagen {
                         .addGap(18, 18, 18)
                         .addComponent(jBeliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(jBsalir)
+                        .addComponent(jBactualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(jBsalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(jLabel1))
@@ -157,7 +160,7 @@ public class datosHuesped extends InternalFrameImagen {
                                     .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jRestado))))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,8 +200,8 @@ public class datosHuesped extends InternalFrameImagen {
                     .addComponent(jBnuevo)
                     .addComponent(jBguardar)
                     .addComponent(jBeliminar)
-                    .addComponent(jBsalir)
-                    .addComponent(jButton2))
+                    .addComponent(jBactualizar)
+                    .addComponent(jBsalir))
                 .addContainerGap())
         );
 
@@ -214,35 +217,34 @@ public class datosHuesped extends InternalFrameImagen {
     }//GEN-LAST:event_jTapellidoActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        // TODO add your handling code here:
-        HuespedData huesped = new HuespedData();
-        List<Huesped> listaHuesped = new ArrayList<>();
-        listaHuesped = huesped.listarHuesped();
-        int cont = 0;
+         HuespedData huespedData= new HuespedData();
+        Huesped huesped =new Huesped();
+        List<Huesped>listaHuesped=new ArrayList();
         try {
-            if (jTdocumento.getText().isEmpty() || jTnombre.getText().isEmpty() || jTapellido.getText().isEmpty() || jTdomicilio.getText().isEmpty() || jTcorreo.getText().isEmpty() || jTcelular.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Faltan ingresar datos");
-            } else {
-
-                for (Huesped hues : listaHuesped) {
-                    if (hues.getDni() == Integer.parseInt(jTdocumento.getText())) {
-                        cont++;
-                    }
-                }
+            
+            if(jTdocumento.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla documento no tiene ningun dato ingresado");
+            }else if(jTnombre.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla nombre de habitación no tiene ningun dato ingresado");
+            }else if(jTapellido.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla apellido de habitación no tiene ningun dato ingresado");
+            }else if(jTdomicilio.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla domicilio de habitación no tiene ningun dato ingresado");
+            }else if(jTcorreo.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla correo de habitación no tiene ningun dato ingresado");
+            }else if(jTcelular.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla celular de habitación no tiene ningun dato ingresado");
+            }else{
+            
+             huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcorreo.getText(),Integer.parseInt(jTcelular.getText()),jRestado.isSelected());
+             
+             huespedData.guardarHuesped(huesped);
             }
-            if (cont == 1) {
-                Huesped nuevoHuesped = new Huesped(jTnombre.getText(), jTapellido.getText(), Integer.parseInt(jTdocumento.getText()), jTdomicilio.getText(), jTcorreo.getText(), Integer.parseInt(jTcelular.getText()), jRestado.isSelected());
-                huesped.modificarHuesped(nuevoHuesped);
-            } else {
-                Huesped nuevoHuesped = new Huesped(jTnombre.getText(), jTapellido.getText(), Integer.parseInt(jTdocumento.getText()), jTdomicilio.getText(), jTcorreo.getText(), Integer.parseInt(jTcelular.getText()), jRestado.isSelected());
-                huesped.guardarHuesped(nuevoHuesped);
-            }
-        } catch (HeadlessException | NumberFormatException e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error al ingresar datos");
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese una fecha");
         }
-
+   
+      
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
@@ -256,18 +258,13 @@ public class datosHuesped extends InternalFrameImagen {
         jRestado.setSelected(false);
     }//GEN-LAST:event_jBnuevoActionPerformed
 
-    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jBsalirActionPerformed
-
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         // TODO add your handling code here:
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
         try {
-             = Alumno.buscarAlumnoPorDni(Integer.parseInt(jTdocumento.getText()));
-            Alumno.eliminarAlumno(alumno.getIdAlumno());
+//             = Alumno.buscarAlumnoPorDni(Integer.parseInt(jTdocumento.getText()));
+//            Alumno.eliminarAlumno(alumno.getIdAlumno());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe de ingresar un dato numerico en el campo Documento");
         }
@@ -275,18 +272,22 @@ public class datosHuesped extends InternalFrameImagen {
         jTdocumento.setText("");
         jTapellido.setText("");
         jTnombre.setText("");
-        jDfechaNacimiento.setDate(null);
+//        jDfechaNacimiento.setDate(null);
         jRestado.setSelected(false);
     }//GEN-LAST:event_jBeliminarActionPerformed
 
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBactualizar;
     private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
