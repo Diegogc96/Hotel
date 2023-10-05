@@ -5,6 +5,7 @@ import AccesoADatos.HabitacionData;
 import AccesoADatos.HuespedData;
 import Entidades.Huesped;
 import Entidades.Categoria;
+import Entidades.Habitacion;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,9 @@ public class ProyectoFinal_Hotel {
         Huesped huesped2 = new Huesped("B", "BBBB", 1, "BBBBBBB", "BBBB@BBB", 22222222, true);
         Huesped huesped3 = new Huesped("Z", "ZZZZ", 1234, "ZZZZZZ", "ZZZZ@ZZZ", 4444444, true);
         List<Huesped> listah = new ArrayList<>();
-        List<Categoria> tipohabitacion = new ArrayList<>();
+        List<Habitacion> tipohabitacion = new ArrayList<>();
 
-        tipohabitacion = habData.listarHabitacionesCategoria();
+        tipohabitacion = habData.listarHabitacionesxCategoria(7);
 
         listah = data.listarHuesped();
 
