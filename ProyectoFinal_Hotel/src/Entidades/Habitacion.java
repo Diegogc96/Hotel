@@ -1,11 +1,10 @@
 
 package Entidades;
-//ingresar comparable en habitacion categoria 
 
-public class Habitacion implements Comparable<Habitacion>{
+
+public class Habitacion {
     
     protected int idHabitacion;
-    protected Categoria categoria;
     protected int piso;
     protected int nroHabitacion;
     protected boolean estado;
@@ -13,16 +12,14 @@ public class Habitacion implements Comparable<Habitacion>{
     public Habitacion() {
     }
 
-    public Habitacion(Categoria categoria, int piso, int nroHabitacion, boolean estado) {
-        this.categoria = categoria;
+    public Habitacion(int piso, int nroHabitacion, boolean estado) {
         this.piso = piso;
         this.nroHabitacion = nroHabitacion;
         this.estado = estado;
     }
 
-    public Habitacion(int idHabitacion, Categoria categoria, int piso, int nroHabitacion, boolean estado) {
+    public Habitacion(int idHabitacion, int piso, int nroHabitacion, boolean estado) {
         this.idHabitacion = idHabitacion;
-        this.categoria = categoria;
         this.piso = piso;
         this.nroHabitacion = nroHabitacion;
         this.estado = estado;
@@ -34,14 +31,6 @@ public class Habitacion implements Comparable<Habitacion>{
 
     public void setIdHabitacion(int idHabitacion) {
         this.idHabitacion = idHabitacion;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public int getPiso() {
@@ -70,18 +59,14 @@ public class Habitacion implements Comparable<Habitacion>{
 
     @Override
     public String toString() {
-        return "idHabitacion=" + idHabitacion + ", Categoria=" + categoria + ", piso=" + piso + ", nroHabitacion=" + nroHabitacion + ", estado=" + estado;
+        return "idHabitacion=" + idHabitacion + ", piso=" + piso + ", nroHabitacion=" + nroHabitacion + ", estado=" + estado;
     }
 
-   @Override
-    public int compareTo(Habitacion o) {
-        if (idHabitacion == o.idHabitacion) {
-            return 0;
-        } else if (idHabitacion > o.idHabitacion) {
-            return 1;
-        } else {
-            return -1;
-        }
+    
+
+    void cambiarPrecio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     
 }

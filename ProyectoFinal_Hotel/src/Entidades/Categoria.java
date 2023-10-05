@@ -1,8 +1,8 @@
 package Entidades;
 
-public final class Categoria implements Comparable<Categoria> {
+public final class Categoria extends Habitacion {
 
-    private int idCategoria;
+    private int idCodigo;
     private int cantPersonas;
     private int cantCamas;
     private String tipoHabitacion;
@@ -12,7 +12,8 @@ public final class Categoria implements Comparable<Categoria> {
     public Categoria() {
     }
 
-    public Categoria(int cantPersonas, int cantCamas, String tipoHabitacion, String tipoCama, double precioNoche) {
+    public Categoria(int cantPersonas, int cantCamas, String tipoHabitacion, String tipoCama, double precioNoche, int piso, int nroHabitacion, boolean estado) {
+        super(piso, nroHabitacion, estado);
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoHabitacion = tipoHabitacion;
@@ -20,8 +21,9 @@ public final class Categoria implements Comparable<Categoria> {
         this.precioNoche = precioNoche;
     }
 
-    public Categoria(int idCategoria, int cantPersonas, int cantCamas, String tipoHabitacion, String tipoCama, double precioNoche) {
-        this.idCategoria = idCategoria;
+    public Categoria(int idCodigo, int cantPersonas, int cantCamas, String tipoHabitacion, String tipoCama, double precioNoche, int idHabitacion, int piso, int nroHabitacion, boolean estado) {
+        super(idHabitacion, piso, nroHabitacion, estado);
+        this.idCodigo = idCodigo;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoHabitacion = tipoHabitacion;
@@ -29,12 +31,12 @@ public final class Categoria implements Comparable<Categoria> {
         this.precioNoche = precioNoche;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public int getIdCodigo() {
+        return idCodigo;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdCodigo(int idCodigo) {
+        this.idCodigo = idCodigo;
     }
 
     public int getCantPersonas() {
@@ -79,26 +81,14 @@ public final class Categoria implements Comparable<Categoria> {
 
     @Override
     public String toString() {
-        return tipoHabitacion;
+        return "idCodigo=" + idCodigo + ", cantPersonas=" + cantPersonas + ", cantCamas=" + cantCamas + ", tipoHabitacion=" + tipoHabitacion + ", tipoCama=" + tipoCama + ", precioNoche=" + precioNoche;
     }
+
     
-    
+
     @Override
-    public int compareTo(Categoria o) {
-        if (idCategoria == o.idCategoria) {
-            return 0;
-        } else if (idCategoria > o.idCategoria) {
-            return 1;
-        } else {
-            return -1;
-        }
-    }
-    
-    
     public void cambiarPrecio() {
+        super.cambiarPrecio();
         
     }
-    
-    
-    
 }
