@@ -1,6 +1,7 @@
 
 package Interfaces_Vistas;
 
+import Entidades.Huesped;
 import FondoImagenes.InternalFrameImagen;
 
 
@@ -32,8 +33,6 @@ public class huespedesHabitacion extends InternalFrameImagen {
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Seleccione un huesped:");
-
-        jChuesped.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTtablahabitacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,7 +93,7 @@ public class huespedesHabitacion extends InternalFrameImagen {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBsalir;
-    private javax.swing.JComboBox<String> jChuesped;
+    private javax.swing.JComboBox<Huesped> jChuesped;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

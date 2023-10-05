@@ -3,7 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces_Vistas;
+package proyectofinal_hotel;
+
+import Interfaces_Vistas.datosCategoria;
+import Interfaces_Vistas.datosHabitacion;
+import Interfaces_Vistas.datosHuesped;
+import Interfaces_Vistas.formularioReserva;
+import Interfaces_Vistas.huespedesHabitacion;
+import Interfaces_Vistas.manipulacionDatos;
 
 /**
  *
@@ -27,7 +34,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDescritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMdatosHuesped = new javax.swing.JMenuItem();
@@ -47,20 +54,25 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDescritorioLayout = new javax.swing.GroupLayout(jDescritorio);
+        jDescritorio.setLayout(jDescritorioLayout);
+        jDescritorioLayout.setHorizontalGroup(
+            jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 717, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDescritorioLayout.setVerticalGroup(
+            jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 591, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Huésped");
 
         jMdatosHuesped.setText("Datos Huésped");
+        jMdatosHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMdatosHuespedActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMdatosHuesped);
 
         jMenuBar1.add(jMenu1);
@@ -68,9 +80,19 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Habitaciones");
 
         jMdatosHabitacion.setText("Datos Habitación");
+        jMdatosHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMdatosHabitacionActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMdatosHabitacion);
 
         jMdatosCategoria.setText("Datos Categoría");
+        jMdatosCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMdatosCategoriaActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMdatosCategoria);
 
         jMenuBar1.add(jMenu2);
@@ -78,9 +100,19 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Administración");
 
         jMformularioReserva.setText("Formulario de Reserva");
+        jMformularioReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMformularioReservaActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMformularioReserva);
 
         jMmanipulacionDatos.setText("Manipulacion de Datos");
+        jMmanipulacionDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMmanipulacionDatosActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMmanipulacionDatos);
 
         jMenuBar1.add(jMenu3);
@@ -88,6 +120,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMenu4.setText("Consultas");
 
         jMHuespedxHabitacion.setText("Huespedes por Habitacion");
+        jMHuespedxHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMHuespedxHabitacionActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMHuespedxHabitacion);
 
         jMenuBar1.add(jMenu4);
@@ -110,11 +147,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDescritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDescritorio)
         );
 
         pack();
@@ -125,9 +162,69 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMsalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jMdatosHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHuespedActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        datosHuesped dataHuesped=new datosHuesped();
+        dataHuesped.setVisible(true);
+        jDescritorio.add(dataHuesped);
+        jDescritorio.moveToFront(dataHuesped);
+
+       
+    }//GEN-LAST:event_jMdatosHuespedActionPerformed
+
+    private void jMdatosHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHabitacionActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        datosHabitacion dataHabitacion=new datosHabitacion();
+        dataHabitacion.setVisible(true);
+        jDescritorio.add(dataHabitacion);
+        jDescritorio.moveToFront(dataHabitacion);
+    }//GEN-LAST:event_jMdatosHabitacionActionPerformed
+
+    private void jMdatosCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosCategoriaActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        datosCategoria dataCategoria=new datosCategoria();
+        dataCategoria.setVisible(true);
+        jDescritorio.add(dataCategoria);
+        jDescritorio.moveToFront(dataCategoria);
+    }//GEN-LAST:event_jMdatosCategoriaActionPerformed
+
+    private void jMformularioReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformularioReservaActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        formularioReserva formReserva=new formularioReserva();
+        formReserva.setVisible(true);
+        jDescritorio.add(formReserva);
+        jDescritorio.moveToFront(formReserva);
+    }//GEN-LAST:event_jMformularioReservaActionPerformed
+
+    private void jMmanipulacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMmanipulacionDatosActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        manipulacionDatos maniDatos=new manipulacionDatos();
+        maniDatos.setVisible(true);
+        jDescritorio.add(maniDatos);
+        jDescritorio.moveToFront(maniDatos);
+    }//GEN-LAST:event_jMmanipulacionDatosActionPerformed
+
+    private void jMHuespedxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHuespedxHabitacionActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        huespedesHabitacion huespedHabitacion=new huespedesHabitacion();
+        huespedHabitacion.setVisible(true);
+        jDescritorio.add(huespedHabitacion);
+        jDescritorio.moveToFront(huespedHabitacion);
+        
+    }//GEN-LAST:event_jMHuespedxHabitacionActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -162,7 +259,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane jDescritorio;
     private javax.swing.JMenuItem jMHuespedxHabitacion;
     private javax.swing.JMenuItem jMdatosCategoria;
     private javax.swing.JMenuItem jMdatosHabitacion;

@@ -70,7 +70,7 @@ public class ReservaData {
         return listaReserva;
     }
 
-    public List<Reserva> obtenerInscripcionesPorHuesped(int idHuesped) {
+    public List<Reserva> obtenerReservasPorHuesped(int idHuesped) {
 
         HuespedData huespedData = new HuespedData();
         HabitacionData habitacionData = new HabitacionData();
@@ -160,5 +160,21 @@ public class ReservaData {
         return listaHabitacion;
 
     }
+    
+    public void borrarReservaHuespedHabitacion(int idHuesped, int idHabitacion) {
+        try {
+            String sql = "DELETE FROM reserva WHERE idHuesped = ? AND idHabitacion = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idHuesped);
+            ps.setInt(2, idHabitacion);
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, " Se eliminó la reserva.");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla reserva");
 
+        }
+    } 
 }

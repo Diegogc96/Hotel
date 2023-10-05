@@ -89,6 +89,6 @@ public final class Categoria extends Habitacion {
     @Override
     public void cambiarPrecio() {
         super.cambiarPrecio();
-
+        
     }
 }

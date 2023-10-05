@@ -20,6 +20,7 @@ public class ProyectoFinal_Hotel {
         HabitacionData habData = new HabitacionData();
         Huesped huesped1 = new Huesped("A", "AAAA", 2, "AAAAAAA", "AAAA@AAA", 11111111, true);
         Huesped huesped2 = new Huesped("B", "BBBB", 1, "BBBBBBB", "BBBB@BBB", 22222222, true);
+        Huesped huesped3 = new Huesped("Z", "ZZZZ", 1234, "ZZZZZZ", "ZZZZ@ZZZ", 4444444, true);
         List<Huesped> listah = new ArrayList<>();
         List<Categoria> tipohabitacion = new ArrayList<>();
 
@@ -29,17 +30,23 @@ public class ProyectoFinal_Hotel {
 
 //        data.guardarHuesped(huesped1);
 //        data.guardarHuesped(huesped2);
-//        for (Huesped huesped : listah) {
-//            System.out.println("Nombre: "+ huesped.getNombre());
-//        }
+//          data.guardarHuesped(huesped3);
+          System.out.println("Nombre: "+data.buscarHuesped(7).getNombre());
+          
+        for (Huesped huesped : listah) {
+            System.out.println("Nombre: "+ huesped.getNombre());
+        }
+        
+//        data.modificarHuesped(huesped3);
+//          data.eliminarHuesped(7);
 //        
 //        
 //        System.out.println("Busqueda por dni: "+data.buscarHuespedPorDni(2));
 //    }
 //    
-        for (Categoria tipohab : tipohabitacion) {
-            System.out.println("Nombre: " + tipohab.getTipoHabitacion());
-        }
+//        for (Categoria tipohab : tipohabitacion) {
+//            System.out.println("Nombre: " + tipohab.getTipoHabitacion());
+//        }
 
     }
 }
