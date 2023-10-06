@@ -77,7 +77,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Habitaciones");
+        jMenu2.setText("Habitaciones/Categoria");
 
         jMdatosHabitacion.setText("Datos Habitación");
         jMdatosHabitacion.addActionListener(new java.awt.event.ActionListener() {
