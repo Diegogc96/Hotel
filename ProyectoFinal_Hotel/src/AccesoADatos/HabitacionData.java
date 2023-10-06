@@ -119,6 +119,30 @@ public class HabitacionData {
         return listaHabitacion;
     }
     
+    public List<Habitacion> listarHabitacionesNoActivas() {
+
+        List<Habitacion> listaHabitacion = new ArrayList<>();
+        CategoriaData catData= new CategoriaData();
+        try {
+            String sql = "SELECT * FROM habitacion WHERE estado = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Habitacion habitacion = new Habitacion();
+
+                habitacion.setPiso(rs.getInt("piso"));
+                habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                habitacion.setCategoria(catData.buscarCategoria(rs.getInt("idCategoria")));
+                listaHabitacion.add(habitacion);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion " + ex.getMessage());
+        }
+        return listaHabitacion;
+    }
 
     public void actualizarHabitacion(Habitacion habitacion) {
 
