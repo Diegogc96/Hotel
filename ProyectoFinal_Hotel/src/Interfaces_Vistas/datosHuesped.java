@@ -1,12 +1,8 @@
 package Interfaces_Vistas;
 
-import AccesoADatos.HabitacionData;
 import AccesoADatos.HuespedData;
-import Entidades.Categoria;
-import Entidades.Habitacion;
 import Entidades.Huesped;
 import FondoImagenes.InternalFrameImagen;
-import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -62,6 +58,30 @@ public class datosHuesped extends InternalFrameImagen {
         jLabel7.setText("Celular");
 
         jLabel8.setText("Estado");
+
+        jTnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTnombreKeyTyped(evt);
+            }
+        });
+
+        jTdocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTdocumentoKeyTyped(evt);
+            }
+        });
+
+        jTapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTapellidoKeyTyped(evt);
+            }
+        });
+
+        jTcelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTcelularKeyTyped(evt);
+            }
+        });
 
         jBbuscar.setText("Buscar");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -303,6 +323,26 @@ public class datosHuesped extends InternalFrameImagen {
         
     }//GEN-LAST:event_jBbuscarActionPerformed
 
+    private void jTdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdocumentoKeyTyped
+        // TODO add your handling code here:
+        verificacionNumeros(evt);
+    }//GEN-LAST:event_jTdocumentoKeyTyped
+
+    private void jTcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcelularKeyTyped
+        // TODO add your handling code here:
+        verificacionNumeros(evt);
+    }//GEN-LAST:event_jTcelularKeyTyped
+
+    private void jTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTapellidoKeyTyped
+        // TODO add your handling code here:
+        verificacionCaracteres(evt);
+    }//GEN-LAST:event_jTapellidoKeyTyped
+
+    private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
+        // TODO add your handling code here:
+        verificacionCaracteres(evt);
+    }//GEN-LAST:event_jTnombreKeyTyped
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -328,4 +368,24 @@ public class datosHuesped extends InternalFrameImagen {
     private javax.swing.JTextField jTdomicilio;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+     private void verificacionNumeros(java.awt.event.KeyEvent evt){
+        
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Ingrese solo numeros");
+        }
+        
+    }
+    
+     private void verificacionCaracteres(java.awt.event.KeyEvent evt){
+         
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+        }
+         
+     }
+
 }
