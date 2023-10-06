@@ -273,20 +273,12 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
 
     private void jTnroHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnroHabitacionKeyTyped
         // TODO add your handling code here:
-        char validar = evt.getKeyChar();
-        if (Character.isLetter(validar)) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "Ingrese solo numeros");
-        }
+        verificacionNumeros(evt);
     }//GEN-LAST:event_jTnroHabitacionKeyTyped
 
     private void jTpisoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTpisoKeyTyped
         // TODO add your handling code here:
-        char validar = evt.getKeyChar();
-        if (Character.isLetter(validar)) {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "Ingrese solo numeros");
-        }
+        verificacionNumeros(evt);
     }//GEN-LAST:event_jTpisoKeyTyped
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
@@ -406,5 +398,15 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
         for (int f = filas; f >= 0; f--) {
             modelo.removeRow(f);
         }
+    }
+    
+     private void verificacionNumeros(java.awt.event.KeyEvent evt){
+        
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Ingrese solo numeros");
+        }
+        
     }
 }

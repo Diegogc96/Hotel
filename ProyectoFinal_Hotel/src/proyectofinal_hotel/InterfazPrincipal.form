@@ -27,7 +27,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Habitaciones"/>
+            <Property name="text" type="java.lang.String" value="Habitaciones/Categoria"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMdatosHabitacion">
