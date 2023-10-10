@@ -77,10 +77,17 @@ public final class Categoria implements Comparable<Categoria> {
         this.precioNoche = precioNoche;
     }
 
+//    @Override
+//    public String toString() {
+//        return tipoHabitacion;
+//    }
+
     @Override
     public String toString() {
-        return tipoHabitacion;
+        return "Personas=" + cantPersonas + ", Camas=" + cantCamas + ", Cama=" + tipoCama + ", $xNoche=" + precioNoche;
     }
+    
+    
     
     
     @Override

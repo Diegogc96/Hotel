@@ -3,6 +3,7 @@ package Interfaces_Vistas;
 
 import AccesoADatos.CategoriaData;
 import AccesoADatos.HabitacionData;
+import Categorias.TipoHabitacion;
 import Entidades.Categoria;
 import Entidades.Habitacion;
 import FondoImagenes.InternalFrameImagen;
@@ -23,10 +24,10 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
 
     public datosHabitacion() {
         initComponents();
-        cargarCombo();
         armarCabecera();
         armarTabla();
-        jCcategoria.setSelectedItem(null);
+        cargarCombo();
+       // jCcategoria.setSelectedItem(null);
     }
 
     
@@ -54,6 +55,8 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
         jCcategoria = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jBactualizar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jCdatosCategoria = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,51 +157,56 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
             }
         });
 
+        jLabel6.setText("Datos Categoria:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBsalir)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE)))
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jBnuevo)
-                .addGap(18, 18, 18)
-                .addComponent(jBguardar)
-                .addGap(18, 18, 18)
-                .addComponent(jBactualizar)
-                .addGap(18, 18, 18)
-                .addComponent(jBeliminar)
-                .addGap(88, 88, 88))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBsalir, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRestado)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(37, 37, 37)
+                                    .addComponent(jBnuevo)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jBguardar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jBactualizar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jBeliminar))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jRestado)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTnroHabitacion)
-                                    .addComponent(jTpiso)
-                                    .addComponent(jCcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addComponent(jBbuscar)))))
-                .addGap(67, 67, 67))
+                                .addGap(172, 172, 172)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTnroHabitacion)
+                                            .addComponent(jTpiso)
+                                            .addComponent(jCcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28)
+                                        .addComponent(jBbuscar))
+                                    .addComponent(jCdatosCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,32 +217,34 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
                     .addComponent(jLabel4)
                     .addComponent(jTnroHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBbuscar))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTpiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(jRestado)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBnuevo)
-                    .addComponent(jBguardar)
-                    .addComponent(jBeliminar)
-                    .addComponent(jBactualizar))
+                    .addComponent(jLabel3)
+                    .addComponent(jTpiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jBsalir)
-                .addGap(22, 22, 22))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jCdatosCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBnuevo)
+                            .addComponent(jBguardar)
+                            .addComponent(jBeliminar)
+                            .addComponent(jBactualizar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBsalir))
+                    .addComponent(jRestado))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -246,13 +256,12 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
         Habitacion habitacion=new Habitacion();
         CategoriaData categoriaData=new CategoriaData();
         List<Categoria>listaCategoria=new ArrayList<>();
-        
+       
         
         listaCategoria=categoriaData.listarCategoria();
-        
+
         habitacion=habitacionData.buscarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
-        jTpiso.setText(habitacion.getPiso()+"");
-        jCcategoria.setSelectedIndex(habitacion.getCategoria().getIdCategoria()-1);
+        jTpiso.setText(habitacion.getPiso()+"");      
         jRestado.setSelected(habitacion.isEstado());
          
     }//GEN-LAST:event_jBbuscarActionPerformed
@@ -284,7 +293,7 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
         HabitacionData habitacionData= new HabitacionData();
-        Habitacion habitacion=new Habitacion();
+        Habitacion habitacion;
         List<Habitacion>listaHabitacion=new ArrayList();
         try {
             
@@ -309,7 +318,9 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
 
     private void jCcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcategoriaActionPerformed
         // TODO add your handling code here:
-        
+          jCdatosCategoria.removeAllItems();
+          cargarComboDescripcion((TipoHabitacion)jCcategoria.getSelectedItem());
+          
     }//GEN-LAST:event_jCcategoriaActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
@@ -347,12 +358,14 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JComboBox<Categoria> jCcategoria;
+    private javax.swing.JComboBox<TipoHabitacion> jCcategoria;
+    private javax.swing.JComboBox<Categoria> jCdatosCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRestado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -363,13 +376,25 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
     private javax.swing.JTable jTtabla;
     // End of variables declaration//GEN-END:variables
      
-    private void cargarCombo() {
+    
+    private void cargarCombo(){
+        
+        jCcategoria.addItem(TipoHabitacion.EstandarSimple);
+        jCcategoria.addItem(TipoHabitacion.Doble);
+        jCcategoria.addItem(TipoHabitacion.Triple);
+        jCcategoria.addItem(TipoHabitacion.SuiteLujo);
+        
+    }
+    
+    
+    
+    private void cargarComboDescripcion(TipoHabitacion tipoHabitacion) {
         List<Categoria> listaCategoria = new ArrayList<>();
         CategoriaData categoriaData = new CategoriaData();
 
-        listaCategoria = categoriaData.listarCategoria();
+        listaCategoria = categoriaData.listarCategoriasxTipoHabitacion(tipoHabitacion);
         for (Categoria categoria : listaCategoria) {
-            jCcategoria.addItem(new Categoria(categoria.getIdCategoria(), categoria.getCantPersonas(), categoria.getCantCamas(), categoria.getTipoHabitacion(), categoria.getTipoCama(), categoria.getPrecioNoche()));
+            jCdatosCategoria.addItem(new Categoria(categoria.getIdCategoria(), categoria.getCantPersonas(), categoria.getCantCamas(), categoria.getTipoHabitacion(), categoria.getTipoCama(), categoria.getPrecioNoche()));
         }
     }
     

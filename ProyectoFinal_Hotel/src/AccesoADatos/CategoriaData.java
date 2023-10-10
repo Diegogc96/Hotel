@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Categorias.TipoHabitacion;
 import Entidades.Categoria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,7 +43,7 @@ public class CategoriaData {
         }
     }
 
-    public void modificarCategoria(Categoria categoria) {
+    public void actualizarCategoria(Categoria categoria) {
 
         String sql = "UPDATE categoria SET tipoHabitacion = ?, tipoCama = ?, cantCamas = ?, precio = ?, cantPersonas = ? WHERE idCategoria = ?";
         PreparedStatement ps = null;
@@ -54,7 +55,7 @@ public class CategoriaData {
             ps.setString(2, categoria.getTipoCama());
             ps.setInt(3, categoria.getCantCamas());
             ps.setDouble(4, categoria.getPrecioNoche());
-            ps.setInt(5, categoria.getCantPersonas());            
+            ps.setInt(5, categoria.getCantPersonas());
             ps.setInt(6, categoria.getIdCategoria());
             int exito = ps.executeUpdate();
 
@@ -69,22 +70,22 @@ public class CategoriaData {
         }
     }
 
-//    public void eliminarCategoria(int idCategoria) {
-//
-//        try {
-//            String sql = "UPDATE categoria SET estado = 0 WHERE idCategoria = ? ";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, idCategoria);
-//            int fila = ps.executeUpdate();
-//
-//            if (fila == 1) {
-//                JOptionPane.showMessageDialog(null, " Se eliminó la categoria.");
-//            }
-//            ps.close();
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla categoria");
-//        }
-//    }
+    public void eliminarCategoria(int idCategoria) {
+
+        try {
+            String sql = "DELETE FROM categoria WHERE idCategoria = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCategoria);
+            int fila = ps.executeUpdate();
+
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, " Se eliminó la categoria.");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla categoria");
+        }
+    }
 
     public List<Categoria> listarCategoria() {
 
@@ -143,4 +144,32 @@ public class CategoriaData {
         return categoria;
     }
 
+    public List<Categoria> listarCategoriasxTipoHabitacion(TipoHabitacion tipoHabitacion) {
+        List<Categoria> listaCategoria = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM categoria WHERE tipoHabitacion = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tipoHabitacion.toString());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Categoria tipoCategoria = new Categoria();
+
+                tipoCategoria.setCantPersonas(rs.getInt("cantPersonas"));
+                tipoCategoria.setCantCamas(rs.getInt("cantCamas"));
+                tipoCategoria.setTipoHabitacion(rs.getString("tipoHabitacion"));
+                tipoCategoria.setTipoCama(rs.getString("tipoCama"));
+                tipoCategoria.setPrecioNoche(rs.getDouble("precio"));
+                tipoCategoria.setIdCategoria(rs.getInt("idCategoria"));
+                listaCategoria.add(tipoCategoria);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla categoria " + ex.getMessage());
+        }
+        return listaCategoria;
+
+    }
 }
