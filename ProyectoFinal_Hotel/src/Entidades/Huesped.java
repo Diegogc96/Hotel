@@ -103,7 +103,7 @@ public class Huesped {
 
     @Override
     public String toString() {
-        return "idHuesped=" + idHuesped + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", domicilio=" + domicilio + ", correo=" + correo + ", celular=" + celular + ", estado=" + estado;
+        return nombre + " " + apellido;
     }
     
     
