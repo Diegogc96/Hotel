@@ -1,4 +1,3 @@
-
 package Interfaces_Vistas;
 
 import AccesoADatos.CategoriaData;
@@ -12,24 +11,22 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class datosHabitacion extends InternalFrameImagen {
-private final DefaultTableModel modelo = new DefaultTableModel(){
-     public boolean isCellEditable(int fila, int columna) {
-            return false;
-            }
-           
-    
-};
 
+    private final DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+        
+    };
+    
     public datosHabitacion() {
         initComponents();
         armarCabecera();
         armarTabla();
         cargarCombo();
-       // jCcategoria.setSelectedItem(null);
+        // jCcategoria.setSelectedItem(null);
     }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -252,18 +249,33 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         // TODO add your handling code here:
-        HabitacionData habitacionData= new HabitacionData();
-        Habitacion habitacion=new Habitacion();
-        CategoriaData categoriaData=new CategoriaData();
-        List<Categoria>listaCategoria=new ArrayList<>();
-       
+        HabitacionData habitacionData = new HabitacionData();
+        Habitacion habitacion;
+        CategoriaData categoriaData = new CategoriaData();
+        List<Categoria> listaCategoria = new ArrayList<>();
+        Categoria categoria = new Categoria();
         
-        listaCategoria=categoriaData.listarCategoria();
+        listaCategoria = categoriaData.listarCategoria();
 
-        habitacion=habitacionData.buscarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
-        jTpiso.setText(habitacion.getPiso()+"");      
+        //idcategoria
+        habitacion = habitacionData.buscarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
+        categoria = categoriaData.buscarCategoria(habitacion.getCategoria().getIdCategoria());
+        jTpiso.setText(habitacion.getPiso() + "");        
         jRestado.setSelected(habitacion.isEstado());
-         
+        
+        
+        if (habitacion.getCategoria().getTipoHabitacion().equals("EstandarSimple")) {
+            jCcategoria.setSelectedItem(TipoHabitacion.EstandarSimple);
+        } else if (habitacion.getCategoria().getTipoHabitacion().equals("Doble")) {
+            jCcategoria.setSelectedItem(TipoHabitacion.Doble);
+        } else if (habitacion.getCategoria().getTipoHabitacion().equals("Triple")) {
+            jCcategoria.setSelectedItem(TipoHabitacion.Triple);
+        } else {
+            jCcategoria.setSelectedItem(TipoHabitacion.SuiteLujo);
+        }
+        
+      //  jCdatosCategoria.setSelectedIndex(); //VER ESTO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------ TAMBIEN METODO CARGARCOMBO
+        
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
@@ -274,8 +286,9 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
         // TODO add your handling code here:
         jTnroHabitacion.setText("");
-        jTpiso.setText("");
-        jCcategoria.setSelectedItem(null);
+        jTpiso.setText("");        
+        jCdatosCategoria.setSelectedItem(null);
+        jCcategoria.setSelectedItem(TipoHabitacion.Seleccione_Categoria);
         jRestado.setSelected(false);
         
     }//GEN-LAST:event_jBnuevoActionPerformed
@@ -292,43 +305,44 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
-        HabitacionData habitacionData= new HabitacionData();
+        HabitacionData habitacionData = new HabitacionData();
         Habitacion habitacion;
-        List<Habitacion>listaHabitacion=new ArrayList();
+        List<Habitacion> listaHabitacion = new ArrayList();
         try {
             
-            if(jTpiso.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla piso no tiene ningun dato ingresado");
-            }else if(jTnroHabitacion.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla número de habitación no tiene ningun dato ingresado");
-            }else{
-            
-             habitacion=new Habitacion((Categoria)jCcategoria.getSelectedItem(), Integer.parseInt(jTpiso.getText()), Integer.parseInt(jTnroHabitacion.getText()), jRestado.isSelected());
-             habitacionData.guardarHabitacion(habitacion);
+            if (jTpiso.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla piso no tiene ningun dato ingresado");
+            } else if (jTnroHabitacion.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla número de habitación no tiene ningun dato ingresado");
+            } else {
+                
+                habitacion = new Habitacion((Categoria) jCdatosCategoria.getSelectedItem(), Integer.parseInt(jTpiso.getText()), Integer.parseInt(jTnroHabitacion.getText()), jRestado.isSelected());
+                habitacionData.guardarHabitacion(habitacion);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error al ingresar datos");
         }
-   
-        armarTabla();
-      
-          
         
+        armarTabla();
+        
+
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jCcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcategoriaActionPerformed
         // TODO add your handling code here:
-          jCdatosCategoria.removeAllItems();
-          cargarComboDescripcion((TipoHabitacion)jCcategoria.getSelectedItem());
-          
+        jCdatosCategoria.removeAllItems();
+        
+        if (jCcategoria != null) {
+            cargarComboDescripcion((TipoHabitacion) jCcategoria.getSelectedItem());
+        }
     }//GEN-LAST:event_jCcategoriaActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
         // TODO add your handling code here:
-        HabitacionData habitacionData=new HabitacionData();
-        Habitacion habitacion=new Habitacion();
+        HabitacionData habitacionData = new HabitacionData();
+        Habitacion habitacion = new Habitacion();
         
-        habitacion.setCategoria((Categoria)jCcategoria.getSelectedItem());
+        habitacion.setCategoria((Categoria) jCdatosCategoria.getSelectedItem());
         habitacion.setPiso(Integer.parseInt(jTpiso.getText()));
         habitacion.setNroHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
         habitacion.setEstado(jRestado.isSelected());
@@ -340,7 +354,7 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         // TODO add your handling code here:
-        HabitacionData habitacionData=new HabitacionData();            
+        HabitacionData habitacionData = new HabitacionData();        
         habitacionData.eliminarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
         jTnroHabitacion.setText("");
         jTpiso.setText("");
@@ -376,9 +390,8 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
     private javax.swing.JTable jTtabla;
     // End of variables declaration//GEN-END:variables
      
-    
-    private void cargarCombo(){
-        
+    private void cargarCombo() {
+        jCcategoria.addItem(TipoHabitacion.Seleccione_Categoria);
         jCcategoria.addItem(TipoHabitacion.EstandarSimple);
         jCcategoria.addItem(TipoHabitacion.Doble);
         jCcategoria.addItem(TipoHabitacion.Triple);
@@ -386,38 +399,39 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
         
     }
     
-    
-    
     private void cargarComboDescripcion(TipoHabitacion tipoHabitacion) {
         List<Categoria> listaCategoria = new ArrayList<>();
         CategoriaData categoriaData = new CategoriaData();
-
+        ArrayList<Integer>indicesNumero=new ArrayList<>();
+        
         listaCategoria = categoriaData.listarCategoriasxTipoHabitacion(tipoHabitacion);
         for (Categoria categoria : listaCategoria) {
             jCdatosCategoria.addItem(new Categoria(categoria.getIdCategoria(), categoria.getCantPersonas(), categoria.getCantCamas(), categoria.getTipoHabitacion(), categoria.getTipoCama(), categoria.getPrecioNoche()));
+         //<<<<<<<<<<<<<<< VER ESTO   indicesNumero.add(jCdatosCategoria.getSelectedIndex());
         }
     }
     
     private void armarCabecera() {
         modelo.addColumn("ID Habitacion");
         modelo.addColumn("Piso");
-        modelo.addColumn("Numero De Habitacion");
+        modelo.addColumn("Nro Habitacion");
         modelo.addColumn("Tipo Habitacion");
         modelo.addColumn("Estado");
         jTtabla.setModel(modelo);
     }
-
-    private void armarTabla(){
-        HabitacionData habitacionData= new HabitacionData();
-        Habitacion habitacion=new Habitacion();
-        List<Habitacion>listaHabitacion=new ArrayList();
+    
+    private void armarTabla() {
+        HabitacionData habitacionData = new HabitacionData();
+        Habitacion habitacion = new Habitacion();
+        List<Habitacion> listaHabitacion = new ArrayList();
         
-        listaHabitacion=habitacionData.listarHabitaciones();
+        listaHabitacion = habitacionData.listarHabitaciones();
         borrarFilas();
         for (Habitacion habitacion1 : listaHabitacion) {
-            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(),habitacion1.getCategoria().getTipoHabitacion(),habitacion1.isEstado()});
+            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), habitacion1.isEstado()});
         }
     }
+
     private void borrarFilas() {
         int filas = jTtabla.getRowCount() - 1;
         for (int f = filas; f >= 0; f--) {
@@ -425,7 +439,7 @@ private final DefaultTableModel modelo = new DefaultTableModel(){
         }
     }
     
-     private void verificacionNumeros(java.awt.event.KeyEvent evt){
+    private void verificacionNumeros(java.awt.event.KeyEvent evt) {
         
         char validar = evt.getKeyChar();
         if (Character.isLetter(validar)) {

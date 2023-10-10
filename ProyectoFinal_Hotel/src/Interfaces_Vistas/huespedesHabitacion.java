@@ -48,6 +48,11 @@ public class huespedesHabitacion extends InternalFrameImagen {
         jScrollPane1.setViewportView(jTtablahabitacion);
 
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,6 +94,11 @@ public class huespedesHabitacion extends InternalFrameImagen {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

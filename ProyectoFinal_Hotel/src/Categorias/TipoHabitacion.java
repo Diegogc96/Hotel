@@ -7,6 +7,6 @@ public enum TipoHabitacion {
     EstandarSimple,
     Doble,
     Triple,
-    SuiteLujo;
-    
+    SuiteLujo,
+    Seleccione_Categoria;
 }
