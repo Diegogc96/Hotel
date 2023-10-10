@@ -109,9 +109,10 @@ public class ReservaData {
     public List<Habitacion> obtenerHabitacionesReservadas(int idHuesped) {
 
         List<Habitacion> listaHabitaciones = new ArrayList<Habitacion>();
+        CategoriaData categoriaData=new CategoriaData();
         try {
-            String sql = "SELECT r.idHabitacion, piso, nroHabitacion FROM reserva r JOIN "
-                    + "habitacion h ON(h.idHabitacion = r.idHabitacion) WHERE r.idHuesped = ?";
+            String sql = "SELECT r.idHabitacion, piso, nroHabitacion,c.tipoHabitacion,h.idCategoria FROM reserva r JOIN "
+                    + "habitacion h ON(h.idHabitacion = r.idHabitacion) JOIN categoria c ON(h.idCategoria = c.idCategoria) WHERE r.idHuesped = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idHuesped);
             ResultSet rs = ps.executeQuery();
@@ -121,6 +122,7 @@ public class ReservaData {
                 habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 habitacion.setPiso(rs.getInt("piso"));
                 habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                habitacion.setCategoria(categoriaData.buscarCategoria(rs.getInt("idCategoria")));
                 listaHabitaciones.add(habitacion);
             }
             ps.close();
