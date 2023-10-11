@@ -1,7 +1,9 @@
 package AccesoADatos;
 
+import Entidades.Categoria;
 import Entidades.Habitacion;
 import Entidades.Reserva;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -178,5 +180,17 @@ public class ReservaData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla reserva");
 
         }
-    } 
+    }
+    
+    
+    public Double calculoPrecio(int cantDias, Categoria categoria){
+        
+        double total = 0;
+        
+        total=cantDias*categoria.getPrecioNoche();
+
+        return total;
+    }
+    
+    
 }

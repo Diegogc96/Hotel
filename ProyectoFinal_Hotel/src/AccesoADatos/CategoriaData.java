@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Categorias.TipoCama;
 import Categorias.TipoHabitacion;
 import Entidades.Categoria;
 import java.sql.Connection;
@@ -172,4 +173,38 @@ public class CategoriaData {
         return listaCategoria;
 
     }
+    
+    public double precioCatCama(TipoHabitacion tipoHabitacion, TipoCama tipoCama){
+        
+        double total;
+        double precioHabitacion=0, precioCama=0;
+        
+        if(null!=tipoHabitacion)switch (tipoHabitacion) {
+            case EstandarSimple:
+                precioHabitacion=1000;
+                break;
+            case Doble:
+                precioHabitacion=2000;
+                break;
+            case Triple:
+                precioHabitacion=3000;
+                break;
+            case SuiteLujo:
+                precioHabitacion=5000;
+                break;
+            default:
+                break;
+        }
+        
+        if(tipoCama==TipoCama.Queen){
+            precioCama=500;
+        }else if(tipoCama==TipoCama.KingSize){
+            precioCama=1000;
+        }
+        
+        total=precioHabitacion+precioCama;
+        
+        return total;
+    }
+    
 }

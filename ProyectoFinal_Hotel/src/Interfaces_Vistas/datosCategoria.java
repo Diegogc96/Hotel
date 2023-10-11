@@ -122,6 +122,13 @@ public class datosCategoria extends InternalFrameImagen {
             }
         });
 
+        jCtipocamas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCtipocamasActionPerformed(evt);
+            }
+        });
+
+        jTprecionoche.setEditable(false);
         jTprecionoche.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTprecionocheKeyTyped(evt);
@@ -388,6 +395,22 @@ public class datosCategoria extends InternalFrameImagen {
         armarTabla();
     }//GEN-LAST:event_jBactualizarActionPerformed
 
+    private void jCtipocamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCtipocamasActionPerformed
+        // TODO add your handling code here:
+
+        CategoriaData categoriaData=new CategoriaData();
+        TipoHabitacion tipoHabitacion=(TipoHabitacion) jCtipohabitacion.getSelectedItem();
+        TipoCama tipoCama=(TipoCama) jCtipocamas.getSelectedItem();
+        if(jCtipohabitacion!=null && jCtipocamas!=null){
+        jTprecionoche.setText(categoriaData.precioCatCama(tipoHabitacion,tipoCama)+"");
+        }else{
+         jTprecionoche.setText(null);
+        }
+        
+        
+       
+    }//GEN-LAST:event_jCtipocamasActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBactualizar;
