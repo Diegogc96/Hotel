@@ -3,7 +3,6 @@ package AccesoADatos;
 import Entidades.Categoria;
 import Entidades.Habitacion;
 import Entidades.Reserva;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -30,9 +29,9 @@ public class ReservaData {
             ps.setDate(2, Date.valueOf(reserva.getFechaFin()));
             ps.setDouble(3, reserva.getPrecioTotal());
             ps.setInt(4, reserva.getDias());
-            ps.setBoolean(5, reserva.isEstado());
-            ps.setInt(6, reserva.getHuesped().getIdHuesped());
-            ps.setInt(7, reserva.getHabitacion().getIdHabitacion());
+            ps.setBoolean(5, true);
+            ps.setInt(6, reserva.getIdHuesped());
+            ps.setInt(7, reserva.getIdHabitacion());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -52,15 +51,22 @@ public class ReservaData {
     public List<Reserva> listaReserva() {
 
         List<Reserva> listaReserva = new ArrayList<>();
-
+        Reserva reserva;
         try {
-            String sql = "SELECT * FROM inscripcion";
+            String sql = "SELECT * FROM reserva";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            Reserva reserva = null;
+            
             while (rs.next()) {
                 reserva = new Reserva();
                 reserva.setIdReserva(rs.getInt("idReserva"));
+                reserva.setDias(rs.getInt("dias"));
+                reserva.setEstado(rs.getBoolean("estado"));
+                reserva.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                reserva.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                reserva.setIdHabitacion(rs.getInt("idHabitacion"));
+                reserva.setIdHuesped(rs.getInt("idHuesped"));
+                reserva.setPrecioTotal(rs.getDouble("precioTotal"));
                 listaReserva.add(reserva);
 
             }
@@ -81,7 +87,7 @@ public class ReservaData {
         Reserva reserva = null;
         int cont = 1;
         try {
-            String sql = "SELECT * FROM reserva r WHERE idReserva = ?";
+            String sql = "SELECT * FROM reserva r WHERE idHuesped = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idHuesped);
@@ -95,8 +101,8 @@ public class ReservaData {
                 reserva.setPrecioTotal(rs.getDouble("precioTotal"));
                 reserva.setDias(rs.getInt("dias"));
                 reserva.setEstado(rs.getBoolean("estado"));
-                reserva.setHuesped(huespedData.buscarHuesped(idHuesped));
-                reserva.setHabitacion(habitacionData.buscarHabitacion(rs.getInt("idMateria")));
+                reserva.setIdHuesped(rs.getInt("idHuesped"));
+                reserva.setIdHabitacion(rs.getInt("idHabitacion"));
                 listaReserva.add(reserva);
                 cont++;
             }

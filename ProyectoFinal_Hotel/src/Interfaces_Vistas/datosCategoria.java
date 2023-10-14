@@ -1,6 +1,5 @@
 package Interfaces_Vistas;
 
-import Categorias.*;
 import AccesoADatos.CategoriaData;
 import Categorias.TipoCama;
 import Categorias.TipoHabitacion;
@@ -406,9 +405,7 @@ public class datosCategoria extends InternalFrameImagen {
         }else{
          jTprecionoche.setText(null);
         }
-        
-        
-       
+             
     }//GEN-LAST:event_jCtipocamasActionPerformed
     
 

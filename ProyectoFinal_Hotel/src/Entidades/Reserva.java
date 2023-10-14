@@ -11,31 +11,31 @@ public class Reserva {
     private LocalDate fechaFin;
     private int dias;
     private double precioTotal;
-    private Huesped huesped;
-    private Habitacion habitacion;
+    private int idHuesped;
+    private int idHabitacion;
     private boolean estado;
 
     public Reserva() {
     }
 
-    public Reserva(LocalDate fechaInicio, LocalDate fechaFin, int dias, double precioTotal, Huesped huesped, Habitacion habitacion, boolean estado) {
+    public Reserva(LocalDate fechaInicio, LocalDate fechaFin, int dias, double precioTotal, int idHuesped, int idHabitacion, boolean estado) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.dias = dias;
         this.precioTotal = precioTotal;
-        this.huesped = huesped;
-        this.habitacion = habitacion;
+        this.idHuesped = idHuesped;
+        this.idHabitacion = idHabitacion;
         this.estado = estado;
     }
 
-    public Reserva(int idReserva, LocalDate fechaInicio, LocalDate fechaFin, int dias, double precioTotal, Huesped huesped, Habitacion habitacion, boolean estado) {
+    public Reserva(int idReserva, LocalDate fechaInicio, LocalDate fechaFin, int dias, double precioTotal, int idHuesped, int idHabitacion, boolean estado) {
         this.idReserva = idReserva;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.dias = dias;
         this.precioTotal = precioTotal;
-        this.huesped = huesped;
-        this.habitacion = habitacion;
+        this.idHuesped = idHuesped;
+        this.idHabitacion = idHabitacion;
         this.estado = estado;
     }
 
@@ -79,20 +79,20 @@ public class Reserva {
         this.precioTotal = precioTotal;
     }
 
-    public Huesped getHuesped() {
-        return huesped;
+    public int getIdHuesped() {
+        return idHuesped;
     }
 
-    public void setHuesped(Huesped huesped) {
-        this.huesped = huesped;
+    public void setIdHuesped(int idHuesped) {
+        this.idHuesped = idHuesped;
     }
 
-    public Habitacion getHabitacion() {
-        return habitacion;
+    public int getIdHabitacion() {
+        return idHabitacion;
     }
 
-    public void setHabitacion(Habitacion habitacion) {
-        this.habitacion = habitacion;
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
     }
 
     public boolean isEstado() {
@@ -105,9 +105,10 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "idReserva=" + idReserva + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", dias=" + dias + ", precioTotal=" + precioTotal + ", huesped=" + huesped + ", habitacion=" + habitacion + ", estado=" + estado;
+        return "idReserva=" + idReserva + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", dias=" + dias + ", precioTotal=" + precioTotal + ", idHuesped=" + idHuesped + ", idHabitacion=" + idHabitacion + ", estado=" + estado;
     }
 
+    
     
     
 }

@@ -10,7 +10,7 @@ import Interfaces_Vistas.datosHabitacion;
 import Interfaces_Vistas.datosHuesped;
 import Interfaces_Vistas.formularioReserva;
 import Interfaces_Vistas.huespedesHabitacion;
-import Interfaces_Vistas.manipulacionDatos;
+import Interfaces_Vistas.registroReserva;
 
 /**
  *
@@ -43,9 +43,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMdatosCategoria = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMformularioReserva = new javax.swing.JMenuItem();
-        jMmanipulacionDatos = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMHuespedxHabitacion = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMsalir = new javax.swing.JMenuItem();
 
@@ -107,14 +107,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMformularioReserva);
 
-        jMmanipulacionDatos.setText("Manipulacion de Datos");
-        jMmanipulacionDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMmanipulacionDatosActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMmanipulacionDatos);
-
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Consultas");
@@ -126,6 +118,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMHuespedxHabitacion);
+
+        jMenuItem1.setText("Registro de Inscripcion");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
 
         jMenuBar1.add(jMenu4);
 
@@ -204,16 +204,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jDescritorio.moveToFront(formReserva);
     }//GEN-LAST:event_jMformularioReservaActionPerformed
 
-    private void jMmanipulacionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMmanipulacionDatosActionPerformed
-        // TODO add your handling code here:
-        jDescritorio.removeAll();
-        jDescritorio.repaint();
-        manipulacionDatos maniDatos=new manipulacionDatos();
-        maniDatos.setVisible(true);
-        jDescritorio.add(maniDatos);
-        jDescritorio.moveToFront(maniDatos);
-    }//GEN-LAST:event_jMmanipulacionDatosActionPerformed
-
     private void jMHuespedxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHuespedxHabitacionActionPerformed
         // TODO add your handling code here:
         jDescritorio.removeAll();
@@ -224,6 +214,18 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jDescritorio.moveToFront(huespedHabitacion);
         
     }//GEN-LAST:event_jMHuespedxHabitacionActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        registroReserva registroIns=new registroReserva();
+        registroIns.setVisible(true);
+        jDescritorio.add(registroIns);
+        jDescritorio.moveToFront(registroIns);
+        
+    
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -270,8 +272,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMformularioReserva;
-    private javax.swing.JMenuItem jMmanipulacionDatos;
     private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
 }

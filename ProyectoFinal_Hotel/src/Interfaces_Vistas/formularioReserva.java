@@ -1,8 +1,10 @@
 package Interfaces_Vistas;
 
+import AccesoADatos.CategoriaData;
 import AccesoADatos.HabitacionData;
 import AccesoADatos.HuespedData;
 import AccesoADatos.ReservaData;
+import Entidades.Categoria;
 import Entidades.Habitacion;
 import Entidades.Huesped;
 import Entidades.Reserva;
@@ -16,7 +18,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class formularioReserva extends InternalFrameImagen {
 
-    private final DefaultTableModel modelo = new DefaultTableModel();
+    private final DefaultTableModel modelo = new DefaultTableModel(){
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
 
     public formularioReserva() {
         initComponents();
@@ -49,6 +55,7 @@ public class formularioReserva extends InternalFrameImagen {
         jRestado = new javax.swing.JRadioButton();
         jDinicio = new com.toedter.calendar.JDateChooser();
         jDfinal = new com.toedter.calendar.JDateChooser();
+        jBactualizar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jLabel1.setText("Formulario De Reserva");
@@ -117,34 +124,30 @@ public class formularioReserva extends InternalFrameImagen {
 
         jLabel6.setText("Fecha inicio de reserva");
 
+        jTprecio.setEditable(false);
+
         jLabel7.setText("Estado:");
 
         jTdias.setEditable(false);
 
         jLabel8.setText("Cantidad de días:");
 
-        jDfinal.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jDfinalComponentAdded(evt);
+        jDinicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDinicioPropertyChange(evt);
             }
         });
-        jDfinal.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jDfinalAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+
         jDfinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jDfinalPropertyChange(evt);
             }
         });
-        jDfinal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jDfinalKeyTyped(evt);
+
+        jBactualizar.setText("Actualizar");
+        jBactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBactualizarActionPerformed(evt);
             }
         });
 
@@ -162,17 +165,20 @@ public class formularioReserva extends InternalFrameImagen {
                             .addComponent(jDinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jRestado)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jBactualizar)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jRestado)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(114, 114, 114)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,11 +188,11 @@ public class formularioReserva extends InternalFrameImagen {
                                 .addGap(18, 18, 18)
                                 .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(195, 195, 195)
+                                .addGap(203, 203, 203)
                                 .addComponent(jBconfirmar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jBanular)
-                                .addGap(141, 141, 141)
+                                .addGap(133, 133, 133)
                                 .addComponent(jBsalir)))
                         .addGap(47, 47, 47))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -246,7 +252,9 @@ public class formularioReserva extends InternalFrameImagen {
                         .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jRestado, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
+                .addComponent(jBactualizar)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
                     .addComponent(jBanular)
@@ -269,7 +277,7 @@ public class formularioReserva extends InternalFrameImagen {
         Huesped alumno = (Huesped) jCombo.getSelectedItem();
 
         for (Habitacion hab : habitacion.listarHabitacionesActivas()) {
-            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(),hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
         jRnodisponibles.setSelected(false);
     }//GEN-LAST:event_jRdisponiblesActionPerformed
@@ -281,7 +289,7 @@ public class formularioReserva extends InternalFrameImagen {
         Huesped alumno = (Huesped) jCombo.getSelectedItem();
 
         for (Habitacion hab : habitacion.listarHabitacionesNoActivas()) {
-            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
         jRdisponibles.setSelected(false);
 
@@ -296,23 +304,39 @@ public class formularioReserva extends InternalFrameImagen {
 
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
         // TODO add your handling code here:
-        ReservaData reservadata = new ReservaData();
+        ReservaData reservaData = new ReservaData();
         Huesped huesped = (Huesped) jCombo.getSelectedItem();
         Reserva reserva;
         Habitacion habitacion = new Habitacion();
+        List<Habitacion> listaHabitacion=new ArrayList<>();
+        HabitacionData habitacionData=new HabitacionData();
+        
         int filaSeleccionada = jTtabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            habitacion = (Habitacion) jTtabla.getValueAt(filaSeleccionada, 0);
-            int idHabitacion = habitacion.getIdHabitacion();
+           int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 1);
+            
 
-            for (Habitacion hab : reservadata.obtenerHabitacionesNoReservadas(huesped.getIdHuesped())) {
-                if (idHabitacion == hab.getIdHabitacion()) {
-                    reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Integer.parseInt(jTprecio.getText()), huesped, hab, jRestado.isSelected());
-                    reservadata.guardarReserva(reserva);
+            for (Habitacion hab : reservaData.obtenerHabitacionesNoReservadas(huesped.getIdHuesped())) {
+                if (nroHabitacion == hab.getNroHabitacion()) {
+                    reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped, hab, jRestado.isSelected());
+                    reservaData.guardarReserva(reserva);
+                    habitacionData.modificarHabitacion(hab.getNroHabitacion());
                 }
             }
         }
+        
+        borrarFilas();
+        listaHabitacion=habitacionData.listarHabitacionesActivas();
+        
+        for (Habitacion hab : listaHabitacion) {
+            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void jBanularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBanularActionPerformed
@@ -331,37 +355,58 @@ public class formularioReserva extends InternalFrameImagen {
             borrarFilas();
 
             for (Habitacion hab : habitaciondata.listarHabitacionesActivas()) {
-                modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+                modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
             }
         }
 
     }//GEN-LAST:event_jBanularActionPerformed
 
-    private void jDfinalComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jDfinalComponentAdded
-        // TODO add your handling code here:
-        //    calcularDias(jDinicio, jDfinal);
-    }//GEN-LAST:event_jDfinalComponentAdded
-
-    private void jDfinalAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDfinalAncestorAdded
-        // TODO add your handling code here:
-        // calcularDias(jDinicio, jDfinal);
-    }//GEN-LAST:event_jDfinalAncestorAdded
-
-    private void jDfinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDfinalKeyTyped
-        // TODO add your handling code here:
-        //calcularDias(jDinicio, jDfinal);
-    }//GEN-LAST:event_jDfinalKeyTyped
-
     private void jDfinalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDfinalPropertyChange
         // TODO add your handling code here:
-        
-            calcularDias(jDinicio, jDfinal);
-        
+        Categoria categoria;
+        CategoriaData categoriaData = new CategoriaData();
+        int filaSeleccionada = jTtabla.getSelectedRow();
 
+        if (jDinicio != null && jDfinal != null) {
+            calcularDias(jDinicio, jDfinal);
+        }
+        if (filaSeleccionada != -1) {
+            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 2);
+
+            categoria = categoriaData.buscarCategoria(idCategoria);
+
+            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);
+        }
     }//GEN-LAST:event_jDfinalPropertyChange
+
+    private void jDinicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDinicioPropertyChange
+        // TODO add your handling code here:
+        if (jDinicio != null && jDfinal != null) {
+            calcularDias(jDinicio, jDfinal);
+        }
+    }//GEN-LAST:event_jDinicioPropertyChange
+
+    private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
+        // TODO add your handling code here:
+        Categoria categoria;
+        CategoriaData categoriaData = new CategoriaData();
+        int filaSeleccionada = jTtabla.getSelectedRow();
+
+        if (jDinicio != null && jDfinal != null) {
+            calcularDias(jDinicio, jDfinal);
+        }
+        if (filaSeleccionada != -1) {
+            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 2);
+
+            categoria = categoriaData.buscarCategoria(idCategoria);
+
+            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);
+        }
+    }//GEN-LAST:event_jBactualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBactualizar;
     private javax.swing.JButton jBanular;
     private javax.swing.JButton jBconfirmar;
     private javax.swing.JButton jBsalir;
@@ -389,6 +434,7 @@ public class formularioReserva extends InternalFrameImagen {
 
         modelo.addColumn("Piso");
         modelo.addColumn("Nro Habitación");
+        modelo.addColumn("ID");
         modelo.addColumn("Categoria");
         modelo.addColumn("Cama");
         modelo.addColumn("CantCamas");
@@ -410,7 +456,7 @@ public class formularioReserva extends InternalFrameImagen {
         HuespedData huesped = new HuespedData();
         listaHuesped = huesped.listarHuesped();
         for (Huesped huesped1 : listaHuesped) {
-            jCombo.addItem(new Huesped(huesped1.getNombre(), huesped1.getApellido(), huesped1.getDni(), huesped1.getDomicilio(), huesped1.getCorreo(), huesped1.getCelular(), huesped1.isEstado()));
+            jCombo.addItem(new Huesped(huesped1.getIdHuesped(),huesped1.getNombre(), huesped1.getApellido(), huesped1.getDni(), huesped1.getDomicilio(), huesped1.getCorreo(), huesped1.getCelular(), huesped1.isEstado()));
         }
     }
 
@@ -428,6 +474,14 @@ public class formularioReserva extends InternalFrameImagen {
 //            JOptionPane.showMessageDialog(null, "Seleccione las fechas para calcular los días");
 //        }
         }
+    }
+
+    public void mostrarPrecio(int dias, Categoria categoria) {
+
+        ReservaData reservaData = new ReservaData();
+
+        jTprecio.setText(reservaData.calculoPrecio(dias, categoria) + "");
+
     }
 
 }

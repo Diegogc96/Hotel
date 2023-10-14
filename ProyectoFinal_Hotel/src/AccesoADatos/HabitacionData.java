@@ -187,6 +187,21 @@ public class HabitacionData {
         }
     }
     
+    public void modificarHabitacion(int nroHabitacion) {
+
+        try {
+            String sql = "UPDATE habitacion SET estado = 0 WHERE nroHabitacion = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nroHabitacion);
+            int fila = ps.executeUpdate();
+
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion");
+        }
+    }
+    
+    
     public Habitacion buscarHabitacion(int nroHabitacion) {
 
         CategoriaData categoriaData=new CategoriaData();
@@ -218,6 +233,36 @@ public class HabitacionData {
         return habitacion;
     }
    
+    public Habitacion buscarHabitacionId(int idHabitacion) {
+
+        CategoriaData categoriaData=new CategoriaData();
+        String sql = "SELECT * FROM habitacion WHERE idHabitacion=?";
+        Habitacion habitacion = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idHabitacion);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+
+                habitacion = new Habitacion();
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                habitacion.setCategoria(categoriaData.buscarCategoria(rs.getInt("idCategoria")));
+                habitacion.setPiso(rs.getInt("piso"));
+                habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
+                habitacion.setEstado(rs.getBoolean("estado"));
+                
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Esa Habitacion no existe");
+            }
+            rs.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la tabla habitacion");
+        }
+
+        return habitacion;
+    }
 //Metodo Lista habitaciones inactivas hacer
     
 }
