@@ -44,8 +44,8 @@ public class HabitacionData {
     public List<Habitacion> listarHabitacionesxCategoria(int idCategoria) {
 
         List<Habitacion> listaHabitacionCategoria = new ArrayList<>();
-        CategoriaData catData= new CategoriaData();
-        
+        CategoriaData catData = new CategoriaData();
+
         try {
             String sql = "SELECT c.tipoHabitacion ,piso, nroHabitacion, h.estado FROM habitacion h JOIN categoria c ON (h.idCategoria=c.idCategoria) WHERE idCategoria = ?;";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class HabitacionData {
     public List<Habitacion> listarHabitaciones() {
 
         List<Habitacion> listaHabitacion = new ArrayList<>();
-        CategoriaData catData= new CategoriaData();
+        CategoriaData catData = new CategoriaData();
         try {
             String sql = "SELECT * FROM habitacion";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -93,11 +93,11 @@ public class HabitacionData {
         }
         return listaHabitacion;
     }
-    
+
     public List<Habitacion> listarHabitacionesActivas() {
 
         List<Habitacion> listaHabitacion = new ArrayList<>();
-        CategoriaData catData= new CategoriaData();
+        CategoriaData catData = new CategoriaData();
         try {
             String sql = "SELECT * FROM habitacion WHERE estado = 1";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -109,6 +109,7 @@ public class HabitacionData {
                 habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setCategoria(catData.buscarCategoria(rs.getInt("idCategoria")));
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 listaHabitacion.add(habitacion);
             }
             ps.close();
@@ -118,11 +119,11 @@ public class HabitacionData {
         }
         return listaHabitacion;
     }
-    
+
     public List<Habitacion> listarHabitacionesNoActivas() {
 
         List<Habitacion> listaHabitacion = new ArrayList<>();
-        CategoriaData catData= new CategoriaData();
+        CategoriaData catData = new CategoriaData();
         try {
             String sql = "SELECT * FROM habitacion WHERE estado = 0";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -134,6 +135,7 @@ public class HabitacionData {
                 habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
                 habitacion.setEstado(rs.getBoolean("estado"));
                 habitacion.setCategoria(catData.buscarCategoria(rs.getInt("idCategoria")));
+                habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
                 listaHabitacion.add(habitacion);
             }
             ps.close();
@@ -156,7 +158,7 @@ public class HabitacionData {
             ps.setBoolean(2, habitacion.isEstado());
             ps.setInt(3, habitacion.getCategoria().getIdCategoria());
             ps.setInt(4, habitacion.getNroHabitacion());
-            
+
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
@@ -170,41 +172,37 @@ public class HabitacionData {
         }
     }
 
-    public void eliminarHabitacion(int nroHabitacion) {
+    public void modificarHabitacionLibre(int nroHabitacion) {
 
         try {
-            String sql = "UPDATE habitacion SET estado = 0 WHERE nroHabitacion = ? ";
+            String sql = "UPDATE habitacion SET estado = 1 WHERE nroHabitacion = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, nroHabitacion);
-            int fila = ps.executeUpdate();
-
-            if (fila == 1) {
-                JOptionPane.showMessageDialog(null, " Se eliminó la habitacion.");
-            }
-            ps.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion");
-        }
-    }
-    
-    public void modificarHabitacion(int nroHabitacion) {
-
-        try {
-            String sql = "UPDATE habitacion SET estado = 0 WHERE nroHabitacion = ? ";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, nroHabitacion);
-            int fila = ps.executeUpdate();
+            ps.executeUpdate();
 
             ps.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion");
         }
     }
-    
-    
+
+    public void modificarHabitacionOcupada(int nroHabitacion) {
+
+        try {
+            String sql = "UPDATE habitacion SET estado = 0 WHERE nroHabitacion = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nroHabitacion);
+            ps.executeUpdate();
+
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion");
+        }
+    }
+
     public Habitacion buscarHabitacion(int nroHabitacion) {
 
-        CategoriaData categoriaData=new CategoriaData();
+        CategoriaData categoriaData = new CategoriaData();
         String sql = "SELECT * FROM habitacion WHERE nroHabitacion=?";
         Habitacion habitacion = null;
         try {
@@ -219,7 +217,6 @@ public class HabitacionData {
                 habitacion.setPiso(rs.getInt("piso"));
                 habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
                 habitacion.setEstado(rs.getBoolean("estado"));
-                
 
             } else {
                 JOptionPane.showMessageDialog(null, "Esa Habitacion no existe");
@@ -232,10 +229,10 @@ public class HabitacionData {
 
         return habitacion;
     }
-   
+
     public Habitacion buscarHabitacionId(int idHabitacion) {
 
-        CategoriaData categoriaData=new CategoriaData();
+        CategoriaData categoriaData = new CategoriaData();
         String sql = "SELECT * FROM habitacion WHERE idHabitacion=?";
         Habitacion habitacion = null;
         try {
@@ -250,7 +247,6 @@ public class HabitacionData {
                 habitacion.setPiso(rs.getInt("piso"));
                 habitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
                 habitacion.setEstado(rs.getBoolean("estado"));
-                
 
             } else {
                 JOptionPane.showMessageDialog(null, "Esa Habitacion no existe");
@@ -263,6 +259,5 @@ public class HabitacionData {
 
         return habitacion;
     }
-//Metodo Lista habitaciones inactivas hacer
-    
+
 }

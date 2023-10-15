@@ -58,11 +58,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jDescritorio.setLayout(jDescritorioLayout);
         jDescritorioLayout.setHorizontalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 717, Short.MAX_VALUE)
+            .addGap(0, 813, Short.MAX_VALUE)
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addGap(0, 592, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Huésped");

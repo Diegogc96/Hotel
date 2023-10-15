@@ -50,14 +50,15 @@ public class ProyectoFinal_Hotel {
 //        for (Categoria tipohab : tipohabitacion) {
 //            System.out.println("Nombre: " + tipohab.getTipoHabitacion());
 //        }
-                for(Reserva reserva : reservaData.listaReserva()){
-                    System.out.println("idHuesped: "+reserva.getIdHuesped());
-                    System.out.println("idHabitacion: "+reserva.getIdHabitacion());
-                    System.out.println("idReserva: "+reserva.getIdReserva());
-                }
-    }
+//                for(Reserva reserva : reservaData.listaReserva()){
+//                    System.out.println("idHuesped: "+reserva.getIdHuesped());
+//                    System.out.println("idHabitacion: "+reserva.getIdHabitacion());
+//                    System.out.println("idReserva: "+reserva.getIdReserva());
+//                }
+//    }
     
-   
+   reservaData.borrarReservaHuespedHabitacion(5, 6);
     
     
+}
 }

@@ -355,7 +355,7 @@ public class datosHabitacion extends InternalFrameImagen {
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         // TODO add your handling code here:
         HabitacionData habitacionData = new HabitacionData();        
-        habitacionData.eliminarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
+        habitacionData.modificarHabitacionOcupada(Integer.parseInt(jTnroHabitacion.getText()));
         jTnroHabitacion.setText("");
         jTpiso.setText("");
         jCcategoria.setSelectedItem(null);
