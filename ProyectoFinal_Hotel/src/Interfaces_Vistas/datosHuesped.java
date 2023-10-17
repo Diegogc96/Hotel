@@ -30,8 +30,8 @@ public class datosHuesped extends InternalFrameImagen {
         jTdocumento = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jTdomicilio = new javax.swing.JTextField();
-        jTcorreo = new javax.swing.JTextField();
         jTcelular = new javax.swing.JTextField();
+        jTcorreo = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
         jBnuevo = new javax.swing.JButton();
         jBguardar = new javax.swing.JButton();
@@ -150,10 +150,10 @@ public class datosHuesped extends InternalFrameImagen {
                                         .addGap(31, 31, 31)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jTcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                     .addComponent(jTdomicilio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                                    .addComponent(jTcorreo))
+                                                    .addComponent(jTcelular))
                                                 .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jRestado)))
@@ -211,10 +211,10 @@ public class datosHuesped extends InternalFrameImagen {
                                                 .addComponent(jTdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel4))
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTcelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
-                                .addComponent(jTcelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel6))
                         .addGap(30, 30, 30)
                         .addComponent(jLabel8))
@@ -246,13 +246,13 @@ public class datosHuesped extends InternalFrameImagen {
                  JOptionPane.showMessageDialog(this, "La casilla apellido de habitación no tiene ningun dato ingresado");
             }else if(jTdomicilio.getText().isEmpty()){
                  JOptionPane.showMessageDialog(this, "La casilla domicilio de habitación no tiene ningun dato ingresado");
-            }else if(jTcorreo.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla correo de habitación no tiene ningun dato ingresado");
             }else if(jTcelular.getText().isEmpty()){
+                 JOptionPane.showMessageDialog(this, "La casilla correo de habitación no tiene ningun dato ingresado");
+            }else if(jTcorreo.getText().isEmpty()){
                  JOptionPane.showMessageDialog(this, "La casilla celular de habitación no tiene ningun dato ingresado");
             }else{
             
-             huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcorreo.getText(),Integer.parseInt(jTcelular.getText()),jRestado.isSelected());
+             huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcelular.getText(),Integer.parseInt(jTcorreo.getText()),jRestado.isSelected());
              
              huespedData.guardarHuesped(huesped);
             }
@@ -269,8 +269,8 @@ public class datosHuesped extends InternalFrameImagen {
         jTnombre.setText("");
         jTapellido.setText("");
         jTdomicilio.setText("");
-        jTcorreo.setText("");
         jTcelular.setText("");
+        jTcorreo.setText("");
         jRestado.setSelected(false);
     }//GEN-LAST:event_jBnuevoActionPerformed
 
@@ -291,8 +291,8 @@ public class datosHuesped extends InternalFrameImagen {
         jTapellido.setText("");
         jTnombre.setText("");
         jTdomicilio.setText("");
-        jTcorreo.setText("");
         jTcelular.setText("");
+        jTcorreo.setText("");
         jRestado.setSelected(false);
     }//GEN-LAST:event_jBeliminarActionPerformed
 
@@ -311,8 +311,8 @@ public class datosHuesped extends InternalFrameImagen {
         huesped.setApellido(jTapellido.getText());
         huesped.setNombre(jTnombre.getText());
         huesped.setDomicilio(jTdomicilio.getText());
-        huesped.setCorreo(jTcorreo.getText());
-        huesped.setCelular(Integer.parseInt(jTcelular.getText()));
+        huesped.setCorreo(jTcelular.getText());
+        huesped.setCelular(Integer.parseInt(jTcorreo.getText()));
         huesped.setEstado(jRestado.isSelected());
         huespedData.actualizarHuesped(huesped);
   
@@ -327,8 +327,8 @@ public class datosHuesped extends InternalFrameImagen {
         jTapellido.setText(huesped.getApellido());
         jTnombre.setText(huesped.getNombre());
         jTdomicilio.setText(huesped.getDomicilio());
-        jTcorreo.setText(huesped.getCorreo());
-        jTcelular.setText(huesped.getCelular()+"");
+        jTcelular.setText(huesped.getCorreo());
+        jTcorreo.setText(huesped.getCelular()+"");
         jRestado.setSelected(huesped.isEstado());
         
     }//GEN-LAST:event_jBbuscarActionPerformed
@@ -337,11 +337,6 @@ public class datosHuesped extends InternalFrameImagen {
         // TODO add your handling code here:
         verificacionNumeros(evt);
     }//GEN-LAST:event_jTdocumentoKeyTyped
-
-    private void jTcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcelularKeyTyped
-        // TODO add your handling code here:
-        verificacionNumeros(evt);
-    }//GEN-LAST:event_jTcelularKeyTyped
 
     private void jTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTapellidoKeyTyped
         // TODO add your handling code here:
@@ -352,6 +347,11 @@ public class datosHuesped extends InternalFrameImagen {
         // TODO add your handling code here:
         verificacionCaracteres(evt);
     }//GEN-LAST:event_jTnombreKeyTyped
+
+    private void jTcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcelularKeyTyped
+        // TODO add your handling code here:
+        verificacionNumeros(evt);
+    }//GEN-LAST:event_jTcelularKeyTyped
 
     
 
