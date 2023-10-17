@@ -280,7 +280,7 @@ public class formularioReserva extends InternalFrameImagen {
         Huesped alumno = (Huesped) jCombo.getSelectedItem();
 
         for (Habitacion hab : habitacion.listarHabitacionesActivas()) {
-            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getIdHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+            modelo.addRow(new Object[]{ hab.getIdHabitacion(),hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
         jRnodisponibles.setSelected(false);
     }//GEN-LAST:event_jRdisponiblesActionPerformed
@@ -292,7 +292,7 @@ public class formularioReserva extends InternalFrameImagen {
         Huesped alumno = (Huesped) jCombo.getSelectedItem();
 
         for (Habitacion hab : habitacion.listarHabitacionesNoActivas()) {
-            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getIdHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+            modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(),  hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
         jRdisponibles.setSelected(false);
 
@@ -320,7 +320,7 @@ public class formularioReserva extends InternalFrameImagen {
 
         if (filaSeleccionada != -1) {
             nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 1);
-            idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
+            idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
         }
 
         reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped.getIdHuesped(), idHabitacion, jRestado.isSelected());
@@ -330,7 +330,7 @@ public class formularioReserva extends InternalFrameImagen {
         listaHabitacion = habitacionData.listarHabitacionesActivas();
 
         for (Habitacion hab : listaHabitacion) {
-            modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+            modelo.addRow(new Object[]{hab.getIdHabitacion(),hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
 
 
@@ -347,7 +347,7 @@ public class formularioReserva extends InternalFrameImagen {
 
         if (filaSeleccionada != -1) {
             int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 1);
-            int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
+            int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
             
             reservaData.borrarReservaHuespedHabitacion(huesped.getIdHuesped(), idHabitacion);
             habitaciondata.modificarHabitacionLibre(nroHabitacion);
@@ -358,7 +358,7 @@ public class formularioReserva extends InternalFrameImagen {
             borrarFilas();
 
             for (Habitacion hab : habitaciondata.listarHabitacionesNoActivas()) {
-                modelo.addRow(new Object[]{hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+                modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
             }
         
 
@@ -374,7 +374,7 @@ public class formularioReserva extends InternalFrameImagen {
             calcularDias(jDinicio, jDfinal);
         }
         if (filaSeleccionada != -1) {
-            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
+            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 4);
 
             categoria = categoriaData.buscarCategoria(idCategoria);
 
@@ -399,7 +399,7 @@ public class formularioReserva extends InternalFrameImagen {
             calcularDias(jDinicio, jDfinal);
         }
         if (filaSeleccionada != -1) {
-            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
+            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 4);
 
             categoria = categoriaData.buscarCategoria(idCategoria);
 
@@ -435,9 +435,9 @@ public class formularioReserva extends InternalFrameImagen {
 
     private void armarCabecera() {
 
+        modelo.addColumn("ID Hab");
         modelo.addColumn("Piso");
         modelo.addColumn("Nro Habitación");
-        modelo.addColumn("ID Hab");
         modelo.addColumn("ID Categoria");
         modelo.addColumn("Categoria");
         modelo.addColumn("Cama");
