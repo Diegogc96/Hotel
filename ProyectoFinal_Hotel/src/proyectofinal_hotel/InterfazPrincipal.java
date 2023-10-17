@@ -62,11 +62,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
 
+        jMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\turista.png")); // NOI18N
         jMenu1.setText("Huésped");
 
+        jMdatosHuesped.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\formulario-de-consentimiento-del-donante.png")); // NOI18N
         jMdatosHuesped.setText("Datos Huésped");
         jMdatosHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,8 +79,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\hotel.png")); // NOI18N
         jMenu2.setText("Habitaciones/Categoria");
 
+        jMdatosHabitacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\reserva-en-linea.png")); // NOI18N
         jMdatosHabitacion.setText("Datos Habitación");
         jMdatosHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +91,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMdatosHabitacion);
 
+        jMdatosCategoria.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\reserva.png")); // NOI18N
         jMdatosCategoria.setText("Datos Categoría");
         jMdatosCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +102,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\registrarse.png")); // NOI18N
         jMenu3.setText("Administración");
 
+        jMformularioReserva.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\reservado.png")); // NOI18N
         jMformularioReserva.setText("Formulario de Reserva");
         jMformularioReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +116,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\campana.png")); // NOI18N
         jMenu4.setText("Consultas");
 
+        jMHuespedxHabitacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\llave-de-la-habitacion.png")); // NOI18N
         jMHuespedxHabitacion.setText("Huespedes por Habitacion");
         jMHuespedxHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +128,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(jMHuespedxHabitacion);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\registro-en-linea.png")); // NOI18N
         jMenuItem1.setText("Registro de Inscripcion");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,8 +139,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\salida.png")); // NOI18N
         jMenu5.setText("Salir");
 
+        jMsalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\User_Y\\Downloads\\boton.png")); // NOI18N
         jMsalir.setText("Cerrar Programa");
         jMsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
