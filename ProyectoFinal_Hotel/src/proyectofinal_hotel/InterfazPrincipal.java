@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectofinal_hotel;
 
 import Interfaces_Vistas.datosCategoria;
@@ -12,10 +8,7 @@ import Interfaces_Vistas.formularioReserva;
 import Interfaces_Vistas.huespedesHabitacion;
 import Interfaces_Vistas.registroReserva;
 
-/**
- *
- * @author Diego
- */
+
 public class InterfazPrincipal extends javax.swing.JFrame {
 
     /**
