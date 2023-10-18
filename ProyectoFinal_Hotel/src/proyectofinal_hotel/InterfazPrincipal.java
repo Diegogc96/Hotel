@@ -268,7 +268,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             public void run() {
                 new InterfazPrincipal().setVisible(true);
             }
-        });
+        }); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
