@@ -125,7 +125,7 @@ public class HabitacionData {
         List<Habitacion> listaHabitacion = new ArrayList<>();
         CategoriaData catData = new CategoriaData();
         try {
-            String sql = "SELECT * FROM habitacion WHERE estado = 0";
+            String sql = "SELECT * FROM habitacion WHERE estado = 0 ORDER BY  nroHabitacion ASC";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

@@ -252,7 +252,7 @@ public class datosHuesped extends InternalFrameImagen {
                  JOptionPane.showMessageDialog(this, "La casilla celular de habitación no tiene ningun dato ingresado");
             }else{
             
-             huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcelular.getText(),Integer.parseInt(jTcorreo.getText()),jRestado.isSelected());
+             huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcorreo.getText(),Integer.parseInt(jTcelular.getText()),jRestado.isSelected());
              
              huespedData.guardarHuesped(huesped);
             }
@@ -323,6 +323,8 @@ public class datosHuesped extends InternalFrameImagen {
         Huesped huesped=new Huesped();
       
         huesped=huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
+        
+        if (huesped!=null){
         jTdocumento.setText(huesped.getDni()+"");
         jTapellido.setText(huesped.getApellido());
         jTnombre.setText(huesped.getNombre());
@@ -330,12 +332,19 @@ public class datosHuesped extends InternalFrameImagen {
         jTcelular.setText(huesped.getCorreo());
         jTcorreo.setText(huesped.getCelular()+"");
         jRestado.setSelected(huesped.isEstado());
-        
+        }else{
+            jTdocumento.setText(null);
+        }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdocumentoKeyTyped
         // TODO add your handling code here:
+        int maxCaracteres=8;
         verificacionNumeros(evt);
+        if(jTdocumento.getText().length()>=maxCaracteres){
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Maximo 8 caracteres");
+        }
     }//GEN-LAST:event_jTdocumentoKeyTyped
 
     private void jTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTapellidoKeyTyped
@@ -350,7 +359,13 @@ public class datosHuesped extends InternalFrameImagen {
 
     private void jTcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcelularKeyTyped
         // TODO add your handling code here:
+        
+        int maxCaracteres=10;
         verificacionNumeros(evt);
+        if(jTcelular.getText().length()>=maxCaracteres){
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Maximo 10 caracteres");
+        }
     }//GEN-LAST:event_jTcelularKeyTyped
 
     

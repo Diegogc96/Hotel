@@ -14,6 +14,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class formularioReserva extends InternalFrameImagen {
@@ -49,10 +50,8 @@ public class formularioReserva extends InternalFrameImagen {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTprecio = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jTdias = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jRestado = new javax.swing.JRadioButton();
         jBactualizar = new javax.swing.JButton();
         jDinicio = new com.toedter.calendar.JDateChooser();
         jDfinal = new com.toedter.calendar.JDateChooser();
@@ -126,8 +125,6 @@ public class formularioReserva extends InternalFrameImagen {
 
         jTprecio.setEditable(false);
 
-        jLabel7.setText("Estado:");
-
         jTdias.setEditable(false);
 
         jLabel8.setText("Cantidad de días:");
@@ -142,6 +139,12 @@ public class formularioReserva extends InternalFrameImagen {
         jDinicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jDinicioPropertyChange(evt);
+            }
+        });
+
+        jDfinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDfinalPropertyChange(evt);
             }
         });
 
@@ -195,11 +198,7 @@ public class formularioReserva extends InternalFrameImagen {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRestado)
-                        .addGap(18, 18, 18)
+                        .addGap(112, 112, 112)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,15 +237,12 @@ public class formularioReserva extends InternalFrameImagen {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jRestado, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jBactualizar)
                 .addGap(16, 16, 16)
@@ -275,6 +271,8 @@ public class formularioReserva extends InternalFrameImagen {
             modelo.addRow(new Object[]{ hab.getIdHabitacion(),hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
         jRnodisponibles.setSelected(false);
+        jBconfirmar.setEnabled(true);
+        jBanular.setEnabled(false);
     }//GEN-LAST:event_jRdisponiblesActionPerformed
 
     private void jRnodisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRnodisponiblesActionPerformed
@@ -287,7 +285,8 @@ public class formularioReserva extends InternalFrameImagen {
             modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(),  hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
         jRdisponibles.setSelected(false);
-
+        jBconfirmar.setEnabled(false);
+        jBanular.setEnabled(true);
     }//GEN-LAST:event_jRnodisponiblesActionPerformed
 
     private void jComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActionPerformed
@@ -311,11 +310,11 @@ public class formularioReserva extends InternalFrameImagen {
         int filaSeleccionada = jTtabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 1);
+            nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada,2);
             idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
         }
 
-        reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped.getIdHuesped(), idHabitacion, jRestado.isSelected());
+        reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped.getIdHuesped(), idHabitacion, true);
         reservaData.guardarReserva(reserva);
         habitacionData.modificarHabitacionOcupada(nroHabitacion);
         borrarFilas();
@@ -338,7 +337,7 @@ public class formularioReserva extends InternalFrameImagen {
         int filaSeleccionada = jTtabla.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 1);
+            int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
             int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
             
             reservaData.borrarReservaHuespedHabitacion(huesped.getIdHuesped(), idHabitacion);
@@ -366,11 +365,15 @@ public class formularioReserva extends InternalFrameImagen {
             calcularDias(jDinicio, jDfinal);
         }
         if (filaSeleccionada != -1) {
-            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 4);
+            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
 
             categoria = categoriaData.buscarCategoria(idCategoria);
-
-            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);
+            if(Integer.parseInt(jTdias.getText())>=0){
+            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);}
+            else{
+                jTprecio.setText(null);
+                JOptionPane.showMessageDialog(this, "Fecha inicio debe de ser menor a la Fecha final");
+            }
         }
     }//GEN-LAST:event_jDfinalPropertyChange
 
@@ -378,7 +381,6 @@ public class formularioReserva extends InternalFrameImagen {
         // TODO add your handling code here:
         if (jDinicio != null && jDfinal != null) {
             calcularDias(jDinicio, jDfinal);
-            
         }
     }//GEN-LAST:event_jDinicioPropertyChange
 
@@ -392,11 +394,16 @@ public class formularioReserva extends InternalFrameImagen {
             calcularDias(jDinicio, jDfinal);
         }
         if (filaSeleccionada != -1) {
-            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 4);
+            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
 
             categoria = categoriaData.buscarCategoria(idCategoria);
 
-            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);
+            if(Integer.parseInt(jTdias.getText())>=0){
+            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);}
+            else{
+                jTprecio.setText(null);
+                JOptionPane.showMessageDialog(this, "Fecha inicio debe de ser menor a la Fecha final");
+            }
         }
     }//GEN-LAST:event_jBactualizarActionPerformed
 
@@ -415,10 +422,8 @@ public class formularioReserva extends InternalFrameImagen {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JRadioButton jRdisponibles;
-    private javax.swing.JRadioButton jRestado;
     private javax.swing.JRadioButton jRnodisponibles;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTdias;

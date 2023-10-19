@@ -78,11 +78,7 @@
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTdias" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jRestado" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jTprecio" min="-2" pref="64" max="-2" attributes="0"/>
@@ -130,16 +126,12 @@
                   <Component id="jDinicio" min="-2" max="-2" attributes="0"/>
                   <Component id="jDfinal" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jTdias" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jTprecio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jRestado" alignment="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTdias" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jTprecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel8" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jBactualizar" min="-2" max="-2" attributes="0"/>
@@ -267,11 +259,6 @@
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Estado:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="jTdias">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
@@ -281,8 +268,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cantidad de d&#xed;as:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="jRestado">
     </Component>
     <Component class="javax.swing.JButton" name="jBactualizar">
       <Properties>
@@ -298,6 +283,9 @@
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jDfinal">
+      <Events>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jDfinalPropertyChange"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
