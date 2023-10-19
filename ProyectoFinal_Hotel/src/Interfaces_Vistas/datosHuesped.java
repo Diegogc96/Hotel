@@ -285,6 +285,8 @@ public class datosHuesped extends InternalFrameImagen {
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe de ingresar un dato numerico en el campo Documento");
+        }catch (NullPointerException e){
+           
         }
 
         jTdocumento.setText("");
