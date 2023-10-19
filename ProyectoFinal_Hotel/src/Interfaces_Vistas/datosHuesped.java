@@ -241,15 +241,15 @@ public class datosHuesped extends InternalFrameImagen {
             if(jTdocumento.getText().isEmpty()){
                  JOptionPane.showMessageDialog(this, "La casilla documento no tiene ningun dato ingresado");
             }else if(jTnombre.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla nombre de habitación no tiene ningun dato ingresado");
+                 JOptionPane.showMessageDialog(this, "La casilla nombre no tiene ningun dato ingresado");
             }else if(jTapellido.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla apellido de habitación no tiene ningun dato ingresado");
+                 JOptionPane.showMessageDialog(this, "La casilla apellido no tiene ningun dato ingresado");
             }else if(jTdomicilio.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla domicilio de habitación no tiene ningun dato ingresado");
+                 JOptionPane.showMessageDialog(this, "La casilla domicilio no tiene ningun dato ingresado");
             }else if(jTcelular.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla correo de habitación no tiene ningun dato ingresado");
+                 JOptionPane.showMessageDialog(this, "La casilla celular no tiene ningun dato ingresado");
             }else if(jTcorreo.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla celular de habitación no tiene ningun dato ingresado");
+                 JOptionPane.showMessageDialog(this, "La casilla correo no tiene ningun dato ingresado");
             }else{
             
              huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcorreo.getText(),Integer.parseInt(jTcelular.getText()),jRestado.isSelected());
