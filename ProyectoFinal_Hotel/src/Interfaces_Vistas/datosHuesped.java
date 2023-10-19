@@ -13,7 +13,6 @@ public class datosHuesped extends InternalFrameImagen {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -233,38 +232,38 @@ public class datosHuesped extends InternalFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-         HuespedData huespedData= new HuespedData();
-        Huesped huesped =new Huesped();
-        List<Huesped>listaHuesped=new ArrayList();
+        HuespedData huespedData = new HuespedData();
+        Huesped huesped = new Huesped();
+        List<Huesped> listaHuesped = new ArrayList();
         try {
-            
-            if(jTdocumento.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla documento no tiene ningun dato ingresado");
-            }else if(jTnombre.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla nombre no tiene ningun dato ingresado");
-            }else if(jTapellido.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla apellido no tiene ningun dato ingresado");
-            }else if(jTdomicilio.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla domicilio no tiene ningun dato ingresado");
-            }else if(jTcelular.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla celular no tiene ningun dato ingresado");
-            }else if(jTcorreo.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(this, "La casilla correo no tiene ningun dato ingresado");
-            }else{
-            
-             huesped=new Huesped(jTnombre.getText(),jTapellido.getText(),Integer.parseInt(jTdocumento.getText()),jTdomicilio.getText(),jTcorreo.getText(),Integer.parseInt(jTcelular.getText()),jRestado.isSelected());
-             
-             huespedData.guardarHuesped(huesped);
+
+            if (jTdocumento.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla documento no tiene ningun dato ingresado");
+            } else if (jTnombre.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla nombre no tiene ningun dato ingresado");
+            } else if (jTapellido.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla apellido no tiene ningun dato ingresado");
+            } else if (jTdomicilio.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla domicilio no tiene ningun dato ingresado");
+            } else if (jTcelular.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla celular no tiene ningun dato ingresado");
+            } else if (jTcorreo.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La casilla correo no tiene ningun dato ingresado");
+            } else {
+
+                huesped = new Huesped(jTnombre.getText(), jTapellido.getText(), Integer.parseInt(jTdocumento.getText()), jTdomicilio.getText(), jTcorreo.getText(), Integer.parseInt(jTcelular.getText()), jRestado.isSelected());
+
+                huespedData.guardarHuesped(huesped);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error al ingresar datos");
         }
-   
-      
+
+
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-        
+
         jTdocumento.setText("");
         jTnombre.setText("");
         jTapellido.setText("");
@@ -275,18 +274,18 @@ public class datosHuesped extends InternalFrameImagen {
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        
+
         try {
-              HuespedData huespedData = new HuespedData();
+            HuespedData huespedData = new HuespedData();
             Huesped huesped = new Huesped();
 
             huesped = huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
             huespedData.eliminarHuesped(huesped.getIdHuesped());
-            
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe de ingresar un dato numerico en el campo Documento");
-        }catch (NullPointerException e){
-           
+        } catch (NullPointerException e) {
+
         }
 
         jTdocumento.setText("");
@@ -303,12 +302,10 @@ public class datosHuesped extends InternalFrameImagen {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
-     
-        HuespedData huespedData=new HuespedData();
-        Huesped huesped=new Huesped();
-        
-       
-        
+
+        HuespedData huespedData = new HuespedData();
+        Huesped huesped = new Huesped();
+
         huesped.setDni(Integer.parseInt(jTdocumento.getText()));
         huesped.setApellido(jTapellido.getText());
         huesped.setNombre(jTnombre.getText());
@@ -317,33 +314,33 @@ public class datosHuesped extends InternalFrameImagen {
         huesped.setCelular(Integer.parseInt(jTcorreo.getText()));
         huesped.setEstado(jRestado.isSelected());
         huespedData.actualizarHuesped(huesped);
-  
+
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-       HuespedData huespedData= new HuespedData();
-        Huesped huesped=new Huesped();
-      
-        huesped=huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
-        
-        if (huesped!=null){
-        jTdocumento.setText(huesped.getDni()+"");
-        jTapellido.setText(huesped.getApellido());
-        jTnombre.setText(huesped.getNombre());
-        jTdomicilio.setText(huesped.getDomicilio());
-        jTcelular.setText(huesped.getCorreo());
-        jTcorreo.setText(huesped.getCelular()+"");
-        jRestado.setSelected(huesped.isEstado());
-        }else{
+        HuespedData huespedData = new HuespedData();
+        Huesped huesped = new Huesped();
+
+        huesped = huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
+
+        if (huesped != null) {
+            jTdocumento.setText(huesped.getDni() + "");
+            jTapellido.setText(huesped.getApellido());
+            jTnombre.setText(huesped.getNombre());
+            jTdomicilio.setText(huesped.getDomicilio());
+            jTcelular.setText(huesped.getCorreo());
+            jTcorreo.setText(huesped.getCelular() + "");
+            jRestado.setSelected(huesped.isEstado());
+        } else {
             jTdocumento.setText(null);
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdocumentoKeyTyped
         // TODO add your handling code here:
-        int maxCaracteres=8;
+        int maxCaracteres = 8;
         verificacionNumeros(evt);
-        if(jTdocumento.getText().length()>=maxCaracteres){
+        if (jTdocumento.getText().length() >= maxCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Maximo 8 caracteres");
         }
@@ -361,16 +358,15 @@ public class datosHuesped extends InternalFrameImagen {
 
     private void jTcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcelularKeyTyped
         // TODO add your handling code here:
-        
-        int maxCaracteres=10;
+
+        int maxCaracteres = 10;
         verificacionNumeros(evt);
-        if(jTcelular.getText().length()>=maxCaracteres){
+        if (jTcelular.getText().length() >= maxCaracteres) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Maximo 10 caracteres");
         }
     }//GEN-LAST:event_jTcelularKeyTyped
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBactualizar;
@@ -395,24 +391,24 @@ public class datosHuesped extends InternalFrameImagen {
     private javax.swing.JTextField jTdomicilio;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
-     private void verificacionNumeros(java.awt.event.KeyEvent evt){
-        
+     private void verificacionNumeros(java.awt.event.KeyEvent evt) {
+
         char validar = evt.getKeyChar();
         if (Character.isLetter(validar)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Ingrese solo numeros");
         }
-        
+
     }
-    
-     private void verificacionCaracteres(java.awt.event.KeyEvent evt){
-         
+
+    private void verificacionCaracteres(java.awt.event.KeyEvent evt) {
+
         char validar = evt.getKeyChar();
         if (Character.isDigit(validar)) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Ingrese solo letras");
         }
-         
-     }
+
+    }
 
 }
