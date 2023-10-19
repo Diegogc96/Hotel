@@ -139,6 +139,12 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jDinicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDinicioPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -372,6 +378,7 @@ public class formularioReserva extends InternalFrameImagen {
         // TODO add your handling code here:
         if (jDinicio != null && jDfinal != null) {
             calcularDias(jDinicio, jDfinal);
+            
         }
     }//GEN-LAST:event_jDinicioPropertyChange
 
