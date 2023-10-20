@@ -66,10 +66,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             .addGap(0, 576, Short.MAX_VALUE)
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114938.png")); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114938.png"))); // NOI18N
         jMenu1.setText("Huésped");
 
-        jMdatosHuesped.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018115004.png")); // NOI18N
+        jMdatosHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115004.png"))); // NOI18N
         jMdatosHuesped.setText("Datos Huésped");
         jMdatosHuesped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,10 +80,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114951.png")); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114951.png"))); // NOI18N
         jMenu2.setText("Habitaciones/Categoria");
 
-        jMdatosHabitacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114948.png")); // NOI18N
+        jMdatosHabitacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114948.png"))); // NOI18N
         jMdatosHabitacion.setText("Datos Habitación");
         jMdatosHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +92,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMdatosHabitacion);
 
-        jMdatosCategoria.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018115028.png")); // NOI18N
+        jMdatosCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115028.png"))); // NOI18N
         jMdatosCategoria.setText("Datos Categoría");
         jMdatosCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,10 +103,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114935.png")); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114935.png"))); // NOI18N
         jMenu3.setText("Administración");
 
-        jMformularioReserva.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114940.png")); // NOI18N
+        jMformularioReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114940.png"))); // NOI18N
         jMformularioReserva.setText("Formulario de Reserva");
         jMformularioReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,10 +117,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018115002.png")); // NOI18N
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115002.png"))); // NOI18N
         jMenu4.setText("Consultas");
 
-        jMHuespedxHabitacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114945.png")); // NOI18N
+        jMHuespedxHabitacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114945.png"))); // NOI18N
         jMHuespedxHabitacion.setText("Huespedes por Habitacion");
         jMHuespedxHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(jMHuespedxHabitacion);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018115025.png")); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115025.png"))); // NOI18N
         jMenuItem1.setText("Registro de Inscripcion");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,10 +140,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018115034.png")); // NOI18N
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115034.png"))); // NOI18N
         jMenu5.setText("Salir");
 
-        jMsalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\Diego\\Documents\\GitHub\\Hotel\\ProyectoFinal_Hotel\\src\\Iconos\\Image20231018114922.png")); // NOI18N
+        jMsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114922.png"))); // NOI18N
         jMsalir.setText("Cerrar Programa");
         jMsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
