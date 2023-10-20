@@ -121,6 +121,12 @@ public class datosCategoria extends InternalFrameImagen {
             }
         });
 
+        jCtipohabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCtipohabitacionActionPerformed(evt);
+            }
+        });
+
         jCtipocamas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCtipocamasActionPerformed(evt);
@@ -407,6 +413,10 @@ public class datosCategoria extends InternalFrameImagen {
         }
              
     }//GEN-LAST:event_jCtipocamasActionPerformed
+
+    private void jCtipohabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCtipohabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCtipohabitacionActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
