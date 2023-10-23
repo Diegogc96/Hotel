@@ -122,6 +122,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115002.png"))); // NOI18N
         jMenu4.setText("Consultas");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/camas.png"))); // NOI18N
         jMenuItem2.setText("Habitaciones por Categoria");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

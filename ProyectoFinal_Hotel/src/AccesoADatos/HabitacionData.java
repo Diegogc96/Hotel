@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Categorias.TipoHabitacion;
 import Entidades.Habitacion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,15 +42,15 @@ public class HabitacionData {
         }
     }
 
-    public List<Habitacion> listarHabitacionesxCategoria(int idCategoria) {
+    public List<Habitacion> listarHabitacionesxCategoria(TipoHabitacion tipoHabitacion) {
 
         List<Habitacion> listaHabitacionCategoria = new ArrayList<>();
         CategoriaData catData = new CategoriaData();
 
         try {
-            String sql = "SELECT c.tipoHabitacion ,piso, nroHabitacion, h.estado FROM habitacion h JOIN categoria c ON (h.idCategoria=c.idCategoria) WHERE idCategoria = ?;";
+            String sql = "SELECT c.tipoHabitacion ,piso, nroHabitacion, idHabitacion, c.idCategoria, h.estado FROM habitacion h JOIN categoria c ON (h.idCategoria=c.idCategoria) WHERE tipoHabitacion = ?;";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idCategoria);
+            ps.setString(1, tipoHabitacion.toString());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Habitacion tipohabitacion = new Habitacion();
@@ -57,7 +58,8 @@ public class HabitacionData {
                 tipohabitacion.setPiso(rs.getInt("piso"));
                 tipohabitacion.setNroHabitacion(rs.getInt("nroHabitacion"));
                 tipohabitacion.setEstado(rs.getBoolean("estado"));
-                tipohabitacion.setCategoria(catData.buscarCategoria(idCategoria));
+                tipohabitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+                tipohabitacion.setCategoria(catData.buscarCategoria(rs.getInt("c.idCategoria")));
                 listaHabitacionCategoria.add(tipohabitacion);
             }
             ps.close();
