@@ -26,6 +26,7 @@ public class datosCategoria extends InternalFrameImagen {
         cargarComboTipoCama();
         jCtipocamas.setSelectedItem(null);
         jCtipohabitacion.setSelectedItem(null);
+        jTprecionoche.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -283,10 +284,10 @@ public class datosCategoria extends InternalFrameImagen {
         // TODO add your handling code here:
         jTcantcamas.setText("");
         jTcantpersonas.setText("");
-        jTcodigo.setText("");
-        jTprecionoche.setText("");
+        jTcodigo.setText("");        
         jCtipocamas.setSelectedItem(null);
         jCtipohabitacion.setSelectedItem(null);
+        jTprecionoche.setText("");
 
     }//GEN-LAST:event_jBnuevoActionPerformed
 
