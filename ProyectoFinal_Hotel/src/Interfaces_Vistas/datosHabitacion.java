@@ -25,7 +25,7 @@ public class datosHabitacion extends InternalFrameImagen {
         armarCabecera();
         armarTabla();
         cargarCombo();
-        // jCcategoria.setSelectedItem(null);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -257,33 +257,37 @@ public class datosHabitacion extends InternalFrameImagen {
 
         listaCategoria = categoriaData.listarCategoria();
 
-        //idcategoria
-        habitacion = habitacionData.buscarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
-        categoria = categoriaData.buscarCategoria(habitacion.getCategoria().getIdCategoria());
-        jTpiso.setText(habitacion.getPiso() + "");
-        jRestado.setSelected(habitacion.isEstado());
+        if (jTnroHabitacion.getText().equals("")) {
 
-        if (habitacion.getCategoria().getTipoHabitacion().equals("EstandarSimple")) {
-            jCcategoria.setSelectedItem(TipoHabitacion.EstandarSimple);
-        } else if (habitacion.getCategoria().getTipoHabitacion().equals("Doble")) {
-            jCcategoria.setSelectedItem(TipoHabitacion.Doble);
-        } else if (habitacion.getCategoria().getTipoHabitacion().equals("Triple")) {
-            jCcategoria.setSelectedItem(TipoHabitacion.Triple);
+            JOptionPane.showMessageDialog(this, "Ingrese un numero en la casilla Número Habitación");
+
         } else {
-            jCcategoria.setSelectedItem(TipoHabitacion.SuiteLujo);
-        }
+            habitacion = habitacionData.buscarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
+            categoria = categoriaData.buscarCategoria(habitacion.getCategoria().getIdCategoria());
+            jTpiso.setText(habitacion.getPiso() + "");
+            jRestado.setSelected(habitacion.isEstado());
 
-        //  jCdatosCategoria.setSelectedIndex(); //VER ESTO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------ TAMBIEN METODO CARGARCOMBO
+            if (habitacion.getCategoria().getTipoHabitacion().equals("EstandarSimple")) {
+                jCcategoria.setSelectedItem(TipoHabitacion.EstandarSimple);
+            } else if (habitacion.getCategoria().getTipoHabitacion().equals("Doble")) {
+                jCcategoria.setSelectedItem(TipoHabitacion.Doble);
+            } else if (habitacion.getCategoria().getTipoHabitacion().equals("Triple")) {
+                jCcategoria.setSelectedItem(TipoHabitacion.Triple);
+            } else {
+                jCcategoria.setSelectedItem(TipoHabitacion.SuiteLujo);
+            }
+
+        }
 
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-        
+
         jTnroHabitacion.setText("");
         jTpiso.setText("");
         jCdatosCategoria.setSelectedItem(null);
@@ -293,30 +297,28 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jTnroHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnroHabitacionKeyTyped
-        
+
         verificacionNumeros(evt);
     }//GEN-LAST:event_jTnroHabitacionKeyTyped
 
     private void jTpisoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTpisoKeyTyped
-        
+
         verificacionNumeros(evt);
     }//GEN-LAST:event_jTpisoKeyTyped
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        
+
         HabitacionData habitacionData = new HabitacionData();
         Habitacion habitacion;
         List<Habitacion> listaHabitacion = new ArrayList();
         int cont = 0;
         try {
-
-            if (jTpiso.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Llene el campo Piso");
-            } else if (jTnroHabitacion.getText().isEmpty()) {
+            if (jTnroHabitacion.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Llene el campo Numero de Habitacion");
+            } else if (jTpiso.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Llene el campo Piso");
             } else if (jCcategoria.getSelectedItem().equals(TipoHabitacion.Seleccione_Categoria)) {
                 JOptionPane.showMessageDialog(this, "Llene el campo Categoria");
-
             } else {
                 for (Habitacion habitacion1 : habitacionData.listarHabitaciones()) {
                     if (Integer.parseInt(jTnroHabitacion.getText()) == habitacion1.getNroHabitacion()) {
@@ -341,7 +343,7 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jCcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcategoriaActionPerformed
-        
+
         jCdatosCategoria.removeAllItems();
 
         if (jCcategoria != null) {
@@ -350,43 +352,50 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jCcategoriaActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
-        
+
         HabitacionData habitacionData = new HabitacionData();
         Habitacion habitacion = new Habitacion();
 
-        habitacion.setCategoria((Categoria) jCdatosCategoria.getSelectedItem());
-        habitacion.setPiso(Integer.parseInt(jTpiso.getText()));
-        habitacion.setNroHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
-        habitacion.setEstado(jRestado.isSelected());
-        habitacionData.actualizarHabitacion(habitacion);
-
+        if (jTnroHabitacion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llene el campo Numero de Habitacion");
+        } else if (jTpiso.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Llene el campo Piso");
+        } else if (jCcategoria.getSelectedItem().equals(TipoHabitacion.Seleccione_Categoria)) {
+            JOptionPane.showMessageDialog(this, "Llene el campo Categoria");
+        } else {
+            habitacion.setCategoria((Categoria) jCdatosCategoria.getSelectedItem());
+            habitacion.setPiso(Integer.parseInt(jTpiso.getText()));
+            habitacion.setNroHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
+            habitacion.setEstado(jRestado.isSelected());
+            habitacionData.actualizarHabitacion(habitacion);
+        }
         armarTabla();
 
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+       String respuesta;
         if (jTnroHabitacion.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(this, "Llene el campo Numero de Habitacion");
 
-        } else if (jTpiso.getText().isEmpty()) {
-
-            JOptionPane.showMessageDialog(this, "Llene el campo Piso");
-
-        } else if (jCcategoria.getSelectedItem().equals(TipoHabitacion.Seleccione_Categoria)) {
-            JOptionPane.showMessageDialog(this, "Llene el campo Categoria");
-
-        } else {
-
+        } do{
+           respuesta =JOptionPane.showInputDialog("Esta seguro que desea borrar la habitacion, esta acción sera irreversible-si/no");
+        }while(respuesta.isEmpty());
+            
+            
+            if(respuesta.equalsIgnoreCase("Si")){
             HabitacionData habitacionData = new HabitacionData();
-            habitacionData.modificarHabitacionOcupada(Integer.parseInt(jTnroHabitacion.getText()));
+            habitacionData.borrarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
             jTnroHabitacion.setText("");
             jTpiso.setText("");
-            jCcategoria.setSelectedItem(null);
+//            jCdatosCategoria.setSelectedItem(null);
+//            jCcategoria.setSelectedItem(null);
             jRestado.setSelected(false);
-
+            
+            
+            }
             armarTabla();
-        }
     }//GEN-LAST:event_jBeliminarActionPerformed
 
 

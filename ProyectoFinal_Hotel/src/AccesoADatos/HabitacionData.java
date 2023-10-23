@@ -171,6 +171,8 @@ public class HabitacionData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla habitacion" + ex.getMessage());
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "La habitación no existe" + ex.getMessage());
         }
     }
 
@@ -262,4 +264,22 @@ public class HabitacionData {
         return habitacion;
     }
 
+    
+    public void borrarHabitacion(int nroHabitacion) {
+        try {
+            String sql = "DELETE FROM habitacion WHERE nroHabitacion = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nroHabitacion);
+           
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, " Se eliminó la habitacion");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitación");
+
+        }
+    }
+    
 }
