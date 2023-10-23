@@ -56,7 +56,7 @@ public class ReservaData {
             String sql = "SELECT * FROM reserva";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 reserva = new Reserva();
                 reserva.setIdReserva(rs.getInt("idReserva"));
@@ -117,7 +117,7 @@ public class ReservaData {
     public List<Habitacion> obtenerHabitacionesReservadas(int idHuesped) {
 
         List<Habitacion> listaHabitaciones = new ArrayList<Habitacion>();
-        CategoriaData categoriaData=new CategoriaData();
+        CategoriaData categoriaData = new CategoriaData();
         try {
             String sql = "SELECT r.idHabitacion, piso, nroHabitacion,c.tipoHabitacion,h.idCategoria FROM reserva r JOIN "
                     + "habitacion h ON(h.idHabitacion = r.idHabitacion) JOIN categoria c ON(h.idCategoria = c.idCategoria) WHERE r.idHuesped = ?";
@@ -170,13 +170,13 @@ public class ReservaData {
         return listaHabitacion;
 
     }
-    
-    public void borrarReservaHuespedHabitacion(int idHuesped, int idHabitacion) {
+
+    public void borrarReservaHuespedHabitacion(int idHabitacion) {
         try {
-            String sql = "DELETE FROM reserva WHERE idHuesped = ? AND idHabitacion = ? ";
+            String sql = "DELETE FROM reserva WHERE idHabitacion = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idHuesped);
-            ps.setInt(2, idHabitacion);
+
+            ps.setInt(1, idHabitacion);
             int fila = ps.executeUpdate();
             if (fila == 1) {
                 JOptionPane.showMessageDialog(null, " Se eliminó la reserva.");
@@ -187,16 +187,14 @@ public class ReservaData {
 
         }
     }
-    
-    
-    public Double calculoPrecio(int cantDias, Categoria categoria){
-        
+
+    public Double calculoPrecio(int cantDias, Categoria categoria) {
+
         double total = 0;
-        
-        total=cantDias*categoria.getPrecioNoche();
+
+        total = cantDias * categoria.getPrecioNoche();
 
         return total;
     }
-    
-    
+
 }

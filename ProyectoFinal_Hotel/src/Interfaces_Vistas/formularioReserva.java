@@ -290,7 +290,7 @@ public class formularioReserva extends InternalFrameImagen {
         if (jTcantPersonas.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un número en la casilla de cantidad de personas");
             jRdisponibles.setSelected(false);
-        }else{
+        } else {
             for (Habitacion hab : habitacion.listarHabitacionesActivas()) {
                 if (hab.getCategoria().getCantPersonas() == Integer.parseInt(jTcantPersonas.getText())) {
                     modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
@@ -317,7 +317,7 @@ public class formularioReserva extends InternalFrameImagen {
         jRdisponibles.setSelected(false);
         jBconfirmar.setEnabled(false);
         jBanular.setEnabled(true);
-        
+        jTcantPersonas.setText("1");
         jTcantPersonas.setEnabled(false);
     }//GEN-LAST:event_jRnodisponiblesActionPerformed
 
@@ -367,14 +367,23 @@ public class formularioReserva extends InternalFrameImagen {
         ReservaData reservaData = new ReservaData();
         HabitacionData habitaciondata = new HabitacionData();
         Huesped huesped = (Huesped) jCombo.getSelectedItem();
-
+        String respuesta;
         int filaSeleccionada = jTtabla.getSelectedRow();
+        do {
+            respuesta = JOptionPane.showInputDialog("¿El huésped quiere dejar una reseña? Si/No");
+        } while (respuesta == "" || !respuesta.toLowerCase().equals("no") && !respuesta.toLowerCase().equals("si"));
+
+        if (respuesta.equalsIgnoreCase("si")) {
+
+            respuesta = JOptionPane.showInputDialog("Reseña:");
+
+        }
 
         if (filaSeleccionada != -1) {
             int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
             int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
-
-            reservaData.borrarReservaHuespedHabitacion(huesped.getIdHuesped(), idHabitacion);
+            
+            reservaData.borrarReservaHuespedHabitacion(idHabitacion);
             habitaciondata.modificarHabitacionLibre(nroHabitacion);
         }
 
