@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class habitacionesCategoria extends javax.swing.JInternalFrame {
    private final DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
@@ -17,8 +18,10 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
 
     public habitacionesCategoria() {
         initComponents();
-        cargarComboHabitacion();
         armarCabecera();
+        cargarComboHabitacion();
+        
+//        jCcategorias.setSelectedItem(null);
     }
 
 
@@ -131,13 +134,21 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jCcategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcategoriasActionPerformed
-        // TODO add your handling code here:
+        borrarFilas();
         HabitacionData habitacionData=new HabitacionData();
         List<Habitacion>listaHabitacion=new ArrayList<>();
+        int cont=0;
+        listaHabitacion=habitacionData.listarHabitacionesxCategoria((TipoHabitacion) jCcategorias.getSelectedItem());
         
+        for (Habitacion habitacion : listaHabitacion) {
+            modelo.addRow(new Object[]{habitacion.getIdHabitacion(),habitacion.getPiso(),habitacion.getNroHabitacion()});
+        } 
         
-        
-        
+         for (Habitacion habitacion : listaHabitacion){
+             cont++; 
+         }
+         
+        jTtotal.setText(cont+"");
     }//GEN-LAST:event_jCcategoriasActionPerformed
 
 
@@ -164,9 +175,14 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
    private void armarCabecera() {
         modelo.addColumn("ID Habitacion");
         modelo.addColumn("Piso");
-        modelo.addColumn("Nro Habitacion");
-        modelo.addColumn("Tipo Habitacion");       
+        modelo.addColumn("Nro Habitacion");     
         jTtabla.setModel(modelo);
     }
    
+     private void borrarFilas() {
+        int filas = jTtabla.getRowCount() - 1;
+        for (int f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+    }
 }

@@ -14,6 +14,8 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +31,7 @@ public class formularioReserva extends InternalFrameImagen {
         initComponents();
         armarCabecera();
         cargarCombo();
+        jCombo.setSelectedItem(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -265,25 +268,29 @@ public class formularioReserva extends InternalFrameImagen {
         // TODO add your handling code here:
         borrarFilas();
         HabitacionData habitacion = new HabitacionData();
-        Huesped alumno = (Huesped) jCombo.getSelectedItem();
+        
 
         for (Habitacion hab : habitacion.listarHabitacionesActivas()) {
             modelo.addRow(new Object[]{ hab.getIdHabitacion(),hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
+        jCombo.setEnabled(true);
         jRnodisponibles.setSelected(false);
         jBconfirmar.setEnabled(true);
         jBanular.setEnabled(false);
+        
+        
+        
     }//GEN-LAST:event_jRdisponiblesActionPerformed
 
     private void jRnodisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRnodisponiblesActionPerformed
-
+        jCombo.setSelectedItem(null);
         borrarFilas();
         HabitacionData habitacion = new HabitacionData();
-        Huesped alumno = (Huesped) jCombo.getSelectedItem();
 
         for (Habitacion hab : habitacion.listarHabitacionesNoActivas()) {
             modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(),  hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
         }
+        jCombo.setEnabled(false);
         jRdisponibles.setSelected(false);
         jBconfirmar.setEnabled(false);
         jBanular.setEnabled(true);
@@ -292,7 +299,9 @@ public class formularioReserva extends InternalFrameImagen {
     private void jComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActionPerformed
         // TODO add your handling code here:
         jRdisponibles.setSelected(false);
+        if(jCombo.getSelectedItem()!=null){
         jRnodisponibles.setSelected(false);
+        }
         borrarFilas();
     }//GEN-LAST:event_jComboActionPerformed
 
@@ -360,20 +369,23 @@ public class formularioReserva extends InternalFrameImagen {
         Categoria categoria;
         CategoriaData categoriaData = new CategoriaData();
         int filaSeleccionada = jTtabla.getSelectedRow();
-
-        if (jDinicio != null && jDfinal != null) {
+        if (jDinicio.getDate() != null && jDfinal.getDate() != null) {
             calcularDias(jDinicio, jDfinal);
-        }
+        
         if (filaSeleccionada != -1) {
             int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
 
             categoria = categoriaData.buscarCategoria(idCategoria);
-            if(Integer.parseInt(jTdias.getText())>=0){
-            mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);}
-            else{
-                jTprecio.setText(null);
+            
+            
+            if(jDfinal.getDate().before(jDinicio.getDate())){
                 JOptionPane.showMessageDialog(this, "Fecha inicio debe de ser menor a la Fecha final");
-            }
+                 jTprecio.setText(null);
+                 jDinicio.setDate(null);
+                 jDfinal.setDate(null);
+            }else{
+                 mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);}
+        }    
         }
     }//GEN-LAST:event_jDfinalPropertyChange
 
@@ -484,4 +496,9 @@ public class formularioReserva extends InternalFrameImagen {
 
     }
 
+    
+    private static void clearComboBox(JComboBox<?> comboBox) {
+        comboBox.setModel(new DefaultComboBoxModel<>());
+
+    }
 }
