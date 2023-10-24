@@ -26,7 +26,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/FondoImagenes/Fondo.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/FondoImagenes/Lapunta.png"));
         Image image = icon.getImage();
         jDescritorio = new javax.swing.JDesktopPane(){
 
@@ -61,11 +61,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jDescritorio.setLayout(jDescritorioLayout);
         jDescritorioLayout.setHorizontalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 813, Short.MAX_VALUE)
+            .addGap(0, 808, Short.MAX_VALUE)
         );
         jDescritorioLayout.setVerticalGroup(
             jDescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114938.png"))); // NOI18N
@@ -171,11 +171,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDescritorio)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jDescritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDescritorio)
+            .addComponent(jDescritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
