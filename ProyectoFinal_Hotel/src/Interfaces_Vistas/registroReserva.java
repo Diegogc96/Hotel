@@ -197,7 +197,7 @@ public class registroReserva extends InternalFrameImagen {
         modelo.addColumn("Apellido");
         modelo.addColumn("F.Inicio");
         modelo.addColumn("F.Final");
-        modelo.addColumn("Estado");
+//        modelo.addColumn("Estado");
         jTtabla.setModel(modelo);
     }
 
@@ -216,7 +216,7 @@ public class registroReserva extends InternalFrameImagen {
         for (Reserva reserva : listaReserva) {
             huesped = huespedData.buscarHuesped(reserva.getIdHuesped());
             habitacion = habitacionData.buscarHabitacionId(reserva.getIdHabitacion());
-            modelo.addRow(new Object[]{reserva.getIdReserva(), habitacion.getNroHabitacion(), huesped.getNombre(), huesped.getApellido(), reserva.getFechaInicio(), reserva.getFechaFin(), reserva.isEstado()});
+            modelo.addRow(new Object[]{reserva.getIdReserva(), habitacion.getNroHabitacion(), huesped.getNombre(), huesped.getApellido(), reserva.getFechaInicio(), reserva.getFechaFin()});
         }
     }
 
@@ -235,7 +235,7 @@ public class registroReserva extends InternalFrameImagen {
         for (Reserva reserva : listaReserva) {
             huesped = huespedData.buscarHuesped(reserva.getIdHuesped());
             habitacion = habitacionData.buscarHabitacionId(reserva.getIdHabitacion());
-            modelo.addRow(new Object[]{reserva.getIdReserva(), habitacion.getNroHabitacion(), huesped.getNombre(), huesped.getApellido(), reserva.getFechaInicio(), reserva.getFechaFin(), reserva.isEstado()});
+            modelo.addRow(new Object[]{reserva.getIdReserva(), habitacion.getNroHabitacion(), huesped.getNombre(), huesped.getApellido(), reserva.getFechaInicio(), reserva.getFechaFin()});
         }
 
     }
