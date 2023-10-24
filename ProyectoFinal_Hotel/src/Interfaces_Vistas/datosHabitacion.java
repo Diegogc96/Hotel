@@ -462,7 +462,12 @@ public class datosHabitacion extends InternalFrameImagen {
         listaHabitacion = habitacionData.listarHabitaciones();
         borrarFilas();
         for (Habitacion habitacion1 : listaHabitacion) {
-            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), habitacion1.isEstado()});
+            if(habitacion1.isEstado()){
+            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), "Disponible"});
+            }else{
+            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), "Ocupado"});    
+            }
+                    
         }
     }
 

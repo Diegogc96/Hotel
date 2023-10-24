@@ -320,7 +320,13 @@ public class datosHuesped extends InternalFrameImagen {
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
-
+        
+//         if (jTdocumento.getText().equals("")) {
+//
+//            JOptionPane.showMessageDialog(this, "Ingrese un numero en la casilla Documento");
+//
+//        } else {
+        try{
         huesped = huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
 
         if (huesped != null) {
@@ -334,6 +340,11 @@ public class datosHuesped extends InternalFrameImagen {
         } else {
             jTdocumento.setText(null);
         }
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ingrese un numero en la casilla Documento");
+        }
+        
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdocumentoKeyTyped

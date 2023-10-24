@@ -256,6 +256,7 @@ public class datosCategoria extends InternalFrameImagen {
         CategoriaData categoriaData = new CategoriaData();
         Categoria categoria = new Categoria();
 
+        try{
         categoria = categoriaData.buscarCategoria(Integer.parseInt(jTcodigo.getText()));
 
         jTcantcamas.setText(categoria.getCantCamas() + "");
@@ -278,6 +279,10 @@ public class datosCategoria extends InternalFrameImagen {
             jCtipocamas.setSelectedItem(TipoCama.Queen);
         } else {
             jCtipocamas.setSelectedItem(TipoCama.KingSize);
+        }
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ingrese un valor numérico en la casilla código");
         }
 
     }//GEN-LAST:event_jBbuscarActionPerformed

@@ -37,6 +37,10 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jBsalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jThabOcupadas = new javax.swing.JTextField();
+        jThabDesocupadas = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jTtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -57,9 +61,14 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Total de Habitaciones de la Categoria seleccionada:");
+        jLabel1.setText("Total de Habitaciones (Categoria Seleccionada):");
 
         jTtotal.setEditable(false);
+        jTtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTtotalActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Seleccione Categoria:");
 
@@ -73,36 +82,48 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Lista de Habitaciones por Categoria");
 
+        jThabOcupadas.setEditable(false);
+
+        jThabDesocupadas.setEditable(false);
+
+        jLabel4.setText("Habitaciones Ocupadas (Categoria Seleccionada):");
+
+        jLabel5.setText("Habitaciones Desocupadas(CategoriaSeleccionada):");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(81, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(80, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCcategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)))))
-                .addGap(74, 74, 74))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(525, Short.MAX_VALUE)
-                .addComponent(jBsalir)
-                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addComponent(jLabel3)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTtotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jThabOcupadas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jThabDesocupadas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jCcategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(68, 68, 68))))
+                        .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jBsalir)
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,11 +138,19 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(jThabOcupadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jThabDesocupadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addComponent(jBsalir)
-                .addGap(21, 21, 21))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,19 +164,36 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
         borrarFilas();
         HabitacionData habitacionData=new HabitacionData();
         List<Habitacion>listaHabitacion=new ArrayList<>();
-        int cont=0;
+        int contTotal=0;
+        int contDesocupado=0;
+        int contOcupado=0;
         listaHabitacion=habitacionData.listarHabitacionesxCategoria((TipoHabitacion) jCcategorias.getSelectedItem());
         
         for (Habitacion habitacion : listaHabitacion) {
-            modelo.addRow(new Object[]{habitacion.getIdHabitacion(),habitacion.getPiso(),habitacion.getNroHabitacion()});
+            if(habitacion.isEstado()){
+            modelo.addRow(new Object[]{habitacion.getIdHabitacion(),habitacion.getPiso(),habitacion.getNroHabitacion(),"Desocupado"});
+            }else{
+            modelo.addRow(new Object[]{habitacion.getIdHabitacion(),habitacion.getPiso(),habitacion.getNroHabitacion(),"Ocupado"});
+            }
+            
         } 
         
          for (Habitacion habitacion : listaHabitacion){
-             cont++; 
+             contTotal++;
+             if(habitacion.isEstado()){
+                 contDesocupado++;
+             }else{
+                 contOcupado++;
+             }
          }
-         
-        jTtotal.setText(cont+"");
+        jThabDesocupadas.setText(contDesocupado+"");
+        jThabOcupadas.setText(contOcupado+"");
+        jTtotal.setText(contTotal+"");
     }//GEN-LAST:event_jCcategoriasActionPerformed
+
+    private void jTtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTtotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTtotalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -156,7 +202,11 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jThabDesocupadas;
+    private javax.swing.JTextField jThabOcupadas;
     private javax.swing.JTable jTtabla;
     private javax.swing.JTextField jTtotal;
     // End of variables declaration//GEN-END:variables
@@ -174,6 +224,7 @@ public class habitacionesCategoria extends javax.swing.JInternalFrame {
         modelo.addColumn("ID Habitacion");
         modelo.addColumn("Piso");
         modelo.addColumn("Nro Habitacion");     
+        modelo.addColumn("Estado");     
         jTtabla.setModel(modelo);
     }
    
