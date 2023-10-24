@@ -27,6 +27,8 @@ public class datosCategoria extends InternalFrameImagen {
         jCtipocamas.setSelectedItem(null);
         jCtipohabitacion.setSelectedItem(null);
         jTprecionoche.setText("");
+        setImagen("imagen1.jpg");
+        
     }
 
     @SuppressWarnings("unchecked")
