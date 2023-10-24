@@ -56,10 +56,10 @@ public class formularioReserva extends InternalFrameImagen {
         jTdias = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jBactualizar = new javax.swing.JButton();
-        jDinicio = new com.toedter.calendar.JDateChooser();
-        jDfinal = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jTcantPersonas = new javax.swing.JTextField();
+        jDinicio = new com.toedter.calendar.JDateChooser();
+        jDfinal = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jLabel1.setText("Formulario De Reserva");
@@ -141,18 +141,6 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
-        jDinicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jDinicioPropertyChange(evt);
-            }
-        });
-
-        jDfinal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jDfinalPropertyChange(evt);
-            }
-        });
-
         jLabel7.setText("Cantidad de personas:");
 
         jTcantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -169,18 +157,7 @@ public class formularioReserva extends InternalFrameImagen {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90))))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -190,7 +167,17 @@ public class formularioReserva extends InternalFrameImagen {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTcantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDinicio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
@@ -204,9 +191,9 @@ public class formularioReserva extends InternalFrameImagen {
                         .addGap(256, 256, 256))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jBconfirmar)
-                        .addGap(44, 44, 44)
+                        .addGap(51, 51, 51)
                         .addComponent(jBanular)
-                        .addGap(97, 97, 97)
+                        .addGap(66, 66, 66)
                         .addComponent(jBsalir)
                         .addGap(111, 111, 111))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -249,29 +236,29 @@ public class formularioReserva extends InternalFrameImagen {
                     .addComponent(jRnodisponibles)
                     .addComponent(jRdisponibles))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBactualizar)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBsalir)
+                            .addComponent(jBanular)
+                            .addComponent(jBconfirmar)))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTdias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBactualizar)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBsalir)
-                    .addComponent(jBanular)
-                    .addComponent(jBconfirmar))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -347,15 +334,38 @@ public class formularioReserva extends InternalFrameImagen {
             nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
             idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
         }
+        try {
+            if (jCombo.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un huesped");
+            } else if (jTcantPersonas.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Falta ingresar cantidad de personas por habitación");
+            } else if (!jRdisponibles.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Falta seleccionar el botón de habitaciones disponibles");
+//           } else if (jTtabla.getSelectedRow() >= 0 && jTtabla.getModel().isRowSelected(jTtabla.getSelectedRow())) {
+//                JOptionPane.showMessageDialog(this, "Falta seleccionar una habitación de la tabla");
+            } else if (jDinicio.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Falta seleccionar una fecha de inicio de reserva");
+            } else if (jDfinal.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Falta seleccionar una fecha fin de reserva");
+            } else if (jTdias.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Falta actualizar la cantidad de días");
+            } else if (jTprecio.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Falta actualizar el precio");
+            } else {
+                reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped.getIdHuesped(), idHabitacion, true);
+                reservaData.guardarReserva(reserva);
+                habitacionData.modificarHabitacionOcupada(nroHabitacion);
+                borrarFilas();
+                listaHabitacion = habitacionData.listarHabitacionesActivas();
 
-        reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped.getIdHuesped(), idHabitacion, true);
-        reservaData.guardarReserva(reserva);
-        habitacionData.modificarHabitacionOcupada(nroHabitacion);
-        borrarFilas();
-        listaHabitacion = habitacionData.listarHabitacionesActivas();
-
-        for (Habitacion hab : listaHabitacion) {
-            modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+                for (Habitacion hab : listaHabitacion) {
+                    modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Faltan ingresar datos");
+        } catch (NullPointerException n) {
+            JOptionPane.showMessageDialog(this, "Faltan ingresar datos");
         }
 
 
@@ -382,7 +392,7 @@ public class formularioReserva extends InternalFrameImagen {
         if (filaSeleccionada != -1) {
             int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
             int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
-            
+
             reservaData.borrarReservaHuespedHabitacion(idHabitacion);
             habitaciondata.modificarHabitacionLibre(nroHabitacion);
         }
@@ -433,22 +443,28 @@ public class formularioReserva extends InternalFrameImagen {
         Categoria categoria;
         CategoriaData categoriaData = new CategoriaData();
         int filaSeleccionada = jTtabla.getSelectedRow();
-
-        if (jDinicio != null && jDfinal != null) {
-            calcularDias(jDinicio, jDfinal);
-        }
-        if (filaSeleccionada != -1) {
-            int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
-
-            categoria = categoriaData.buscarCategoria(idCategoria);
-
-            if (Integer.parseInt(jTdias.getText()) >= 0) {
-                mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);
-            } else {
-                jTprecio.setText(null);
-                JOptionPane.showMessageDialog(this, "Fecha inicio debe de ser menor a la Fecha final");
+        try {
+            if (jDinicio != null && jDfinal != null) {
+                calcularDias(jDinicio, jDfinal);
             }
+            if (filaSeleccionada != -1) {
+                int idCategoria = (Integer) jTtabla.getValueAt(filaSeleccionada, 3);
+
+                categoria = categoriaData.buscarCategoria(idCategoria);
+
+                if (Integer.parseInt(jTdias.getText()) >= 0) {
+                    mostrarPrecio(Integer.parseInt(jTdias.getText()), categoria);
+                } else {
+                    jTprecio.setText(null);
+                    JOptionPane.showMessageDialog(this, "Fecha inicio debe de ser menor a la Fecha final");
+                }
+            }
+        } catch (NumberFormatException e) {
+
+        } catch (NullPointerException n) {
+
         }
+
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jTcantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcantPersonasKeyTyped
