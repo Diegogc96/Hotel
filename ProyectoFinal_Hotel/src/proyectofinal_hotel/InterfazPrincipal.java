@@ -19,7 +19,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        audio();
+       // audio();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -71,6 +72,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114938.png"))); // NOI18N
         jMenu1.setText("Huésped");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMdatosHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115004.png"))); // NOI18N
         jMdatosHuesped.setText("Datos Huésped");
@@ -189,18 +195,20 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMdatosHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHuespedActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         datosHuesped dataHuesped=new datosHuesped();
         dataHuesped.setVisible(true);
         jDescritorio.add(dataHuesped);
         jDescritorio.moveToFront(dataHuesped);
-
+        
        
     }//GEN-LAST:event_jMdatosHuespedActionPerformed
 
     private void jMdatosHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHabitacionActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         datosHabitacion dataHabitacion=new datosHabitacion();
@@ -211,6 +219,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMdatosCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosCategoriaActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         datosCategoria dataCategoria=new datosCategoria();
@@ -221,6 +230,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMformularioReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformularioReservaActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         formularioReserva formReserva=new formularioReserva();
@@ -231,6 +241,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMHuespedxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHuespedxHabitacionActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         huespedesHabitacion huespedHabitacion=new huespedesHabitacion();
@@ -242,6 +253,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         registroReserva registroIns=new registroReserva();
@@ -254,6 +266,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         habitacionesCategoria habitacionesCat=new habitacionesCategoria();
@@ -261,6 +274,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jDescritorio.add(habitacionesCat);
         jDescritorio.moveToFront(habitacionesCat);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -313,7 +331,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
     
-    
+
     public void audio(){
         
         AudioClip audio;
@@ -323,5 +341,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         
         
     }
+    
+   public void soundButton(){
+       
+        AudioClip audio;
+        
+        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/clicksound.wav"));
+        audio.play();
+       
+   }
     
 }
