@@ -32,6 +32,7 @@ public class formularioReserva extends InternalFrameImagen {
         armarCabecera();
         cargarCombo();
         jCombo.setSelectedItem(null);
+        setImagen("RESERVAS.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -64,6 +65,7 @@ public class formularioReserva extends InternalFrameImagen {
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jLabel1.setText("Formulario De Reserva");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Listado de habitaciones");
 
         jCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +74,7 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Precio final:");
 
         jTtabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -87,6 +90,7 @@ public class formularioReserva extends InternalFrameImagen {
         ));
         jScrollPane1.setViewportView(jTtabla);
 
+        jRdisponibles.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jRdisponibles.setText("Disponibles");
         jRdisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +98,7 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jRnodisponibles.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jRnodisponibles.setText("No disponibles");
         jRnodisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,16 +127,20 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Seleccione un huesped inscripto:");
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Fecha fin de reserva");
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Fecha inicio de reserva");
 
         jTprecio.setEditable(false);
 
         jTdias.setEditable(false);
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Cantidad de días:");
 
         jBactualizar.setText("Actualizar");
@@ -141,6 +150,7 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("Cantidad de personas:");
 
         jTcantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -186,7 +196,7 @@ public class formularioReserva extends InternalFrameImagen {
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jDfinal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 84, Short.MAX_VALUE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(136, 136, 136)

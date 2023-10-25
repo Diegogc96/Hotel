@@ -22,11 +22,13 @@ public class datosCategoria extends InternalFrameImagen {
         initComponents();
         armarCabecera();
         armarTabla();
+        setImagen("3.png");
         cargarComboHabitacion();
         cargarComboTipoCama();
         jCtipocamas.setSelectedItem(null);
         jCtipohabitacion.setSelectedItem(null);
         jTprecionoche.setText("");
+        
         
         
     }
@@ -57,18 +59,31 @@ public class datosCategoria extends InternalFrameImagen {
         jTtabla = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(251, 195, 19));
         jLabel1.setText("Categorias");
 
+        jLabel2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(251, 195, 19));
         jLabel2.setText("Código:");
 
+        jLabel3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(251, 195, 19));
         jLabel3.setText("Cant/Personas:");
 
+        jLabel4.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(251, 195, 19));
         jLabel4.setText("Cant/Camas:");
 
+        jLabel5.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(251, 195, 19));
         jLabel5.setText("Tipo/Habitación:");
 
+        jLabel6.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(251, 195, 19));
         jLabel6.setText("Tipo/Cama:");
 
+        jLabel7.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(251, 195, 19));
         jLabel7.setText("Precio/Noche:");
 
         jBnuevo.setText("Nuevo");
@@ -160,46 +175,48 @@ public class datosCategoria extends InternalFrameImagen {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBsalir)
-                .addGap(39, 39, 39))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTcodigo)
-                            .addComponent(jTcantpersonas, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTcantcamas)
-                            .addComponent(jCtipohabitacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCtipocamas, 0, 235, Short.MAX_VALUE)
-                            .addComponent(jTprecionoche, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addComponent(jBbuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jBnuevo)
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBnuevo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBguardar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBactualizar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTcodigo)
+                                    .addComponent(jTcantpersonas, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTcantcamas)
+                                    .addComponent(jCtipohabitacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCtipocamas, 0, 235, Short.MAX_VALUE)
+                                    .addComponent(jTprecionoche, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(18, 18, 18)
-                        .addComponent(jBguardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBactualizar)))
+                        .addComponent(jBbuscar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jBsalir)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(253, 253, 253))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,10 +254,10 @@ public class datosCategoria extends InternalFrameImagen {
                     .addComponent(jBguardar)
                     .addComponent(jBactualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBsalir)
-                .addGap(18, 18, 18))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();

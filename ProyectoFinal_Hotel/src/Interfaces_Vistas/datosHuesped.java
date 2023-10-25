@@ -11,7 +11,7 @@ public class datosHuesped extends InternalFrameImagen {
 
     public datosHuesped() {
         initComponents();
-        setImagen("1.png");
+        setImagen("huespued.jpg");
     }
 
     @SuppressWarnings("unchecked")

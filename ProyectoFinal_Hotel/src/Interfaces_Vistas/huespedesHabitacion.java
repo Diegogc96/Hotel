@@ -23,6 +23,7 @@ public class huespedesHabitacion extends InternalFrameImagen {
         initComponents();
         armarCabecera();
         armarCombo();
+        setImagen("huespedHabitacion.png");
     }
 
 
