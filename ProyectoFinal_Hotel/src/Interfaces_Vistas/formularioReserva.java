@@ -345,7 +345,7 @@ public class formularioReserva extends InternalFrameImagen {
             } else if (jTdias.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Falta actualizar la cantidad de días");
             } else if (jTprecio.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Falta actualizar el precio");
+                JOptionPane.showMessageDialog(this, "Falta seleccionar una habitación de la tabla y actualizar precio");
             } else {
                 reserva = new Reserva(jDinicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jDfinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Integer.parseInt(jTdias.getText()), Double.parseDouble(jTprecio.getText()), huesped.getIdHuesped(), idHabitacion, true);
                 reservaData.guardarReserva(reserva);
@@ -356,6 +356,10 @@ public class formularioReserva extends InternalFrameImagen {
                 for (Habitacion hab : listaHabitacion) {
                     modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
                 }
+                jDinicio.setDate(null);
+                jDfinal.setDate(null);
+                jTdias.setText("");
+                jTprecio.setText("");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Faltan ingresar datos");
@@ -374,28 +378,36 @@ public class formularioReserva extends InternalFrameImagen {
         Huesped huesped = (Huesped) jCombo.getSelectedItem();
         String respuesta;
         int filaSeleccionada = jTtabla.getSelectedRow();
-        do {
-            respuesta = JOptionPane.showInputDialog("¿El huésped quiere dejar una reseña? Si/No");
-        } while (respuesta == "" || !respuesta.toLowerCase().equals("no") && !respuesta.toLowerCase().equals("si"));
+        try {
+            if (filaSeleccionada != -1) {
+                do {
+                    respuesta = JOptionPane.showInputDialog("¿El huésped quiere dejar una reseña? Si/No");
+                } while (respuesta == "" || !respuesta.toLowerCase().equals("no") && !respuesta.toLowerCase().equals("si"));
 
-        if (respuesta.equalsIgnoreCase("si")) {
+                if (respuesta.equalsIgnoreCase("si")) {
 
-            respuesta = JOptionPane.showInputDialog("Reseña:");
+                    respuesta = JOptionPane.showInputDialog("Reseña:");
 
-        }
+                }
 
-        if (filaSeleccionada != -1) {
-            int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
-            int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
+                if (filaSeleccionada != -1) {
+                    int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);
+                    int idHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 0);
 
-            reservaData.borrarReservaHuespedHabitacion(idHabitacion);
-            habitaciondata.modificarHabitacionLibre(nroHabitacion);
-        }
+                    reservaData.borrarReservaHuespedHabitacion(idHabitacion);
+                    habitaciondata.modificarHabitacionLibre(nroHabitacion);
+                }
 
-        borrarFilas();
+                borrarFilas();
 
-        for (Habitacion hab : habitaciondata.listarHabitacionesNoActivas()) {
-            modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+                for (Habitacion hab : habitaciondata.listarHabitacionesNoActivas()) {
+                    modelo.addRow(new Object[]{hab.getIdHabitacion(), hab.getPiso(), hab.getNroHabitacion(), hab.getCategoria().getIdCategoria(), hab.getCategoria().getTipoHabitacion(), hab.getCategoria().getTipoCama(), hab.getCategoria().getCantCamas(), hab.getCategoria().getCantPersonas(), hab.getCategoria().getPrecioNoche()});
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Falta seleccionar una reserva de la tabla");
+            }
+        } catch (NullPointerException e) {
+
         }
 
 

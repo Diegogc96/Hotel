@@ -26,7 +26,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/FondoImagenes/Fondo.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/FondoImagenes/Lapunta.png"));
         Image image = icon.getImage();
         jDescritorio = new javax.swing.JDesktopPane(){
 
