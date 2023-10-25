@@ -11,7 +11,7 @@ import Interfaces_Vistas.registroReserva;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-
+import java.applet.AudioClip;
 
 public class InterfazPrincipal extends javax.swing.JFrame {
 
@@ -19,6 +19,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        audio();
     }
 
     @SuppressWarnings("unchecked")
@@ -311,5 +312,16 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMformularioReserva;
     private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
+    
+    
+    public void audio(){
+        
+        AudioClip audio;
+        
+        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/temaiken.wav"));
+        audio.play();
+        
+        
+    }
     
 }
