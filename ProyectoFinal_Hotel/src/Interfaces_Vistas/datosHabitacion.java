@@ -400,28 +400,36 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-       String respuesta;
-        if (jTnroHabitacion.getText().isEmpty()) {
+        String respuesta;
+        try {
+            if (jTnroHabitacion.getText().isEmpty()) {
 
-            JOptionPane.showMessageDialog(this, "Llene el campo Numero de Habitacion");
+                JOptionPane.showMessageDialog(this, "Llene el campo Numero de Habitacion");
 
-        } do{
-           respuesta =JOptionPane.showInputDialog("Esta seguro que desea borrar la habitacion, esta acción sera irreversible-si/no");
-        }while(respuesta.isEmpty());
-            
-            
-            if(respuesta.equalsIgnoreCase("Si")){
-            HabitacionData habitacionData = new HabitacionData();
-            habitacionData.borrarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
-            jTnroHabitacion.setText("");
-            jTpiso.setText("");
+            } else {
+                do {
+                    respuesta = JOptionPane.showInputDialog("Esta seguro que desea borrar la habitacion, esta acción sera irreversible-si/no");
+                } while (respuesta.isEmpty());
+
+                if (respuesta.equalsIgnoreCase("Si")) {
+                    HabitacionData habitacionData = new HabitacionData();
+                    habitacionData.borrarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
+                    jTnroHabitacion.setText("");
+                    jTpiso.setText("");
 //            jCdatosCategoria.setSelectedItem(null);
 //            jCcategoria.setSelectedItem(null);
-            jRestado.setSelected(false);
-            
-            
+                    jRestado.setSelected(false);
+
+                }
+                armarTabla();
             }
-            armarTabla();
+
+        } catch (NullPointerException n) {
+
+        } catch (NumberFormatException e) {
+
+        }
+
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jCdatosCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCdatosCategoriaActionPerformed
@@ -492,12 +500,12 @@ public class datosHabitacion extends InternalFrameImagen {
         listaHabitacion = habitacionData.listarHabitaciones();
         borrarFilas();
         for (Habitacion habitacion1 : listaHabitacion) {
-            if(habitacion1.isEstado()){
-            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), "Disponible"});
-            }else{
-            modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), "Ocupado"});    
+            if (habitacion1.isEstado()) {
+                modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), "Disponible"});
+            } else {
+                modelo.addRow(new Object[]{habitacion1.getIdHabitacion(), habitacion1.getPiso(), habitacion1.getNroHabitacion(), habitacion1.getCategoria().getTipoHabitacion(), "Ocupado"});
             }
-                    
+
         }
     }
 

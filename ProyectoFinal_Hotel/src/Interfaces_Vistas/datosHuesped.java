@@ -328,46 +328,52 @@ public class datosHuesped extends InternalFrameImagen {
 
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
+        try {
+            huesped.setDni(Integer.parseInt(jTdocumento.getText()));
+            huesped.setApellido(jTapellido.getText());
+            huesped.setNombre(jTnombre.getText());
+            huesped.setDomicilio(jTdomicilio.getText());
+            huesped.setCorreo(jTcelular.getText());
+            huesped.setCelular(Integer.parseInt(jTcorreo.getText()));
+            huesped.setEstado(jRestado.isSelected());
+            huespedData.actualizarHuesped(huesped);
 
-        huesped.setDni(Integer.parseInt(jTdocumento.getText()));
-        huesped.setApellido(jTapellido.getText());
-        huesped.setNombre(jTnombre.getText());
-        huesped.setDomicilio(jTdomicilio.getText());
-        huesped.setCorreo(jTcelular.getText());
-        huesped.setCelular(Integer.parseInt(jTcorreo.getText()));
-        huesped.setEstado(jRestado.isSelected());
-        huespedData.actualizarHuesped(huesped);
+        } catch (NullPointerException n) {
+
+        } catch (NumberFormatException e) {
+
+        }
 
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
-        
+
 //         if (jTdocumento.getText().equals("")) {
 //
 //            JOptionPane.showMessageDialog(this, "Ingrese un numero en la casilla Documento");
 //
 //        } else {
-        try{
-        huesped = huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
+        try {
+            huesped = huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
 
-        if (huesped != null) {
-            jTdocumento.setText(huesped.getDni() + "");
-            jTapellido.setText(huesped.getApellido());
-            jTnombre.setText(huesped.getNombre());
-            jTdomicilio.setText(huesped.getDomicilio());
-            jTcelular.setText(huesped.getCorreo());
-            jTcorreo.setText(huesped.getCelular() + "");
-            jRestado.setSelected(huesped.isEstado());
-        } else {
-            jTdocumento.setText(null);
-        }
-        
-        }catch(NumberFormatException e){
+            if (huesped != null) {
+                jTdocumento.setText(huesped.getDni() + "");
+                jTapellido.setText(huesped.getApellido());
+                jTnombre.setText(huesped.getNombre());
+                jTdomicilio.setText(huesped.getDomicilio());
+                jTcelular.setText(huesped.getCorreo());
+                jTcorreo.setText(huesped.getCelular() + "");
+                jRestado.setSelected(huesped.isEstado());
+            } else {
+                jTdocumento.setText(null);
+            }
+
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese un numero en la casilla Documento");
         }
-        
+
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jTdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdocumentoKeyTyped

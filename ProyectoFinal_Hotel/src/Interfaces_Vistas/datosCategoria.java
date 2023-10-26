@@ -1,6 +1,7 @@
 package Interfaces_Vistas;
 
 import AccesoADatos.CategoriaData;
+import Audio.Audio;
 import Categorias.TipoCama;
 import Categorias.TipoHabitacion;
 import Entidades.Categoria;
@@ -12,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class datosCategoria extends InternalFrameImagen {
 
+    Audio audio = new Audio();
     private final DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -28,9 +30,7 @@ public class datosCategoria extends InternalFrameImagen {
         jCtipocamas.setSelectedItem(null);
         jCtipohabitacion.setSelectedItem(null);
         jTprecionoche.setText("");
-        
-        
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -273,45 +273,49 @@ public class datosCategoria extends InternalFrameImagen {
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         // TODO add your handling code here:
+        audio.soundButton();
         CategoriaData categoriaData = new CategoriaData();
         Categoria categoria = new Categoria();
 
-        try{
-        categoria = categoriaData.buscarCategoria(Integer.parseInt(jTcodigo.getText()));
+        try {
+            categoria = categoriaData.buscarCategoria(Integer.parseInt(jTcodigo.getText()));
 
-        jTcantcamas.setText(categoria.getCantCamas() + "");
-        jTcantpersonas.setText(categoria.getCantPersonas() + "");
-        jTprecionoche.setText(categoria.getPrecioNoche() + "");
+            jTcantcamas.setText(categoria.getCantCamas() + "");
+            jTcantpersonas.setText(categoria.getCantPersonas() + "");
+            jTprecionoche.setText(categoria.getPrecioNoche() + "");
 
-        if (categoria.getTipoHabitacion().equals("Estandar Simple")) {
-            jCtipohabitacion.setSelectedItem(TipoHabitacion.EstandarSimple);
-        } else if (categoria.getTipoHabitacion().equals("Doble")) {
-            jCtipohabitacion.setSelectedItem(TipoHabitacion.Doble);
-        } else if (categoria.getTipoHabitacion().equals("Triple")) {
-            jCtipohabitacion.setSelectedItem(TipoHabitacion.Triple);
-        } else {
-            jCtipohabitacion.setSelectedItem(TipoHabitacion.SuiteLujo);
-        }
+            if (categoria.getTipoHabitacion().equals("Estandar Simple")) {
+                jCtipohabitacion.setSelectedItem(TipoHabitacion.EstandarSimple);
+            } else if (categoria.getTipoHabitacion().equals("Doble")) {
+                jCtipohabitacion.setSelectedItem(TipoHabitacion.Doble);
+            } else if (categoria.getTipoHabitacion().equals("Triple")) {
+                jCtipohabitacion.setSelectedItem(TipoHabitacion.Triple);
+            } else {
+                jCtipohabitacion.setSelectedItem(TipoHabitacion.SuiteLujo);
+            }
 
-        if (categoria.getTipoCama().equals("Simples")) {
-            jCtipocamas.setSelectedItem(TipoCama.Simples);
-        } else if (categoria.getTipoCama().equals("Queen")) {
-            jCtipocamas.setSelectedItem(TipoCama.Queen);
-        } else {
-            jCtipocamas.setSelectedItem(TipoCama.KingSize);
-        }
-        
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Ingrese un valor numérico en la casilla código");
+            if (categoria.getTipoCama().equals("Simples")) {
+                jCtipocamas.setSelectedItem(TipoCama.Simples);
+            } else if (categoria.getTipoCama().equals("Queen")) {
+                jCtipocamas.setSelectedItem(TipoCama.Queen);
+            } else {
+                jCtipocamas.setSelectedItem(TipoCama.KingSize);
+            }
+
+        } catch (NullPointerException n) {
+           
+        } catch (NumberFormatException e) {
+
         }
 
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
         // TODO add your handling code here:
+        audio.soundButton();
         jTcantcamas.setText("");
         jTcantpersonas.setText("");
-        jTcodigo.setText("");        
+        jTcodigo.setText("");
         jCtipocamas.setSelectedItem(null);
         jCtipohabitacion.setSelectedItem(null);
         jTprecionoche.setText("");
@@ -340,112 +344,126 @@ public class datosCategoria extends InternalFrameImagen {
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
+        audio.soundButton();
         CategoriaData categoriaData = new CategoriaData();
         Categoria categoria = null;
         TipoHabitacion tipoHabitacion = (TipoHabitacion) jCtipohabitacion.getSelectedItem();
         TipoCama tipoCama = (TipoCama) jCtipocamas.getSelectedItem();
+        try {
+            if (tipoHabitacion == TipoHabitacion.EstandarSimple) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            } else if (tipoHabitacion == TipoHabitacion.Doble) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            } else if (tipoHabitacion == TipoHabitacion.Triple) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            } else if (tipoHabitacion == TipoHabitacion.SuiteLujo) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            }
 
-        if (tipoHabitacion == TipoHabitacion.EstandarSimple) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
-        } else if (tipoHabitacion == TipoHabitacion.Doble) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
-        } else if (tipoHabitacion == TipoHabitacion.Triple) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
-        } else if (tipoHabitacion == TipoHabitacion.SuiteLujo) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
+            categoriaData.guardarCategoria(categoria);
+            armarTabla();
+        } catch (NullPointerException n) {
+            JOptionPane.showMessageDialog(this, "Faltan ingresar datos");
+        } catch (NumberFormatException e) {
+
         }
 
-        categoriaData.guardarCategoria(categoria);
-        armarTabla();
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
         // TODO add your handling code here:
+        audio.soundButton();
         CategoriaData categoriaData = new CategoriaData();
         Categoria categoria = null;
         TipoHabitacion tipoHabitacion = (TipoHabitacion) jCtipohabitacion.getSelectedItem();
         TipoCama tipoCama = (TipoCama) jCtipocamas.getSelectedItem();
+        try {
+            if (tipoHabitacion == TipoHabitacion.EstandarSimple) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            } else if (tipoHabitacion == TipoHabitacion.Doble) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            } else if (tipoHabitacion == TipoHabitacion.Triple) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            } else if (tipoHabitacion == TipoHabitacion.SuiteLujo) {
+                if (tipoCama == TipoCama.Simples) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Simples", Double.parseDouble(jTprecionoche.getText()));
+                } else if (tipoCama == TipoCama.Queen) {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Queen", Double.parseDouble(jTprecionoche.getText()));
+                } else {
+                    categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "KingSize", Double.parseDouble(jTprecionoche.getText()));
+                }
+            }
 
-        if (tipoHabitacion == TipoHabitacion.EstandarSimple) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "EstandarSimple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
-        } else if (tipoHabitacion == TipoHabitacion.Doble) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Doble", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
-        } else if (tipoHabitacion == TipoHabitacion.Triple) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "Triple", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
-        } else if (tipoHabitacion == TipoHabitacion.SuiteLujo) {
-            if (tipoCama == TipoCama.Simples) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Simples", Double.parseDouble(jTprecionoche.getText()));
-            } else if (tipoCama == TipoCama.Queen) {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "Queen", Double.parseDouble(jTprecionoche.getText()));
-            } else {
-                categoria = new Categoria(Integer.parseInt(jTcodigo.getText()), Integer.parseInt(jTcantpersonas.getText()), Integer.parseInt(jTcantcamas.getText()), "SuiteLujo", "KingSize", Double.parseDouble(jTprecionoche.getText()));
-            }
+            categoriaData.actualizarCategoria(categoria);
+            armarTabla();
+        } catch (NullPointerException n) {
+            JOptionPane.showMessageDialog(this, "Faltan ingresar datos");
+        } catch (NumberFormatException e) {
+
         }
 
-        categoriaData.actualizarCategoria(categoria);
-        armarTabla();
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jCtipocamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCtipocamasActionPerformed
         // TODO add your handling code here:
 
-        CategoriaData categoriaData=new CategoriaData();
-        TipoHabitacion tipoHabitacion=(TipoHabitacion) jCtipohabitacion.getSelectedItem();
-        TipoCama tipoCama=(TipoCama) jCtipocamas.getSelectedItem();
-        if(jCtipohabitacion!=null && jCtipocamas!=null){
-        jTprecionoche.setText(categoriaData.precioCatCama(tipoHabitacion,tipoCama)+"");
-        }else{
-         jTprecionoche.setText(null);
+        CategoriaData categoriaData = new CategoriaData();
+        TipoHabitacion tipoHabitacion = (TipoHabitacion) jCtipohabitacion.getSelectedItem();
+        TipoCama tipoCama = (TipoCama) jCtipocamas.getSelectedItem();
+        if (jCtipohabitacion != null && jCtipocamas != null) {
+            jTprecionoche.setText(categoriaData.precioCatCama(tipoHabitacion, tipoCama) + "");
+        } else {
+            jTprecionoche.setText(null);
         }
-             
+
     }//GEN-LAST:event_jCtipocamasActionPerformed
 
     private void jCtipohabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCtipohabitacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCtipohabitacionActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBactualizar;
