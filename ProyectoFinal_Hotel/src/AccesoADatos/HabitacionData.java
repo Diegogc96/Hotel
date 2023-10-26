@@ -48,7 +48,7 @@ public class HabitacionData {
         CategoriaData catData = new CategoriaData();
 
         try {
-            String sql = "SELECT c.tipoHabitacion ,piso, nroHabitacion, idHabitacion, c.idCategoria, h.estado FROM habitacion h JOIN categoria c ON (h.idCategoria=c.idCategoria) WHERE tipoHabitacion = ?;";
+            String sql = "SELECT c.tipoHabitacion ,piso, nroHabitacion, idHabitacion, c.idCategoria, h.estado FROM habitacion h JOIN categoria c ON (h.idCategoria=c.idCategoria) WHERE tipoHabitacion = ? ORDER BY nroHabitacion ASC;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, tipoHabitacion.toString());
             ResultSet rs = ps.executeQuery();

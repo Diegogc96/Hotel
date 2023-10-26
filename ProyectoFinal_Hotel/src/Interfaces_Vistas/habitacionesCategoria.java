@@ -234,7 +234,7 @@ public class habitacionesCategoria extends InternalFrameImagen {
    private void armarCabecera() {
         modelo.addColumn("ID Habitacion");
         modelo.addColumn("Piso");
-        modelo.addColumn("Nro Habitacion");     
+        modelo.addColumn("Nro Habitacion"); 
         modelo.addColumn("Estado");     
         jTtabla.setModel(modelo);
     }
