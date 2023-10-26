@@ -228,7 +228,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMformularioReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformularioReservaActionPerformed
         // TODO add your handling code here:
-        tortuga();
+        soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         formularioReserva formReserva = new formularioReserva();
@@ -342,7 +342,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         AudioClip audio;
 
-        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/clicksound.wav"));
+        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/tortugagimi.wav"));
         audio.play();
 
     }
@@ -357,13 +357,5 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         
     } 
     
-    public void tortuga(){
-        
-        AudioClip audio;
-
-        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/tortugagimi.wav"));
-        audio.play();
-        
-        
-    }  
+    
 }
