@@ -106,6 +106,7 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jBconfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/confirmar.png"))); // NOI18N
         jBconfirmar.setText("Confirmar");
         jBconfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +114,7 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jBanular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminado.png"))); // NOI18N
         jBanular.setText("Anular");
         jBanular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +122,7 @@ public class formularioReserva extends InternalFrameImagen {
             }
         });
 
+        jBsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminar.png"))); // NOI18N
         jBsalir.setText("Salir");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +146,7 @@ public class formularioReserva extends InternalFrameImagen {
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Cantidad de días:");
 
+        jBactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
         jBactualizar.setText("Actualizar");
         jBactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,7 +277,7 @@ public class formularioReserva extends InternalFrameImagen {
                     .addComponent(jBsalir)
                     .addComponent(jBanular)
                     .addComponent(jBconfirmar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
