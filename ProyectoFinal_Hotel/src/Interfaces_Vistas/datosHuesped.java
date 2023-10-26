@@ -1,6 +1,7 @@
 package Interfaces_Vistas;
 
 import AccesoADatos.HuespedData;
+import Audio.Audio;
 import Entidades.Huesped;
 import FondoImagenes.InternalFrameImagen;
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class datosHuesped extends InternalFrameImagen {
-
+    
+    Audio audio = new Audio();
     public datosHuesped() {
         initComponents();
         setImagen("4.png");
@@ -255,6 +257,8 @@ public class datosHuesped extends InternalFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+        
+        audio.soundButton();
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
         List<Huesped> listaHuesped = new ArrayList();
@@ -287,6 +291,7 @@ public class datosHuesped extends InternalFrameImagen {
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
 
+        audio.soundButton();
         jTdocumento.setText("");
         jTnombre.setText("");
         jTapellido.setText("");
@@ -298,6 +303,7 @@ public class datosHuesped extends InternalFrameImagen {
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
 
+        audio.soundButton();
         try {
             HuespedData huespedData = new HuespedData();
             Huesped huesped = new Huesped();
@@ -321,11 +327,14 @@ public class datosHuesped extends InternalFrameImagen {
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        
+        audio.soundButton();
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
-
+        
+        audio.soundButton();
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
         try {
@@ -347,14 +356,11 @@ public class datosHuesped extends InternalFrameImagen {
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        
+        audio.soundButton();
         HuespedData huespedData = new HuespedData();
         Huesped huesped = new Huesped();
 
-//         if (jTdocumento.getText().equals("")) {
-//
-//            JOptionPane.showMessageDialog(this, "Ingrese un numero en la casilla Documento");
-//
-//        } else {
         try {
             huesped = huespedData.buscarHuespedPorDni(Integer.parseInt(jTdocumento.getText()));
 

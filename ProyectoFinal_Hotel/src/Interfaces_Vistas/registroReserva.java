@@ -3,6 +3,7 @@ package Interfaces_Vistas;
 import AccesoADatos.HabitacionData;
 import AccesoADatos.HuespedData;
 import AccesoADatos.ReservaData;
+import Audio.Audio;
 import Entidades.Habitacion;
 import Entidades.Huesped;
 import Entidades.Reserva;
@@ -14,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class registroReserva extends InternalFrameImagen {
 
+    Audio audio = new Audio();
     private final DefaultTableModel modelo = new DefaultTableModel() {
         
         public boolean isCellEditable(int fila, int columna) {
@@ -142,8 +144,8 @@ public class registroReserva extends InternalFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCopcionActionPerformed
-        // TODO add your handling code here:
-
+        
+           audio.ringBell();
         if (jCopcion.getSelectedItem().equals("Todas las Reservas")) {
             armarTablaReservasTotales();
             jChuesped.setEnabled(false);
@@ -158,7 +160,7 @@ public class registroReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jCopcionActionPerformed
 
     private void jChuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChuespedActionPerformed
-        // TODO add your handling code here:
+        
         borrarFilas();
         Huesped huesped = (Huesped) jChuesped.getSelectedItem();
         armarTablaReservasHuesped(huesped.getIdHuesped());
@@ -166,12 +168,12 @@ public class registroReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jChuespedActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbutton1ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jBbutton1ActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+        
+        audio.soundButton();
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 

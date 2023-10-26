@@ -189,7 +189,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMsalirActionPerformed
-        // TODO add your handling code here:
+        
         System.exit(0);
     }//GEN-LAST:event_jMsalirActionPerformed
 
@@ -240,8 +240,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMformularioReservaActionPerformed
 
     private void jMHuespedxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHuespedxHabitacionActionPerformed
-        // TODO add your handling code here:
-        audio.ringBell();
+        
+
         jDescritorio.removeAll();
         jDescritorio.repaint();
         huespedesHabitacion huespedHabitacion = new huespedesHabitacion();
@@ -252,7 +252,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMHuespedxHabitacionActionPerformed
 
     private void jMRegistroReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRegistroReservaActionPerformed
-        // TODO add your handling code here:
+        
         audio.ringBell();
         jDescritorio.removeAll();
         jDescritorio.repaint();
@@ -265,8 +265,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMRegistroReservaActionPerformed
 
     private void jMHabitacionCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHabitacionCategoriaActionPerformed
-        // TODO add your handling code here:
-        audio.ringBell();
+        
+        
         jDescritorio.removeAll();
         jDescritorio.repaint();
         habitacionesCategoria habitacionesCat = new habitacionesCategoria();
@@ -276,7 +276,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMHabitacionCategoriaActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        // TODO add your handling code here:
+       
 
     }//GEN-LAST:event_jMenu1ActionPerformed
 

@@ -2,6 +2,7 @@ package Interfaces_Vistas;
 
 import AccesoADatos.CategoriaData;
 import AccesoADatos.HabitacionData;
+import Audio.Audio;
 import Categorias.TipoHabitacion;
 import Entidades.Categoria;
 import Entidades.Habitacion;
@@ -12,7 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class datosHabitacion extends InternalFrameImagen {
-
+    
+    Audio audio = new Audio();
     private final DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -274,7 +276,8 @@ public class datosHabitacion extends InternalFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        // TODO add your handling code here:
+        
+        audio.soundButton();
         HabitacionData habitacionData = new HabitacionData();
         Habitacion habitacion;
         CategoriaData categoriaData = new CategoriaData();
@@ -308,12 +311,13 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-
+        
+        audio.soundButton();
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-
+        audio.soundButton();
         jTnroHabitacion.setText("");
         jTpiso.setText("");
         jCdatosCategoria.setSelectedItem(null);
@@ -333,7 +337,8 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jTpisoKeyTyped
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-
+        
+        audio.soundButton();
         HabitacionData habitacionData = new HabitacionData();
         Habitacion habitacion;
         List<Habitacion> listaHabitacion = new ArrayList();
@@ -369,7 +374,8 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jCcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcategoriaActionPerformed
-
+        
+       
         jCdatosCategoria.removeAllItems();
 
         if (jCcategoria != null) {
@@ -378,7 +384,8 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jCcategoriaActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
-
+        
+        audio.soundButton();
         HabitacionData habitacionData = new HabitacionData();
         Habitacion habitacion = new Habitacion();
 
@@ -400,6 +407,8 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        
+        audio.soundButton();
         String respuesta;
         try {
             if (jTnroHabitacion.getText().isEmpty()) {
@@ -416,8 +425,6 @@ public class datosHabitacion extends InternalFrameImagen {
                     habitacionData.borrarHabitacion(Integer.parseInt(jTnroHabitacion.getText()));
                     jTnroHabitacion.setText("");
                     jTpiso.setText("");
-//            jCdatosCategoria.setSelectedItem(null);
-//            jCcategoria.setSelectedItem(null);
                     jRestado.setSelected(false);
 
                 }
@@ -433,7 +440,7 @@ public class datosHabitacion extends InternalFrameImagen {
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jCdatosCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCdatosCategoriaActionPerformed
-        // TODO add your handling code here:
+        audio.soundButton();
     }//GEN-LAST:event_jCdatosCategoriaActionPerformed
 
 

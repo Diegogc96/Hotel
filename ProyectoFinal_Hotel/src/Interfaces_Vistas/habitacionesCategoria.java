@@ -2,6 +2,7 @@
 package Interfaces_Vistas;
 
 import AccesoADatos.HabitacionData;
+import Audio.Audio;
 import Categorias.TipoHabitacion;
 import Entidades.Habitacion;
 import FondoImagenes.InternalFrameImagen;
@@ -10,6 +11,8 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class habitacionesCategoria extends InternalFrameImagen {
+    
+    Audio audio = new Audio();
    private final DefaultTableModel modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int fila, int columna) {
@@ -22,7 +25,7 @@ public class habitacionesCategoria extends InternalFrameImagen {
         armarCabecera();
         cargarComboHabitacion();
         setImagen("8.png");
-//        jCcategorias.setSelectedItem(null);
+
     }
 
 
@@ -168,10 +171,14 @@ public class habitacionesCategoria extends InternalFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-               dispose();
+               
+        audio.soundButton();
+        dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jCcategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcategoriasActionPerformed
+        
+        audio.ringBell();
         borrarFilas();
         HabitacionData habitacionData=new HabitacionData();
         List<Habitacion>listaHabitacion=new ArrayList<>();

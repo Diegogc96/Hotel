@@ -303,9 +303,10 @@ public class datosCategoria extends InternalFrameImagen {
             }
 
         } catch (NullPointerException n) {
+            
            
         } catch (NumberFormatException e) {
-
+            JOptionPane.showMessageDialog(null, "Ingresa un código");
         }
 
     }//GEN-LAST:event_jBbuscarActionPerformed

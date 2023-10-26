@@ -3,6 +3,7 @@ package Interfaces_Vistas;
 
 import AccesoADatos.HuespedData;
 import AccesoADatos.ReservaData;
+import Audio.Audio;
 import Entidades.Habitacion;
 import Entidades.Huesped;
 import FondoImagenes.InternalFrameImagen;
@@ -12,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class huespedesHabitacion extends InternalFrameImagen {
- private final DefaultTableModel modelo = new DefaultTableModel() {
+ 
+    Audio audio = new Audio();
+    private final DefaultTableModel modelo = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -117,12 +120,14 @@ public class huespedesHabitacion extends InternalFrameImagen {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+        
+        audio.soundButton();
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jChuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChuespedActionPerformed
-        // TODO add your handling code here:
+        
+        audio.ringBell();
         borrarFilas();
         ReservaData reservaData=new ReservaData();
         Huesped huesped=(Huesped)jChuesped.getSelectedItem();

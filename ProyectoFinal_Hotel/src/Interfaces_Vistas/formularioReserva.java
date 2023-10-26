@@ -4,6 +4,7 @@ import AccesoADatos.CategoriaData;
 import AccesoADatos.HabitacionData;
 import AccesoADatos.HuespedData;
 import AccesoADatos.ReservaData;
+import Audio.Audio;
 import Entidades.Categoria;
 import Entidades.Habitacion;
 import Entidades.Huesped;
@@ -21,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class formularioReserva extends InternalFrameImagen {
 
+    Audio audio = new Audio();
     private final DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -296,11 +298,13 @@ public class formularioReserva extends InternalFrameImagen {
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
 
+        audio.soundButton();
         dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jRdisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdisponiblesActionPerformed
-        // TODO add your handling code here:
+        
+        audio.soundButton();
         borrarFilas();
         HabitacionData habitacion = new HabitacionData();
 
@@ -323,6 +327,8 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jRdisponiblesActionPerformed
 
     private void jRnodisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRnodisponiblesActionPerformed
+        
+        audio.soundButton();
         jCombo.setSelectedItem(null);
         borrarFilas();
         HabitacionData habitacion = new HabitacionData();
@@ -339,7 +345,7 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jRnodisponiblesActionPerformed
 
     private void jComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActionPerformed
-        // TODO add your handling code here:
+        
         jRdisponibles.setSelected(false);
         if (jCombo.getSelectedItem() != null) {
             jRnodisponibles.setSelected(false);
@@ -348,7 +354,8 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jComboActionPerformed
 
     private void jBconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconfirmarActionPerformed
-        // TODO add your handling code here:
+        
+        audio.soundButton();
         ReservaData reservaData = new ReservaData();
         Huesped huesped = (Huesped) jCombo.getSelectedItem();
         Reserva reserva;
@@ -371,8 +378,6 @@ public class formularioReserva extends InternalFrameImagen {
                 JOptionPane.showMessageDialog(this, "Falta ingresar cantidad de personas por habitación");
             } else if (!jRdisponibles.isSelected()) {
                 JOptionPane.showMessageDialog(this, "Falta seleccionar el botón de habitaciones disponibles");
-//           } else if (jTtabla.getSelectedRow() >= 0 && jTtabla.getModel().isRowSelected(jTtabla.getSelectedRow())) {
-//                JOptionPane.showMessageDialog(this, "Falta seleccionar una habitación de la tabla");
             } else if (jDinicio.getDate() == null) {
                 JOptionPane.showMessageDialog(this, "Falta seleccionar una fecha de inicio de reserva");
             } else if (jDfinal.getDate() == null) {
@@ -406,8 +411,8 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jBconfirmarActionPerformed
 
     private void jBanularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBanularActionPerformed
-        // TODO add your handling code here:
-
+        
+        audio.soundButton();
         ReservaData reservaData = new ReservaData();
         HabitacionData habitaciondata = new HabitacionData();
         Huesped huesped = (Huesped) jCombo.getSelectedItem();
@@ -449,7 +454,7 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jBanularActionPerformed
 
     private void jDfinalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDfinalPropertyChange
-        // TODO add your handling code here:
+        
         Categoria categoria;
         CategoriaData categoriaData = new CategoriaData();
         int filaSeleccionada = jTtabla.getSelectedRow();
@@ -475,14 +480,15 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jDfinalPropertyChange
 
     private void jDinicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDinicioPropertyChange
-        // TODO add your handling code here:
+        
         if (jDinicio != null && jDfinal != null) {
             calcularDias(jDinicio, jDfinal);
         }
     }//GEN-LAST:event_jDinicioPropertyChange
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
-        // TODO add your handling code here:
+        
+        audio.soundButton();
         Categoria categoria;
         CategoriaData categoriaData = new CategoriaData();
         int filaSeleccionada = jTtabla.getSelectedRow();
@@ -511,7 +517,7 @@ public class formularioReserva extends InternalFrameImagen {
     }//GEN-LAST:event_jBactualizarActionPerformed
 
     private void jTcantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcantPersonasKeyTyped
-        // TODO add your handling code here:
+        
         verificacionNumeros(evt);
         jRdisponibles.setSelected(false);
         borrarFilas();
