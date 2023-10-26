@@ -17,7 +17,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        //audio();
+        audio();
 
     }
 
