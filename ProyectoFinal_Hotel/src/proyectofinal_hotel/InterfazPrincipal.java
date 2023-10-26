@@ -1,5 +1,6 @@
 package proyectofinal_hotel;
 
+import Audio.Audio;
 import Interfaces_Vistas.datosCategoria;
 import Interfaces_Vistas.datosHabitacion;
 import Interfaces_Vistas.datosHuesped;
@@ -10,15 +11,16 @@ import Interfaces_Vistas.registroReserva;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import java.applet.AudioClip;
 
 public class InterfazPrincipal extends javax.swing.JFrame {
 
+    Audio audio=new Audio();
+    
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        audio();
-
+        //audio.audio();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -193,7 +195,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMdatosHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHuespedActionPerformed
         // TODO add your handling code here:
-        soundButton();
+        audio.soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         datosHuesped dataHuesped = new datosHuesped();
@@ -206,7 +208,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMdatosHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHabitacionActionPerformed
         // TODO add your handling code here:
-        soundButton();
+        audio.soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         datosHabitacion dataHabitacion = new datosHabitacion();
@@ -217,7 +219,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMdatosCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosCategoriaActionPerformed
         // TODO add your handling code here:
-        soundButton();
+        audio.soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         datosCategoria dataCategoria = new datosCategoria();
@@ -228,7 +230,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMformularioReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformularioReservaActionPerformed
         // TODO add your handling code here:
-        soundButton();
+        audio.soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         formularioReserva formReserva = new formularioReserva();
@@ -239,7 +241,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMHuespedxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHuespedxHabitacionActionPerformed
         // TODO add your handling code here:
-        ringBell();
+        audio.ringBell();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         huespedesHabitacion huespedHabitacion = new huespedesHabitacion();
@@ -251,7 +253,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMRegistroReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRegistroReservaActionPerformed
         // TODO add your handling code here:
-        ringBell();
+        audio.ringBell();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         registroReserva registroIns = new registroReserva();
@@ -264,7 +266,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMHabitacionCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHabitacionCategoriaActionPerformed
         // TODO add your handling code here:
-        ringBell();
+        audio.ringBell();
         jDescritorio.removeAll();
         jDescritorio.repaint();
         habitacionesCategoria habitacionesCat = new habitacionesCategoria();
@@ -328,34 +330,5 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMformularioReserva;
     private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
-
-    public void audio() {
-
-        AudioClip audio;
-
-        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/temaiken.wav"));
-        audio.play();
-
-    }
-
-    public void soundButton() {
-
-        AudioClip audio;
-
-        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/tortugagimi.wav"));
-        audio.play();
-
-    }
-
-    public void ringBell(){
-        
-        AudioClip audio;
-
-        audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/ringBell.wav"));
-        audio.play();
-        
-        
-    } 
-    
-    
+   
 }
