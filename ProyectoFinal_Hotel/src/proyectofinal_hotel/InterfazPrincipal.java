@@ -1,4 +1,3 @@
-
 package proyectofinal_hotel;
 
 import Interfaces_Vistas.datosCategoria;
@@ -15,12 +14,11 @@ import java.applet.AudioClip;
 
 public class InterfazPrincipal extends javax.swing.JFrame {
 
-
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-       // audio();
-        
+        //audio();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -148,7 +146,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMenu4.add(jMHuespedxHabitacion);
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115025.png"))); // NOI18N
-        jMenuItem1.setText("Registro de Inscripcion");
+        jMenuItem1.setText("Registro de Reservas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -198,12 +196,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        datosHuesped dataHuesped=new datosHuesped();
+        datosHuesped dataHuesped = new datosHuesped();
         dataHuesped.setVisible(true);
         jDescritorio.add(dataHuesped);
         jDescritorio.moveToFront(dataHuesped);
-        
-       
+
+
     }//GEN-LAST:event_jMdatosHuespedActionPerformed
 
     private void jMdatosHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdatosHabitacionActionPerformed
@@ -211,7 +209,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        datosHabitacion dataHabitacion=new datosHabitacion();
+        datosHabitacion dataHabitacion = new datosHabitacion();
         dataHabitacion.setVisible(true);
         jDescritorio.add(dataHabitacion);
         jDescritorio.moveToFront(dataHabitacion);
@@ -222,7 +220,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        datosCategoria dataCategoria=new datosCategoria();
+        datosCategoria dataCategoria = new datosCategoria();
         dataCategoria.setVisible(true);
         jDescritorio.add(dataCategoria);
         jDescritorio.moveToFront(dataCategoria);
@@ -233,7 +231,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        formularioReserva formReserva=new formularioReserva();
+        formularioReserva formReserva = new formularioReserva();
         formReserva.setVisible(true);
         jDescritorio.add(formReserva);
         jDescritorio.moveToFront(formReserva);
@@ -244,11 +242,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        huespedesHabitacion huespedHabitacion=new huespedesHabitacion();
+        huespedesHabitacion huespedHabitacion = new huespedesHabitacion();
         huespedHabitacion.setVisible(true);
         jDescritorio.add(huespedHabitacion);
         jDescritorio.moveToFront(huespedHabitacion);
-        
+
     }//GEN-LAST:event_jMHuespedxHabitacionActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -256,12 +254,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        registroReserva registroIns=new registroReserva();
+        registroReserva registroIns = new registroReserva();
         registroIns.setVisible(true);
         jDescritorio.add(registroIns);
         jDescritorio.moveToFront(registroIns);
-        
-    
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -269,7 +267,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         soundButton();
         jDescritorio.removeAll();
         jDescritorio.repaint();
-        habitacionesCategoria habitacionesCat=new habitacionesCategoria();
+        habitacionesCategoria habitacionesCat = new habitacionesCategoria();
         habitacionesCat.setVisible(true);
         jDescritorio.add(habitacionesCat);
         jDescritorio.moveToFront(habitacionesCat);
@@ -277,7 +275,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     public static void main(String args[]) {
@@ -309,7 +307,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             public void run() {
                 new InterfazPrincipal().setVisible(true);
             }
-        }); 
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -330,25 +328,23 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMformularioReserva;
     private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
-    
 
-    public void audio(){
-        
+    public void audio() {
+
         AudioClip audio;
-        
+
         audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/temaiken.wav"));
         audio.play();
-        
-        
+
     }
-    
-   public void soundButton(){
-       
+
+    public void soundButton() {
+
         AudioClip audio;
-        
+
         audio = java.applet.Applet.newAudioClip(getClass().getResource("/Audio/clicksound.wav"));
         audio.play();
-       
-   }
-    
+
+    }
+
 }

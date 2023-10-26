@@ -122,7 +122,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Iconos/Image20231018115025.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Registro de Inscripcion"/>
+                <Property name="text" type="java.lang.String" value="Registro de Reservas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
