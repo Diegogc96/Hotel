@@ -7,6 +7,7 @@ import Interfaces_Vistas.datosHuesped;
 import Interfaces_Vistas.formularioReserva;
 import Interfaces_Vistas.habitacionesCategoria;
 import Interfaces_Vistas.huespedesHabitacion;
+import Interfaces_Vistas.registroHuespedes;
 import Interfaces_Vistas.registroReserva;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,13 +15,13 @@ import javax.swing.ImageIcon;
 
 public class InterfazPrincipal extends javax.swing.JFrame {
 
-    Audio audio=new Audio();
-    
+    Audio audio = new Audio();
+
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
         //audio.audio();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +41,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMdatosHuesped = new javax.swing.JMenuItem();
+        jMregistroHuesped = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMdatosHabitacion = new javax.swing.JMenuItem();
         jMdatosCategoria = new javax.swing.JMenuItem();
@@ -72,11 +74,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018114938.png"))); // NOI18N
         jMenu1.setText("Huésped");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
 
         jMdatosHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Image20231018115004.png"))); // NOI18N
         jMdatosHuesped.setText("Datos Huésped");
@@ -86,6 +83,15 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMdatosHuesped);
+
+        jMregistroHuesped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/formulario.png"))); // NOI18N
+        jMregistroHuesped.setText("Registro de Huesped");
+        jMregistroHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMregistroHuespedActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMregistroHuesped);
 
         jMenuBar1.add(jMenu1);
 
@@ -189,7 +195,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMsalirActionPerformed
-        
+
         System.exit(0);
     }//GEN-LAST:event_jMsalirActionPerformed
 
@@ -240,7 +246,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMformularioReservaActionPerformed
 
     private void jMHuespedxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHuespedxHabitacionActionPerformed
-        
 
         jDescritorio.removeAll();
         jDescritorio.repaint();
@@ -252,7 +257,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMHuespedxHabitacionActionPerformed
 
     private void jMRegistroReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMRegistroReservaActionPerformed
-        
+
         audio.ringBell();
         jDescritorio.removeAll();
         jDescritorio.repaint();
@@ -265,8 +270,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMRegistroReservaActionPerformed
 
     private void jMHabitacionCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMHabitacionCategoriaActionPerformed
-        
-        
+
         jDescritorio.removeAll();
         jDescritorio.repaint();
         habitacionesCategoria habitacionesCat = new habitacionesCategoria();
@@ -275,10 +279,17 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jDescritorio.moveToFront(habitacionesCat);
     }//GEN-LAST:event_jMHabitacionCategoriaActionPerformed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-       
+    private void jMregistroHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMregistroHuespedActionPerformed
+        // TODO add your handling code here:
+        audio.soundButton();
+        jDescritorio.removeAll();
+        jDescritorio.repaint();
+        registroHuespedes registroHues = new registroHuespedes();
+        registroHues.setVisible(true);
+        jDescritorio.add(registroHues);
+        jDescritorio.moveToFront(registroHues);
 
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_jMregistroHuespedActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -328,7 +339,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMformularioReserva;
+    private javax.swing.JMenuItem jMregistroHuesped;
     private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
-   
+
 }

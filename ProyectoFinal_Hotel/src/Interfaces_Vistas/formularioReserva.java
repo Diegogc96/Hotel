@@ -420,15 +420,15 @@ public class formularioReserva extends InternalFrameImagen {
         int filaSeleccionada = jTtabla.getSelectedRow();
         try {
             if (filaSeleccionada != -1) {
-                do {
-                    respuesta = JOptionPane.showInputDialog("¿El huésped quiere dejar una reseña? Si/No");
-                } while (respuesta == "" || !respuesta.toLowerCase().equals("no") && !respuesta.toLowerCase().equals("si"));
-
-                if (respuesta.equalsIgnoreCase("si")) {
-
-                    respuesta = JOptionPane.showInputDialog("Reseña:");
-
-                }
+//                do {
+//                    respuesta = JOptionPane.showInputDialog("¿El huésped quiere dejar una reseña? Si/No");
+//                } while (respuesta == "" || !respuesta.toLowerCase().equals("no") && !respuesta.toLowerCase().equals("si"));
+//
+//                if (respuesta.equalsIgnoreCase("si")) {
+//
+//                    respuesta = JOptionPane.showInputDialog("Reseña:");
+//
+//                }
 
                 if (filaSeleccionada != -1) {
                     int nroHabitacion = (int) jTtabla.getValueAt(filaSeleccionada, 2);

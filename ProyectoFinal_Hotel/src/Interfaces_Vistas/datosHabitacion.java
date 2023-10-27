@@ -418,7 +418,7 @@ public class datosHabitacion extends InternalFrameImagen {
             } else {
                 do {
                     respuesta = JOptionPane.showInputDialog("Esta seguro que desea borrar la habitacion, esta acción sera irreversible-si/no");
-                } while (respuesta.isEmpty());
+                } while (respuesta.isEmpty() || !respuesta.equalsIgnoreCase("si") && !respuesta.equalsIgnoreCase("no"));
 
                 if (respuesta.equalsIgnoreCase("Si")) {
                     HabitacionData habitacionData = new HabitacionData();

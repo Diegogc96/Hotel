@@ -80,7 +80,7 @@ public class HuespedData {
         List<Huesped> listaHuesped = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM huesped WHERE estado=1";
+            String sql = "SELECT * FROM huesped ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -104,6 +104,42 @@ public class HuespedData {
         return listaHuesped;
     }
 
+    
+    public List<Huesped> listarHuespedPorCaracter(String palabra) {
+
+        List<Huesped> listaHuesped = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM `huesped` WHERE apellido LIKE ? ORDER BY apellido ASC";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, palabra + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Huesped huesped = new Huesped();
+
+                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setDni(rs.getInt("dni"));
+                huesped.setNombre(rs.getString("nombre"));
+                huesped.setApellido(rs.getString("apellido"));
+                huesped.setDomicilio(rs.getString("domicilio"));
+                huesped.setCorreo(rs.getString("correo"));
+                huesped.setCelular(rs.getInt("celular"));
+                huesped.setEstado(rs.getBoolean("estado"));
+                listaHuesped.add(huesped);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Huesped " + ex.getMessage());
+        }
+        return listaHuesped;
+    }
+    
+    
+    
+    
+    
+    
     public void actualizarHuesped(Huesped huesped) {
         String sql = "UPDATE huesped SET apellido = ?, nombre = ?, correo = ?, celular = ?, domicilio = ?, estado = ? WHERE dni = ?";
         PreparedStatement ps = null;

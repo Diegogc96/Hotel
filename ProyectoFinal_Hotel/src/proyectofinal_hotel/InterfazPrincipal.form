@@ -17,9 +17,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Hu&#xe9;sped"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMdatosHuesped">
               <Properties>
@@ -30,6 +27,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMdatosHuespedActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMregistroHuesped">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Iconos/formulario.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Registro de Huesped"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMregistroHuespedActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
