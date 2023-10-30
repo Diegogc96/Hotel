@@ -92,6 +92,8 @@ public class HabitacionData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla habitacion " + ex.getMessage());
+        } catch (NullPointerException ex){
+            
         }
         return listaHabitacion;
     }
