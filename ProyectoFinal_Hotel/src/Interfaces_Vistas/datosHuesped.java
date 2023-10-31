@@ -405,7 +405,7 @@ public class datosHuesped extends InternalFrameImagen {
     private void jTcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTcelularKeyTyped
         // TODO add your handling code here:
 
-        int maxCaracteres = 10;
+        int maxCaracteres = 9;
         verificacionNumeros(evt);
         if (jTcelular.getText().length() >= maxCaracteres) {
             evt.consume();
