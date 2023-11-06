@@ -369,8 +369,8 @@ public class datosHuesped extends InternalFrameImagen {
                 jTapellido.setText(huesped.getApellido());
                 jTnombre.setText(huesped.getNombre());
                 jTdomicilio.setText(huesped.getDomicilio());
-                jTcelular.setText(huesped.getCorreo());
-                jTcorreo.setText(huesped.getCelular() + "");
+                jTcelular.setText(huesped.getCelular()+"");
+                jTcorreo.setText(huesped.getCorreo());
                 jRestado.setSelected(huesped.isEstado());
             } else {
                 jTdocumento.setText(null);
@@ -409,7 +409,7 @@ public class datosHuesped extends InternalFrameImagen {
         verificacionNumeros(evt);
         if (jTcelular.getText().length() >= maxCaracteres) {
             evt.consume();
-            JOptionPane.showMessageDialog(this, "Maximo 10 caracteres");
+            JOptionPane.showMessageDialog(this, "Maximo 9 caracteres");
         }
     }//GEN-LAST:event_jTcelularKeyTyped
 
